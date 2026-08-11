@@ -5,6 +5,7 @@ import ExcelStrip from '../../components/ExcelStrip.astro';
 import TrialCTA from '../../components/TrialCTA.astro';
 import FeatureTabs from '../../components/react/FeatureTabs';
 import PricingCalculator from '../../components/react/PricingCalculator';
+import StatsBand from '../../components/react/StatsBand';
 import { getDictionary } from '../../i18n';
 
 const locale = 'en';
@@ -14,6 +15,7 @@ const dict = getDictionary(locale);
 <BaseLayout path="/">
   <Hero dict={dict} locale={locale} />
   <ExcelStrip dict={dict} />
+  <StatsBand client:visible locale={locale} stats={dict.stats} />
   <FeatureTabs
     client:load
     tabs={dict.features.tabs}
@@ -25,6 +27,8 @@ const dict = getDictionary(locale);
     }}
     sectionTitle={dict.features.sectionTitle}
     sectionSubtitle={dict.features.sectionSubtitle}
+    mapAria={dict.features.mapAria}
+    panel={dict.features.panel}
   />
   <PricingCalculator client:load locale={locale} copy={dict.pricing} />
   <TrialCTA dict={dict} locale={locale} />
