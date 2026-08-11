@@ -56,9 +56,40 @@ Signup talks directly to the API (CORS allows `*`). No proxy in this project.
 
 Real product screenshots belong in `public/screenshots/` (customer-provided). Until then, only CSS illustrations with a “Representative view” note are used. Stock dashboard images are not allowed.
 
+## Polish v1
+
+Visual depth, accessibility, and honesty fixes on top of the v4 contract (structure/routes unchanged).
+
+### Language switcher config
+
+Edit `src/config/i18n.ts`:
+
+- Add or rename a locale in the `LOCALES` array.
+- Set `status: 'active'` only when dictionary + routes exist.
+- Keep `status: 'coming_soon'` for languages that must appear in the dropdown but stay **disabled** (no navigation to empty placeholder pages).
+- Preference is stored in `localStorage` under `LOCALE_STORAGE_KEY` (`tulipfleet-locale`) for UI marking only — **no auto-redirect** on visit.
+
+### Hero scenario ticker copy
+
+Ticker scenarios live in the i18n dictionaries:
+
+- `src/i18n/en.ts` → `hero.scenarios`
+- `src/i18n/tr.ts` → `hero.scenarios`
+
+Amounts (`€5.10`, `€1.04`) and route facts are proven engine outputs — **do not invent new figures**. Scenario C is the only place a red violation indicator is used.
+
+### Live ZE-Zone map cities
+
+City points on the Tab-1 Netherlands map are defined in `LIVE_ZE_CITIES` inside `src/config/i18n.ts` (Amsterdam, Rotterdam, Den Haag, Utrecht, Eindhoven, Maastricht). Leiden is not a live zone city and must not appear on the map.
+
+### Stats band
+
+Proven counters under the Excel strip: `dict.stats` in each locale file (21 zones, 148.8 km², 6 cities, Period-1 tariffs badge). Count-up uses IntersectionObserver + CSS/`requestAnimationFrame` only — no animation libraries.
+
 ## TODO
 
 - Brand logo file (header currently uses text “TulipFleet”)
 - Real screenshots in `public/screenshots/`
 - Early-access form backend endpoint (v1 uses pre-filled `mailto:info@tulipfleet.com`)
-- Fill placeholder locales (`de`, `nl`, `fr`, `es`, `it`, `bg`, `ku`)
+- Fill placeholder locales (`de`, `nl`, `fr`, `es`, `it`, `bg`, `ku`) when activating them in `src/config/i18n.ts`
+
