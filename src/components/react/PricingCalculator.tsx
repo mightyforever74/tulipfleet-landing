@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { PLANS, monthlyTotal, recommendPlan, type PlanId } from '../../lib/pricing';
+import { animateCount, prefersReducedMotion } from '../../lib/motion';
 
 interface PlanCopy {
   name: string;
@@ -39,6 +40,9 @@ export default function PricingCalculator({
 }: Props) {
   const [vehicles, setVehicles] = useState(8);
   const [yearly, setYearly] = useState(false);
+  const [flashBadge, setFlashBadge] = useState(false);
+  const [displayTotal, setDisplayTotal] = useState(0);
+  const displayRef = useRef(0);
   const recommended = recommendPlan(vehicles);
 
   const planMeta = useMemo(() => {
@@ -51,21 +55,47 @@ export default function PricingCalculator({
   }, [copy.plans, vehicles, yearly]);
 
   const recommendedPlan = planMeta.find((p) => p.id === recommended)!;
+  const targetTotal = recommendedPlan.total;
+
+  useEffect(() => {
+    if (prefersReducedMotion()) {
+      displayRef.current = targetTotal;
+      setDisplayTotal(targetTotal);
+      return;
+    }
+    const from = displayRef.current;
+    return animateCount(from, targetTotal, 280, (v) => {
+      displayRef.current = v;
+      setDisplayTotal(v);
+    });
+  }, [targetTotal]);
+
+  function toggleYearly() {
+    setYearly((v) => {
+      const next = !v;
+      if (next) {
+        setFlashBadge(true);
+        window.setTimeout(() => setFlashBadge(false), 700);
+      }
+      return next;
+    });
+  }
 
   return (
-    <section id="pricing" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+    <section id="pricing" className="section-pad mx-auto max-w-6xl px-4 sm:px-6">
       <div className="max-w-2xl">
         <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
           {copy.sectionTitle}
         </h2>
-        <p className="mt-3 text-slate-muted">{copy.sectionSubtitle}</p>
+        <p className="mt-4 text-base text-slate-muted sm:text-lg">{copy.sectionSubtitle}</p>
       </div>
 
       <div className="glass mt-10 rounded-3xl p-6 sm:p-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex-1">
             <label htmlFor="vehicles" className="font-display text-sm font-semibold">
-              {copy.vehiclesLabel}: <span className="text-accent-soft">{vehicles}</span>
+              {copy.vehiclesLabel}:{' '}
+              <span className="text-accent-soft">{vehicles}</span>
             </label>
             <input
               id="vehicles"
@@ -74,7 +104,10 @@ export default function PricingCalculator({
               max={100}
               value={vehicles}
               onChange={(e) => setVehicles(Number(e.target.value))}
-              className="mt-3 w-full accent-[#FF5722]"
+              className="slider-accent mt-4"
+              aria-valuemin={1}
+              aria-valuemax={100}
+              aria-valuenow={vehicles}
             />
           </div>
 
@@ -83,7 +116,18 @@ export default function PricingCalculator({
               type="button"
               role="switch"
               aria-checked={yearly}
-              onClick={() => setYearly((v) => !v)}
+              aria-label={copy.yearlyLabel}
+              onClick={toggleYearly}
+              onKeyDown={(e) => {
+                if (e.key === 'ArrowLeft') {
+                  e.preventDefault();
+                  if (yearly) toggleYearly();
+                }
+                if (e.key === 'ArrowRight') {
+                  e.preventDefault();
+                  if (!yearly) toggleYearly();
+                }
+              }}
               className={`relative h-7 w-12 rounded-full transition ${yearly ? 'bg-emerald' : 'bg-white/15'}`}
             >
               <span
@@ -93,7 +137,11 @@ export default function PricingCalculator({
             <div>
               <p className="text-sm font-medium">{copy.yearlyLabel}</p>
               {yearly && (
-                <span className="badge-live mt-1 !normal-case">{copy.yearlyBadge}</span>
+                <span
+                  className={`badge-live mt-1 !normal-case ${flashBadge ? 'badge-flash' : ''}`}
+                >
+                  {copy.yearlyBadge}
+                </span>
               )}
             </div>
           </div>
@@ -102,19 +150,22 @@ export default function PricingCalculator({
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {planMeta.map((plan) => {
             const isRec = plan.id === recommended;
+            const isPro = plan.id === 'professional';
             return (
               <article
                 key={plan.id}
-                className={`rounded-2xl border p-5 transition duration-300 hover:-translate-y-1 ${
+                className={`rounded-2xl border p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_24px_rgba(255,87,34,0.25)] ${
                   isRec
-                    ? 'border-accent/50 bg-accent/10 shadow-[0_0_24px_rgba(255,87,34,0.2)]'
-                    : 'border-white/10 bg-white/5'
+                    ? 'border-accent/50 bg-accent/10 shadow-[0_0_28px_rgba(255,87,34,0.28)]'
+                    : isPro
+                      ? 'border-accent/30 bg-white/5 shadow-[0_0_18px_rgba(255,87,34,0.12)]'
+                      : 'border-white/10 bg-white/5'
                 }`}
               >
                 <div className="flex items-start justify-between gap-2">
                   <div>
                     <h3 className="font-display text-lg font-bold">{plan.text.name}</h3>
-                    <p className="mt-1 text-xs text-slate-muted">{plan.text.blurb}</p>
+                    <p className="mt-1 text-sm text-slate-muted">{plan.text.blurb}</p>
                   </div>
                   {plan.popular && (
                     <span className="rounded-full bg-accent/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-accent-soft">
@@ -134,7 +185,9 @@ export default function PricingCalculator({
                 )}
 
                 {isRec && (
-                  <p className="mt-3 text-xs font-semibold text-emerald">{copy.recommended}</p>
+                  <p className="mt-3 text-xs font-semibold text-emerald">
+                    {copy.recommended}
+                  </p>
                 )}
 
                 <ul className="mt-4 space-y-2 text-sm text-slate-muted">
@@ -154,7 +207,7 @@ export default function PricingCalculator({
           <div>
             <p className="text-sm text-slate-muted">{copy.monthlyEstimate}</p>
             <p className="font-display text-2xl font-bold text-offwhite">
-              €{recommendedPlan.total.toFixed(0)}
+              €{Math.round(displayTotal)}
               <span className="text-sm font-medium text-slate-muted">
                 {' '}
                 · {recommendedPlan.text.name}
