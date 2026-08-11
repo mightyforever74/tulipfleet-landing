@@ -1,0 +1,104 @@
+---
+import type { Dictionary } from '../i18n';
+import { localizePath } from '../lib/env';
+
+interface Props {
+  dict: Dictionary;
+  locale: string;
+}
+
+const { dict, locale } = Astro.props;
+const signup = localizePath(locale, '/signup');
+---
+
+<section class="relative overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,87,34,0.14),transparent_55%)]" />
+
+  <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
+    <div class="animate-[fadeUp_0.7s_ease-out]">
+      <div class="capsule-glow mb-6 w-fit">
+        <span aria-hidden="true">🇪🇺</span>
+        <span>{dict.hero.badge.replace('🇪🇺 ', '')}</span>
+      </div>
+
+      <h1 class="font-display text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-[3.25rem]">
+        <span class="text-gradient">{dict.hero.title}</span>
+      </h1>
+
+      <p class="mt-5 max-w-xl text-base leading-relaxed text-slate-muted sm:text-lg">
+        {dict.hero.subtitle}
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={signup} class="btn-primary">{dict.hero.ctaTrial}</a>
+        <a href="#pricing" class="btn-outline">{dict.hero.ctaPricing}</a>
+      </div>
+    </div>
+
+    <!-- CSS-only representative Live Dispatch illustration -->
+    <div class="animate-[fadeUp_0.9s_ease-out] relative">
+      <div class="glass overflow-hidden rounded-2xl shadow-[0_24px_80px_rgba(0,0,0,0.45)]">
+        <div class="flex items-center gap-2 border-b border-white/10 bg-white/5 px-4 py-2.5">
+          <span class="h-2.5 w-2.5 rounded-full bg-red-400/80" />
+          <span class="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
+          <span class="h-2.5 w-2.5 rounded-full bg-emerald/80" />
+          <span class="ml-3 font-display text-xs text-slate-muted">{dict.hero.mockupTitle}</span>
+          <span class="ml-auto badge-live !normal-case">● Live</span>
+        </div>
+
+        <div class="relative grid gap-3 p-4 sm:grid-cols-[1.4fr_1fr]">
+          <!-- Map plane -->
+          <div class="relative min-h-[220px] overflow-hidden rounded-xl border border-white/10 bg-navy-elevated">
+            <div
+              class="absolute inset-0 opacity-40"
+              style="background-image:
+                linear-gradient(rgba(148,163,184,0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148,163,184,0.12) 1px, transparent 1px);
+                background-size: 28px 28px;"
+            />
+            <div class="absolute left-[18%] top-[28%] h-24 w-24 rounded-full border border-emerald/40 bg-emerald/10" />
+            <div class="absolute left-[22%] top-[32%] h-3 w-3 rounded-full bg-emerald shadow-[0_0_12px_#10b981]" />
+            <div class="absolute left-[48%] top-[48%] h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_10px_#ff5722]" />
+            <div class="absolute left-[62%] top-[36%] h-2.5 w-2.5 rounded-full bg-accent-soft" />
+            <svg class="absolute inset-0 h-full w-full" viewBox="0 0 300 220" fill="none" aria-hidden="true">
+              <path d="M50 150 C90 110, 120 100, 160 120 S230 90, 260 70" stroke="#FF7043" stroke-width="2" stroke-dasharray="4 4" opacity="0.7" />
+            </svg>
+            <p class="absolute bottom-2 left-2 text-[10px] text-slate-muted">{dict.hero.mockupDisclaimer}</p>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <div class="glass-card rounded-xl p-3">
+              <p class="text-[10px] uppercase tracking-wider text-slate-muted">ZE-Zone</p>
+              <p class="mt-1 font-display text-sm font-semibold text-emerald">{dict.hero.mockupZone}</p>
+            </div>
+            <div class="glass-card rounded-xl p-3">
+              <p class="text-[10px] uppercase tracking-wider text-slate-muted">Vrachtwagenheffing</p>
+              <p class="mt-1 font-display text-sm font-semibold text-accent-soft">{dict.hero.mockupHeffing}</p>
+            </div>
+            <div class="glass rounded-xl p-3">
+              <p class="text-[10px] uppercase tracking-wider text-slate-muted">Jobs</p>
+              <div class="mt-2 space-y-1.5">
+                <div class="h-2 w-full rounded bg-white/10" />
+                <div class="h-2 w-4/5 rounded bg-white/10" />
+                <div class="h-2 w-3/5 rounded bg-white/10" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
