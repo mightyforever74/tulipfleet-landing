@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EarlyAccessForm from '../../components/react/EarlyAccessForm';
+import { getDictionary } from '../../i18n';
+
+const locale = 'tr';
+const dict = getDictionary(locale);
+---
+
+<BaseLayout
+  path="/early-access"
+  title={`${dict.earlyAccess.title} · ${dict.meta.siteName}`}
+>
+  <EarlyAccessForm client:load locale={locale} copy={dict.earlyAccess} />
+</BaseLayout>

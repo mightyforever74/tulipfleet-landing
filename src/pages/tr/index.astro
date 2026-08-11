@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import ExcelStrip from '../../components/ExcelStrip.astro';
+import TrialCTA from '../../components/TrialCTA.astro';
+import FeatureTabs from '../../components/react/FeatureTabs';
+import PricingCalculator from '../../components/react/PricingCalculator';
+import { getDictionary } from '../../i18n';
+
+const locale = 'tr';
+const dict = getDictionary(locale);
+---
+
+<BaseLayout path="/">
+  <Hero dict={dict} locale={locale} />
+  <ExcelStrip dict={dict} />
+  <FeatureTabs
+    client:load
+    tabs={dict.features.tabs}
+    labels={{
+      live: dict.features.live,
+      roadmap: dict.features.roadmap,
+      roadmapSoon: dict.features.roadmapSoon,
+      roadmapNote: dict.features.roadmapNote,
+    }}
+    sectionTitle={dict.features.sectionTitle}
+    sectionSubtitle={dict.features.sectionSubtitle}
+  />
+  <PricingCalculator client:load locale={locale} copy={dict.pricing} />
+  <TrialCTA dict={dict} locale={locale} />
+</BaseLayout>

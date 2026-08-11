@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SignupForm from '../../components/react/SignupForm';
+import { getDictionary } from '../../i18n';
+import { getApiUrl, getAppUrl, localizePath } from '../../lib/env';
+
+const locale = 'tr';
+const dict = getDictionary(locale);
+const vehiclesParam = Astro.url.searchParams.get('vehicles');
+const initialVehicles = vehiclesParam ? Number(vehiclesParam) : 5;
+const appUrlRaw = getAppUrl();
+const appUrl = appUrlRaw.startsWith('http')
+  ? appUrlRaw
+  : localizePath(locale, appUrlRaw);
+---
+
+<BaseLayout path="/signup" title={`${dict.signup.title} · ${dict.meta.siteName}`}>
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <SignupForm
+      client:load
+      apiUrl={getApiUrl()}
+      appUrl={appUrl}
+      initialVehicles={Number.isFinite(initialVehicles) ? initialVehicles : 5}
+      copy={dict.signup}
+    />
+  </div>
+</BaseLayout>
