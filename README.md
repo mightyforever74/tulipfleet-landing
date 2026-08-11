@@ -86,10 +86,57 @@ City points on the Tab-1 Netherlands map are defined in `LIVE_ZE_CITIES` inside 
 
 Proven counters under the Excel strip: `dict.stats` in each locale file (21 zones, 148.8 km², 6 cities, Period-1 tariffs badge). Count-up uses IntersectionObserver + CSS/`requestAnimationFrame` only — no animation libraries.
 
+## C-0 Yasal Zemin (GDPR / AVG shield)
+
+No third-party analytics or ad scripts ship in this phase. Consent infrastructure must be verified **before** enabling any tracker.
+
+### Legal page dictionaries
+
+Skeleton legal copy (EN + TR only):
+
+- `src/i18n/legal/en.ts`
+- `src/i18n/legal/tr.ts`
+
+Routes: `/en|tr/privacy`, `/terms`, `/imprint`, `/dpa`, `/subprocessors`. UI chrome (footer, banner) lives in `src/i18n/en.ts` / `tr.ts` under `footer` + `consent`.
+
+### Analytics enable procedure (order is mandatory)
+
+1. Verify cookie banner + `tf_consent` localStorage (`granted` | `denied` | `unset`).
+2. Verify `ConsentScriptLoader` injects **nothing** when consent is `denied` / `unset` or `enabled: false`.
+3. Only then edit `src/config/analytics.ts`: set `enabled: true` and fill the provider `id`.
+4. Never reverse this order — config enable without working consent is forbidden.
+
+```ts
+export const analyticsConfig = {
+  clarity: { enabled: false, id: "" },
+  metaPixel: { enabled: false, id: "" },
+};
+```
+
+### `[MUSTERI DOLDURACAK]` checklist (complete before NL/EU go-live)
+
+| Field | Where |
+|---|---|
+| Legal entity name (TulipFleet B.V. / Asir) | Privacy, Imprint |
+| KvK number | Privacy, Imprint |
+| Registered address | Privacy, Imprint |
+| DPO name/email or “not appointed” | Privacy, Imprint |
+| Official DPA PDF link | `/dpa` |
+| `privacy@tulipfleet.com` mailbox live | Privacy, Imprint, ops |
+| Mobile map SDK confirmation (update subprocessors if needed) | `/subprocessors` + this README |
+
+### Consent storage
+
+- Key: `tf_consent` → `granted` | `denied` | `unset`
+- Footer “Cookie preferences” re-opens the banner (withdrawal / change of mind).
+- Accept and Reject are equal weight — no dark patterns.
+
 ## TODO
 
 - Brand logo file (header currently uses text “TulipFleet”)
 - Real screenshots in `public/screenshots/`
 - Early-access form backend endpoint (v1 uses pre-filled `mailto:info@tulipfleet.com`)
 - Fill placeholder locales (`de`, `nl`, `fr`, `es`, `it`, `bg`, `ku`) when activating them in `src/config/i18n.ts`
+- Complete all `[MUSTERI DOLDURACAK]` legal identity fields listed under C-0
+- Confirm mobile map SDK and update subprocessors list if required
 
