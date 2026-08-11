@@ -1,0 +1,45 @@
+---
+import type { LegalPageContent } from '../i18n/legal';
+
+interface Props {
+  doc: LegalPageContent;
+}
+
+const { doc } = Astro.props;
+---
+
+<article class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+  <h1 class="font-display text-3xl font-bold tracking-tight sm:text-4xl">{doc.title}</h1>
+  {
+    doc.intro ? (
+      <p class="mt-5 text-base leading-relaxed text-slate-muted sm:text-lg">{doc.intro}</p>
+    ) : null
+  }
+
+  <div class="mt-10 space-y-10">
+    {
+      doc.sections.map((section) => (
+        <section>
+          <h2 class="font-display text-xl font-semibold text-offwhite">{section.heading}</h2>
+          <div class="mt-3 space-y-3 text-base leading-relaxed text-slate-muted">
+            {section.paragraphs.map((p) => (
+              <p>{p}</p>
+            ))}
+            {section.list ? (
+              <ul class="list-disc space-y-2 pl-5">
+                {section.list.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            ) : null}
+            {section.callout ? (
+              <aside class="rounded-2xl border border-emerald/30 bg-emerald/10 px-4 py-3 text-sm text-offwhite">
+                {section.callout}
+              </aside>
+            ) : null}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</article>

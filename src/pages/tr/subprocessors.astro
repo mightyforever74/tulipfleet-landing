@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LegalDoc from '../../components/LegalDoc.astro';
+import { getDictionary } from '../../i18n';
+import { getLegal } from '../../i18n/legal';
+
+const locale = 'tr';
+const dict = getDictionary(locale);
+const doc = getLegal(locale).subprocessors;
+---
+
+<BaseLayout path="/subprocessors" title={`${doc.title} · ${dict.meta.siteName}`} description={doc.description}>
+  <LegalDoc doc={doc} />
+</BaseLayout>

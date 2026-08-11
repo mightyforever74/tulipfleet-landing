@@ -157,6 +157,9 @@ export interface Dictionary {
     validationCompany: string;
     validationName: string;
     validationEmail: string;
+    privacyBefore: string;
+    privacyLink: string;
+    privacyAfter: string;
   };
   earlyAccess: {
     title: string;
@@ -178,12 +181,28 @@ export interface Dictionary {
     tagline: string;
     product: string;
     company: string;
+    legal: string;
     contact: string;
     features: string;
     pricing: string;
     signup: string;
     earlyAccess: string;
+    privacy: string;
+    terms: string;
+    imprint: string;
+    dpa: string;
+    subprocessors: string;
+    cookiePreferences: string;
+    copyright: string;
     rights: string;
+  };
+  consent: {
+    message: string;
+    functionalNote: string;
+    accept: string;
+    reject: string;
+    preferences: string;
+    close: string;
   };
   placeholder: {
     title: string;
