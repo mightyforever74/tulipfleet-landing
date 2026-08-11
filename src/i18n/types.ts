@@ -38,6 +38,17 @@ export interface FeatureTab {
   illustrationHint: string;
 }
 
+export interface TickerScenario {
+  id: 'a' | 'b' | 'c';
+  heffingLabel: string;
+  heffingLine: string;
+  /** Amount substring to colour orange — rest stays neutral */
+  heffingAmount?: string;
+  zoneLabel: string;
+  zoneLine: string;
+  zoneTone: 'ok' | 'exempt' | 'alert';
+}
+
 export interface Dictionary {
   meta: {
     siteName: string;
@@ -51,6 +62,8 @@ export interface Dictionary {
     login: string;
     tryFree: string;
     logoTodo: string;
+    langLabel: string;
+    langSoon: string;
   };
   hero: {
     badge: string;
@@ -59,13 +72,20 @@ export interface Dictionary {
     ctaTrial: string;
     ctaPricing: string;
     mockupTitle: string;
-    mockupZone: string;
-    mockupHeffing: string;
+    mockupLive: string;
+    mockupJobs: string;
     mockupDisclaimer: string;
+    scenarios: TickerScenario[];
   };
   excelStrip: {
     headline: string;
     points: [string, string, string];
+  };
+  stats: {
+    zones: { value: number; label: string };
+    coverage: { value: number; decimals: number; label: string; suffix: string };
+    cities: { value: number; label: string };
+    tariffs: { label: string };
   };
   features: {
     sectionTitle: string;
@@ -75,6 +95,22 @@ export interface Dictionary {
     roadmap: string;
     roadmapSoon: string;
     tabs: FeatureTab[];
+    mapAria: string;
+    panel: {
+      zoneCheck: string;
+      heffingDistance: string;
+      advisorySealed: string;
+      weightClass: string;
+      bridgeAware: string;
+      tariffMapped: string;
+      vehicle: string;
+      driver: string;
+      driverStatus: string;
+      iotBox: string;
+      analyticsSummary: string;
+      apiHonest: string;
+      routeRows: [string, string, string];
+    };
   };
   pricing: {
     sectionTitle: string;
