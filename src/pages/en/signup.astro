@@ -20,6 +20,7 @@ const appUrl = appUrlRaw.startsWith('http')
       client:load
       apiUrl={getApiUrl()}
       appUrl={appUrl}
+      privacyHref={localizePath(locale, '/privacy')}
       initialVehicles={Number.isFinite(initialVehicles) ? initialVehicles : 5}
       copy={dict.signup}
     />

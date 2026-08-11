@@ -20,11 +20,15 @@ interface Copy {
   validationCompany: string;
   validationName: string;
   validationEmail: string;
+  privacyBefore: string;
+  privacyLink: string;
+  privacyAfter: string;
 }
 
 interface Props {
   apiUrl: string;
   appUrl: string;
+  privacyHref: string;
   initialVehicles?: number;
   copy: Copy;
 }
@@ -34,6 +38,7 @@ type Status = 'idle' | 'loading' | 'success' | 'error';
 export default function SignupForm({
   apiUrl,
   appUrl,
+  privacyHref,
   initialVehicles = 5,
   copy,
 }: Props) {
@@ -238,6 +243,14 @@ export default function SignupForm({
       >
         {status === 'loading' ? copy.loading : copy.submit}
       </button>
+
+      <p className="mt-4 text-center text-xs leading-relaxed text-slate-muted">
+        {copy.privacyBefore}
+        <a href={privacyHref} className="text-accent-soft underline-offset-2 hover:underline">
+          {copy.privacyLink}
+        </a>
+        {copy.privacyAfter}
+      </p>
 
       <style>{`
         .field-input {
