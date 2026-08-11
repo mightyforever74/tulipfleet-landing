@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import type { FeatureTab } from '../i18n/types';
+import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
+import type { Dictionary, FeatureTab } from '../../i18n/types';
+import { LIVE_ZE_CITIES } from '../../config/i18n';
 
 interface Labels {
   live: string;
@@ -13,6 +14,8 @@ interface Props {
   labels: Labels;
   sectionTitle: string;
   sectionSubtitle: string;
+  mapAria: string;
+  panel: Dictionary['features']['panel'];
 }
 
 function StatusBadge({
@@ -31,48 +34,125 @@ function StatusBadge({
   return <span className="badge-roadmap">[{labels.roadmap}]</span>;
 }
 
-function TabIllustration({ hint, activeId }: { hint: string; activeId: string }) {
+/** Minimal Netherlands outline with live ZE-Zone city radars. */
+function NetherlandsMap({ ariaLabel }: { ariaLabel: string }) {
   return (
-    <div className="glass relative min-h-[320px] overflow-hidden rounded-2xl p-5">
+    <div
+      className="relative h-40 overflow-hidden rounded-xl border border-white/10 bg-navy-elevated"
+      role="img"
+      aria-label={ariaLabel}
+    >
+      <div
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(148,163,184,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.12) 1px, transparent 1px)',
+          backgroundSize: '16px 16px',
+        }}
+      />
+      <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full p-2" aria-hidden="true">
+        {/* Stylised NL contour */}
+        <path
+          d="M38 12 L52 10 L62 14 L68 22 L70 32 L66 40 L72 48 L74 58 L70 68 L66 78 L62 88 L54 92 L46 90 L40 82 L36 72 L32 64 L28 54 L26 44 L28 34 L30 24 L34 16 Z"
+          fill="rgba(255,255,255,0.04)"
+          stroke="rgba(203,213,225,0.35)"
+          strokeWidth="0.8"
+        />
+        {LIVE_ZE_CITIES.map((city) => (
+          <g key={city.id}>
+            <circle
+              className="map-radar-ring"
+              cx={city.x}
+              cy={city.y}
+              r="4"
+              fill="rgba(16,185,129,0.12)"
+              stroke="#10B981"
+              strokeWidth="0.6"
+            />
+            <circle cx={city.x} cy={city.y} r="1.4" fill="#10B981" />
+          </g>
+        ))}
+      </svg>
+      <style>{`
+        .map-radar-ring {
+          transform-origin: center;
+          transform-box: fill-box;
+          animation: mapRadar 2.4s ease-out infinite;
+        }
+        @keyframes mapRadar {
+          0%, 100% { opacity: 0.85; }
+          50% { opacity: 0.35; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .map-radar-ring { animation: none; opacity: 0.7; }
+        }
+      `}</style>
+      <ul className="absolute bottom-2 left-2 right-2 flex flex-wrap gap-1">
+        {LIVE_ZE_CITIES.map((c) => (
+          <li
+            key={c.id}
+            className="rounded bg-navy/70 px-1.5 py-0.5 text-[9px] text-slate-muted"
+          >
+            {c.label}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function TabIllustration({
+  hint,
+  activeId,
+  panel,
+  mapAria,
+  panelKey,
+  roadmapSoonLabel,
+}: {
+  hint: string;
+  activeId: string;
+  panel: Dictionary['features']['panel'];
+  mapAria: string;
+  panelKey: number;
+  roadmapSoonLabel: string;
+}) {
+  return (
+    <div
+      key={panelKey}
+      className="glass fade-in-up relative min-h-[320px] overflow-hidden rounded-2xl p-5"
+    >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,87,34,0.15),transparent_50%)]" />
       <div className="relative">
         <div className="mb-4 flex items-center justify-between">
           <p className="font-display text-sm font-semibold text-offwhite">{hint}</p>
-          <span className="h-2 w-2 animate-pulse rounded-full bg-emerald" />
+          <span className="radar-dot" aria-hidden="true" />
         </div>
 
         {activeId === 'compliance' && (
           <div className="space-y-3">
             <div className="rounded-xl border border-emerald/30 bg-emerald/10 p-3">
-              <p className="text-xs text-slate-muted">ZE-Zone check</p>
+              <p className="text-xs text-slate-muted">{panel.zoneCheck}</p>
               <p className="font-display text-emerald">Amsterdam · OK</p>
             </div>
-            <div className="rounded-xl border border-accent/30 bg-accent/10 p-3">
-              <p className="text-xs text-slate-muted">Heffing (distance + class)</p>
-              <p className="font-display text-accent-soft">€12.40</p>
+            <div className="heffing-card rounded-xl p-3">
+              <p className="text-xs text-slate-muted">{panel.heffingDistance}</p>
+              <p className="font-display">
+                <span className="heffing-amount font-semibold">€12.40</span>
+              </p>
             </div>
-            <div className="h-28 rounded-xl border border-white/10 bg-navy-elevated">
-              <div
-                className="h-full w-full opacity-50"
-                style={{
-                  backgroundImage:
-                    'linear-gradient(rgba(148,163,184,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.15) 1px, transparent 1px)',
-                  backgroundSize: '20px 20px',
-                }}
-              />
-            </div>
+            <NetherlandsMap ariaLabel={mapAria} />
           </div>
         )}
 
         {activeId === 'routing' && (
           <div className="space-y-3">
-            {['Route A · score 92', 'Route B · score 84', 'Route C · score 71'].map((row, i) => (
+            {panel.routeRows.map((row, i) => (
               <div
                 key={row}
                 className={`rounded-xl border border-white/10 bg-white/5 p-3 transition ${i === 0 ? 'border-accent/40 bg-accent/10' : ''}`}
               >
                 <p className="font-display text-sm">{row}</p>
-                <p className="mt-1 text-xs text-slate-muted">Advisory · reason sealed</p>
+                <p className="mt-1 text-xs text-slate-muted">{panel.advisorySealed}</p>
               </div>
             ))}
           </div>
@@ -81,12 +161,16 @@ function TabIllustration({ hint, activeId }: { hint: string; activeId: string })
         {activeId === 'benelux' && (
           <div className="space-y-3">
             <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-              <p className="text-xs text-slate-muted">Weight class</p>
+              <p className="text-xs text-slate-muted">{panel.weightClass}</p>
               <p className="font-display text-2xl font-bold">N3 · 12–18t</p>
             </div>
             <div className="grid grid-cols-2 gap-2">
-              <div className="rounded-xl border border-white/10 p-3 text-xs text-slate-muted">Bridge limit aware</div>
-              <div className="rounded-xl border border-white/10 p-3 text-xs text-slate-muted">Tariff mapped</div>
+              <div className="rounded-xl border border-white/10 p-3 text-xs text-slate-muted">
+                {panel.bridgeAware}
+              </div>
+              <div className="rounded-xl border border-white/10 p-3 text-xs text-slate-muted">
+                {panel.tariffMapped}
+              </div>
             </div>
           </div>
         )}
@@ -95,16 +179,16 @@ function TabIllustration({ hint, activeId }: { hint: string; activeId: string })
           <div className="space-y-3">
             <div className="grid grid-cols-2 gap-2">
               <div className="rounded-xl border border-white/10 bg-white/5 p-3">
-                <p className="text-xs text-slate-muted">Vehicle</p>
+                <p className="text-xs text-slate-muted">{panel.vehicle}</p>
                 <p className="font-display text-sm">NL-42-TF</p>
               </div>
               <div className="rounded-xl border border-white/10 bg-white/5 p-3">
-                <p className="text-xs text-slate-muted">Driver</p>
-                <p className="font-display text-sm">On job</p>
+                <p className="text-xs text-slate-muted">{panel.driver}</p>
+                <p className="font-display text-sm">{panel.driverStatus}</p>
               </div>
             </div>
-            <div className="rounded-xl border border-accent/30 bg-accent/10 p-3">
-              <p className="text-xs text-slate-muted">ESP32 IoT box</p>
+            <div className="heffing-card rounded-xl p-3">
+              <p className="text-xs text-slate-muted">{panel.iotBox}</p>
               <p className="font-display text-sm text-accent-soft">GPS + accel · TLS-MQTT</p>
             </div>
           </div>
@@ -121,19 +205,19 @@ function TabIllustration({ hint, activeId }: { hint: string; activeId: string })
                 />
               ))}
             </div>
-            <p className="text-xs text-slate-muted">Jobs · fuel · carbon summary</p>
+            <p className="text-xs text-slate-muted">{panel.analyticsSummary}</p>
           </div>
         )}
 
         {activeId === 'b2b' && (
           <div className="space-y-3">
             <div className="rounded-xl border border-blue-400/30 bg-blue-500/10 p-4">
-              <p className="badge-roadmap mb-2">[Roadmap — soon]</p>
+              <p className="badge-roadmap mb-2">[{roadmapSoonLabel}]</p>
               <p className="font-display text-sm">REST + Webhooks</p>
-              <p className="mt-1 text-xs text-slate-muted">ERP / TMS connectivity</p>
+              <p className="mt-1 text-xs text-slate-muted">ERP / TMS</p>
             </div>
             <div className="rounded-xl border border-dashed border-white/15 p-3 text-xs text-slate-muted">
-              No fake API keys. No live counters.
+              {panel.apiHonest}
             </div>
           </div>
         )}
@@ -147,25 +231,56 @@ export default function FeatureTabs({
   labels,
   sectionTitle,
   sectionSubtitle,
+  mapAria,
+  panel,
 }: Props) {
   const [active, setActive] = useState(tabs[0]?.id ?? 'compliance');
+  const [panelKey, setPanelKey] = useState(0);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const tablistId = useId();
   const current = tabs.find((t) => t.id === active) ?? tabs[0];
 
+  useEffect(() => {
+    setPanelKey((k) => k + 1);
+  }, [active]);
+
+  function selectIndex(i: number) {
+    const tab = tabs[i];
+    if (!tab) return;
+    setActive(tab.id);
+    tabRefs.current[i]?.focus();
+  }
+
+  function onTabKey(e: KeyboardEvent, index: number) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      selectIndex((index + 1) % tabs.length);
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      selectIndex((index - 1 + tabs.length) % tabs.length);
+    }
+    if (e.key === 'Home') {
+      e.preventDefault();
+      selectIndex(0);
+    }
+    if (e.key === 'End') {
+      e.preventDefault();
+      selectIndex(tabs.length - 1);
+    }
+  }
+
   return (
-    <section id="features" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+    <section id="features" className="section-pad mx-auto max-w-6xl px-4 sm:px-6">
       <div className="max-w-2xl">
         <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
           {sectionTitle}
         </h2>
-        <p className="mt-3 text-slate-muted">{sectionSubtitle}</p>
+        <p className="mt-4 text-base text-slate-muted sm:text-lg">{sectionSubtitle}</p>
       </div>
 
-      <div
-        className="mt-8 flex gap-2 overflow-x-auto pb-2"
-        role="tablist"
-        aria-label="Feature categories"
-      >
-        {tabs.map((tab) => {
+      <div className="tab-scroll mt-8" role="tablist" aria-label="Feature categories" id={tablistId}>
+        {tabs.map((tab, index) => {
           const selected = tab.id === active;
           return (
             <button
@@ -173,12 +288,13 @@ export default function FeatureTabs({
               type="button"
               role="tab"
               aria-selected={selected}
+              tabIndex={selected ? 0 : -1}
+              ref={(el) => {
+                tabRefs.current[index] = el;
+              }}
               onClick={() => setActive(tab.id)}
-              className={`shrink-0 rounded-xl px-4 py-2.5 font-display text-sm font-semibold transition ${
-                selected
-                  ? 'bg-accent text-white shadow-[0_0_20px_rgba(255,87,34,0.3)]'
-                  : 'border border-white/10 bg-white/5 text-slate-muted hover:text-offwhite'
-              }`}
+              onKeyDown={(e) => onTabKey(e, index)}
+              className="tab-btn"
             >
               {tab.label}
             </button>
@@ -190,23 +306,27 @@ export default function FeatureTabs({
         <div className="mt-8 grid gap-8 lg:grid-cols-2" role="tabpanel">
           <div className="space-y-4">
             {current.items.map((item) => (
-              <article
-                key={item.title}
-                className="glass-card rounded-2xl p-4 sm:p-5"
-              >
+              <article key={item.title} className="glass-card rounded-2xl p-4 sm:p-5">
                 <div className="mb-2 flex flex-wrap items-center gap-2">
                   <StatusBadge status={item.status} labels={labels} />
                   <h3 className="font-display text-base font-semibold sm:text-lg">
                     {item.title}
                   </h3>
                 </div>
-                <p className="text-sm leading-relaxed text-slate-muted">{item.body}</p>
+                <p className="text-base leading-relaxed text-slate-muted">{item.body}</p>
               </article>
             ))}
             <p className="pt-2 text-xs text-slate-muted">{labels.roadmapNote}</p>
           </div>
 
-          <TabIllustration hint={current.illustrationHint} activeId={current.id} />
+          <TabIllustration
+            hint={current.illustrationHint}
+            activeId={current.id}
+            panel={panel}
+            mapAria={mapAria}
+            panelKey={panelKey}
+            roadmapSoonLabel={labels.roadmapSoon}
+          />
         </div>
       )}
     </section>
