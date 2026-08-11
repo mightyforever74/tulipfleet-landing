@@ -1,0 +1,46 @@
+---
+import type { Dictionary } from '../i18n';
+import { localizePath } from '../lib/env';
+
+interface Props {
+  locale: string;
+  dict: Dictionary;
+  loginHref: string;
+}
+
+const { locale, dict, loginHref } = Astro.props;
+const home = localizePath(locale, '/');
+const pricing = localizePath(locale, '/pricing');
+const signup = localizePath(locale, '/signup');
+const featuresHref = `${home}#features`;
+---
+
+<header class="sticky top-0 z-50 border-b border-white/10 bg-navy/80 backdrop-blur-md">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <a href={home} class="font-display text-xl font-bold tracking-tight text-offwhite" title={dict.nav.logoTodo}>
+      TulipFleet
+      <!-- TODO: replace text logo with brand mark file -->
+    </a>
+
+    <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+      <a href={featuresHref} class="text-sm text-slate-muted transition hover:text-offwhite">
+        {dict.nav.features}
+      </a>
+      <a href={pricing} class="text-sm text-slate-muted transition hover:text-offwhite">
+        {dict.nav.pricing}
+      </a>
+    </nav>
+
+    <div class="flex items-center gap-2 sm:gap-3">
+      <a
+        href={loginHref}
+        class="rounded-xl px-3 py-2 text-sm font-medium text-slate-muted transition hover:text-offwhite"
+      >
+        {dict.nav.login}
+      </a>
+      <a href={signup} class="btn-primary !px-3 !py-2 text-sm sm:!px-4">
+        {dict.nav.tryFree}
+      </a>
+    </div>
+  </div>
+</header>

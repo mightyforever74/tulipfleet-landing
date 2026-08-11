@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getDictionary } from '../i18n';
+
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const dict = getDictionary('en');
+---
+
+<BaseLayout path="/">
+  <section class="mx-auto flex min-h-[60vh] max-w-xl flex-col items-center justify-center px-4 py-24 text-center">
+    <h1 class="font-display text-3xl font-bold">{dict.placeholder.title}</h1>
+    <p class="mt-4 text-slate-muted">{dict.placeholder.body}</p>
+    <p class="mt-2 text-xs uppercase tracking-widest text-slate-muted/70">{locale}</p>
+    <a href="/en/" class="btn-primary mt-8">{dict.placeholder.back}</a>
+  </section>
+</BaseLayout>

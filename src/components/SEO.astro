@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  locale: string;
+  path: string;
+  siteName: string;
+  ogLocale: string;
+}
+
+const { title, description, locale, path, siteName, ogLocale } = Astro.props;
+const site = Astro.site ?? new URL('https://tulipfleet.com');
+const canonicalPath = path.startsWith('/') ? path : `/${path}`;
+const localizedPath =
+  canonicalPath === '/' ? `/${locale}/` : `/${locale}${canonicalPath}`;
+const canonical = new URL(localizedPath, site).href;
+const ogImage = new URL('/og-default.svg', site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'TulipFleet',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web, iOS, Android',
+  description,
+  url: canonical,
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'EUR',
+    price: '15.00',
+    description: 'From EUR 15 per vehicle per month',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'TulipFleet',
+    url: site.href,
+    email: 'info@tulipfleet.com',
+  },
+};
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="generator" content={Astro.generator} />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:image" content={ogImage} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
