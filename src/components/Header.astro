@@ -1,6 +1,7 @@
 ---
 import type { Dictionary } from '../i18n';
 import { localizePath } from '../lib/env';
+import LanguageSwitcher from './react/LanguageSwitcher';
 
 interface Props {
   locale: string;
@@ -32,6 +33,12 @@ const featuresHref = `${home}#features`;
     </nav>
 
     <div class="flex items-center gap-2 sm:gap-3">
+      <LanguageSwitcher
+        client:load
+        currentLocale={locale}
+        label={dict.nav.langLabel}
+        soonLabel={dict.nav.langSoon}
+      />
       <a
         href={loginHref}
         class="rounded-xl px-3 py-2 text-sm font-medium text-slate-muted transition hover:text-offwhite"
