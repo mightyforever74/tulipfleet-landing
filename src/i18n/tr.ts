@@ -11,6 +11,7 @@ const tr: Dictionary = {
   nav: {
     features: 'Özellikler',
     pricing: 'Fiyatlar',
+    connect: 'Connect',
     login: 'Giriş Yap',
     tryFree: 'Ücretsiz Dene',
     logoTodo: 'TODO: metin logo yerine marka dosyası eklenecek',
@@ -67,6 +68,69 @@ const tr: Dictionary = {
     coverage: { value: 148.8, decimals: 1, label: 'Kapsama', suffix: 'km²' },
     cities: { value: 6, label: 'Şehir canlı entegrasyon' },
     tariffs: { label: 'Period-1 Toll Tarifeleri Yüklü' },
+  },
+  mobileBridge: {
+    title: 'Ofisten Sahaya Canlı Yönetim: Akıllı Komuta Merkezi & Mobil Saha Köprüsü',
+    body: 'B2B filo yönetiminde en güçlü kartınızı cebinizde unutmayın. TulipFleet sadece bir masaüstü yazılımı değil; ofisinizle saha operasyonunuz arasında 7/24 yaşayan mobil bir köprüdür. Mobil admin fonksiyonlarıyla ister masanızda ister yolda olun: tüm araçlarınızı canlı haritada izler, operasyon ikazlarını (istisna bildirimleri) ve görev dağılımını görür, hatta cebinizden tek tıkla yeni görev atarsınız.',
+    advisory:
+      'Dispatcher panelinde görevleri TulipFleet algoritmalarının süzgecinden geçirin. Size sunulan rotaları ve önerileri GEREKÇELERİYLE görüp seçin; seçimlerinizin sonuçlarını anlık izleyin. Son karar her zaman sizde.',
+    liveBadge: "iOS + Android'de yayında",
+    storesTodo: 'TODO: [MUSTERI DOLDURACAK: magaza linkleri]',
+    appStore: "App Store'dan indir",
+    playStore: "Google Play'den edin",
+    cycleLabel: 'Canlı operasyon döngüsü',
+    steps: [
+      "Dispatcher'dan görev ata",
+      "Sürücünün cebine push düşsün",
+      'Görev kabul edilsin',
+      'Canlı haritada izle',
+      'Teslimat tamamlansın',
+      'Mühürlü görev sonu raporu oluşsun',
+    ],
+  },
+  screenshotStrip: {
+    title: 'Gerçek ürün ekranları — ofisten cebine',
+    subtitle: 'Canlı TulipFleet uygulamalarından. Stok dashboard yok.',
+    placeholderTodo: 'TODO: [MUSTERI DOLDURACAK: gorsel+caption]',
+  },
+  connect: {
+    navCta: 'Geliştiriciler & ERP Entegrasyonu — TulipFleet Connect',
+    sectionTitle: 'ERP / TMS ekipleri için TulipFleet Connect',
+    sectionBody:
+      'ZE-Zone sorgusu, Vrachtwagenheffing maliyeti ve görev/filo verisi için REST + Webhook — yol haritasında, sözleşmeyle yakında.',
+    sectionLink: 'Connect erken erişimine bak',
+    pageTitle: 'TulipFleet Connect',
+    pageBadge: 'Yol Haritası — Yakında',
+    pageIntro:
+      'Connect, ERP veya TMS’si olan ekipler için uyumluluk ve maliyet sinyallerini kendi iş akışlarının yanına alan B2B API katmanımızdır.',
+    valueProp:
+      'ERP/TMS sistemleriniz için REST + Webhook API: ZE-Zone uygunluk sorgusu, Vrachtwagenheffing maliyet hesabı, görev/filo verisi.',
+    sampleLabel: 'Örnek tasarım — lansmanda kesinleşecek',
+    sampleRequest: `POST /v1/compliance/ze-zone-check
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "vehicle_id": "NL-42-TF",
+  "destination": { "lat": 52.0907, "lon": 5.1214 }
+}`,
+    sampleResponse: `{
+  "zone": "Utrecht Centrum",
+  "status": "exemption_required",
+  "heffing_estimate_eur": 5.10
+}`,
+    formTitle: 'Connect erken erişim talep edin',
+    formBody:
+      'ERP/TMS kurulumunuzu ve önce neyi sorgulamak istediğinizi yazın. E-posta ile döneriz — sahte doküman, sahte key yok.',
+    name: 'Adınız',
+    email: 'İş e-postası',
+    company: 'Firma',
+    scenario: 'Kullanım senaryosu (ERP/TMS + ihtiyaç)',
+    submit: 'E-posta taslağını aç',
+    orEmail: 'veya doğrudan yazın: info@tulipfleet.com',
+    mailtoSubject: 'TulipFleet Connect erken erişim',
+    todoBackend:
+      'TODO: Connect bekleme listesi API hazır olunca mailto taslağı POST endpoint ile değiştirilecek.',
   },
   features: {
     sectionTitle: 'Bugün ne var — sırada ne var',
@@ -357,6 +421,7 @@ const tr: Dictionary = {
     pricing: 'Fiyatlar',
     signup: 'Ücretsiz deneme',
     earlyAccess: 'Erken erişim',
+    connect: 'Connect',
     privacy: 'Gizlilik',
     terms: 'Koşullar',
     imprint: 'Künye',

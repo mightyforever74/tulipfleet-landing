@@ -2,10 +2,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 import ExcelStrip from '../../components/ExcelStrip.astro';
+import MobileBridge from '../../components/MobileBridge.astro';
 import TrialCTA from '../../components/TrialCTA.astro';
+import ConnectCTA from '../../components/ConnectCTA.astro';
 import FeatureTabs from '../../components/react/FeatureTabs';
 import PricingCalculator from '../../components/react/PricingCalculator';
 import StatsBand from '../../components/react/StatsBand';
+import ScreenshotTicker from '../../components/react/ScreenshotTicker';
 import { getDictionary } from '../../i18n';
 
 const locale = 'en';
@@ -15,6 +18,7 @@ const dict = getDictionary(locale);
 <BaseLayout path="/">
   <Hero dict={dict} locale={locale} />
   <ExcelStrip dict={dict} />
+  <MobileBridge dict={dict} locale={locale} />
   <StatsBand client:visible locale={locale} stats={dict.stats} />
   <FeatureTabs
     client:load
@@ -30,6 +34,14 @@ const dict = getDictionary(locale);
     mapAria={dict.features.mapAria}
     panel={dict.features.panel}
   />
+  <ScreenshotTicker
+    client:visible
+    locale={locale}
+    title={dict.screenshotStrip.title}
+    subtitle={dict.screenshotStrip.subtitle}
+    placeholderTodo={dict.screenshotStrip.placeholderTodo}
+  />
   <PricingCalculator client:load locale={locale} copy={dict.pricing} />
+  <ConnectCTA dict={dict} locale={locale} />
   <TrialCTA dict={dict} locale={locale} />
 </BaseLayout>

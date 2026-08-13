@@ -11,6 +11,7 @@ const en: Dictionary = {
   nav: {
     features: 'Features',
     pricing: 'Pricing',
+    connect: 'Connect',
     login: 'Log in',
     tryFree: 'Try free',
     logoTodo: 'TODO: replace text logo with brand mark file',
@@ -66,6 +67,69 @@ const en: Dictionary = {
     coverage: { value: 148.8, decimals: 1, label: 'Coverage', suffix: 'km²' },
     cities: { value: 6, label: 'Cities live integrated' },
     tariffs: { label: 'Period-1 toll tariffs loaded' },
+  },
+  mobileBridge: {
+    title: 'Office to field, live: command centre & mobile field bridge',
+    body: 'In B2B fleet management, don’t leave your strongest card in your pocket. TulipFleet isn’t only a desktop product — it’s a mobile bridge that stays alive between your office and the field, 24/7. With mobile admin functions, at your desk or on the road: watch every vehicle on the live map, see operational alerts (exception notifications) and job distribution, and even assign a new job from your phone in one tap.',
+    advisory:
+      'Run jobs through TulipFleet’s advisory filters in the dispatcher panel. See suggested routes and recommendations with their reasons, pick what fits, and watch the outcome live. The final call stays with you.',
+    liveBadge: 'Live on iOS + Android',
+    storesTodo: 'TODO: [MUSTERI DOLDURACAK: magaza linkleri]',
+    appStore: 'Download on the App Store',
+    playStore: 'Get it on Google Play',
+    cycleLabel: 'Live operations loop',
+    steps: [
+      'Assign from dispatcher',
+      'Push to the driver’s phone',
+      'Job accepted',
+      'Track on the live map',
+      'Delivery completed',
+      'Sealed end-of-job report',
+    ],
+  },
+  screenshotStrip: {
+    title: 'Real product screens — from office to pocket',
+    subtitle: 'Captured from the live TulipFleet apps. No stock dashboards.',
+    placeholderTodo: 'TODO: [MUSTERI DOLDURACAK: gorsel+caption]',
+  },
+  connect: {
+    navCta: 'Developers & ERP — TulipFleet Connect',
+    sectionTitle: 'TulipFleet Connect for ERP / TMS teams',
+    sectionBody:
+      'REST + Webhooks for ZE-Zone checks, Vrachtwagenheffing cost, and job/fleet data — on the roadmap, shipping soon under contract.',
+    sectionLink: 'See Connect early access',
+    pageTitle: 'TulipFleet Connect',
+    pageBadge: 'Roadmap — soon',
+    pageIntro:
+      'Connect is our B2B API layer for teams that already run an ERP or TMS and need compliance + cost signals next to their own workflows.',
+    valueProp:
+      'REST + Webhook API for your ERP/TMS: ZE-Zone compliance queries, Vrachtwagenheffing cost calculation, and job/fleet data.',
+    sampleLabel: 'Sample design — will be finalised at launch',
+    sampleRequest: `POST /v1/compliance/ze-zone-check
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "vehicle_id": "NL-42-TF",
+  "destination": { "lat": 52.0907, "lon": 5.1214 }
+}`,
+    sampleResponse: `{
+  "zone": "Utrecht Centrum",
+  "status": "exemption_required",
+  "heffing_estimate_eur": 5.10
+}`,
+    formTitle: 'Request Connect early access',
+    formBody:
+      'Tell us your ERP/TMS setup and what you want to query first. We’ll follow up by email — no fake docs, no fake keys.',
+    name: 'Your name',
+    email: 'Work email',
+    company: 'Company',
+    scenario: 'Use case (ERP/TMS + what you need)',
+    submit: 'Open email draft',
+    orEmail: 'Or write us directly: info@tulipfleet.com',
+    mailtoSubject: 'TulipFleet Connect early access',
+    todoBackend:
+      'TODO: Replace mailto draft with POST endpoint when Connect waitlist API is ready.',
   },
   features: {
     sectionTitle: 'What you get today — and what’s next',
@@ -355,6 +419,7 @@ const en: Dictionary = {
     pricing: 'Pricing',
     signup: 'Free trial',
     earlyAccess: 'Early access',
+    connect: 'Connect',
     privacy: 'Privacy',
     terms: 'Terms',
     imprint: 'Imprint',

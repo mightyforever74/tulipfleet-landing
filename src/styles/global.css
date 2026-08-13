@@ -381,13 +381,51 @@
   animation: ticker-in 0.45s ease-out;
 }
 
+.shot-ticker {
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  overflow: hidden;
+}
+
+.shot-ticker-track {
+  display: flex;
+  width: max-content;
+  gap: 1.25rem;
+  padding-inline: 1rem;
+  animation: shot-ticker-scroll 55s linear infinite;
+  will-change: transform;
+}
+
+.shot-card {
+  flex: 0 0 auto;
+}
+
+@keyframes shot-ticker-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .radar-dot::after,
   .fade-in-up,
   .ticker-enter,
   .badge-flash,
   .slider-accent::-webkit-slider-thumb,
-  .slider-accent::-moz-range-thumb {
+  .slider-accent::-moz-range-thumb,
+  .shot-ticker-track {
     animation: none !important;
+  }
+
+  .shot-ticker-track {
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    justify-content: center;
+    will-change: auto;
   }
 }

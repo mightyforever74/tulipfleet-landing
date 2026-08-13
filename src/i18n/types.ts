@@ -59,6 +59,7 @@ export interface Dictionary {
   nav: {
     features: string;
     pricing: string;
+    connect: string;
     login: string;
     tryFree: string;
     logoTodo: string;
@@ -86,6 +87,45 @@ export interface Dictionary {
     coverage: { value: number; decimals: number; label: string; suffix: string };
     cities: { value: number; label: string };
     tariffs: { label: string };
+  };
+  mobileBridge: {
+    title: string;
+    body: string;
+    advisory: string;
+    liveBadge: string;
+    storesTodo: string;
+    appStore: string;
+    playStore: string;
+    cycleLabel: string;
+    steps: [string, string, string, string, string, string];
+  };
+  screenshotStrip: {
+    title: string;
+    subtitle: string;
+    placeholderTodo: string;
+  };
+  connect: {
+    navCta: string;
+    sectionTitle: string;
+    sectionBody: string;
+    sectionLink: string;
+    pageTitle: string;
+    pageBadge: string;
+    pageIntro: string;
+    valueProp: string;
+    sampleLabel: string;
+    sampleRequest: string;
+    sampleResponse: string;
+    formTitle: string;
+    formBody: string;
+    name: string;
+    email: string;
+    company: string;
+    scenario: string;
+    submit: string;
+    orEmail: string;
+    mailtoSubject: string;
+    todoBackend: string;
   };
   features: {
     sectionTitle: string;
@@ -187,6 +227,7 @@ export interface Dictionary {
     pricing: string;
     signup: string;
     earlyAccess: string;
+    connect: string;
     privacy: string;
     terms: string;
     imprint: string;
