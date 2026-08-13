@@ -131,12 +131,42 @@ export const analyticsConfig = {
 - Footer “Cookie preferences” re-opens the banner (withdrawal / change of mind).
 - Accept and Reject are equal weight — no dark patterns.
 
+## Mobil Ekosistem
+
+### Screenshots folder contract
+
+1. Drop numbered product shots into `public/screenshots/mobile/` (copied from `C:\dispatcher\public\screenshots\mobile` archive).
+2. Register each shot in `src/config/mobileScreenshots.ts` with filtered EN/TR captions (no announcement dates, no forbidden generics, no live/roadmap discipline breaks).
+3. Mark up to three shots with `phoneCycle: true` for the Mobile Bridge phone frame.
+4. 10+ shots → CSS infinite ticker; fewer or `prefers-reduced-motion` → static bento/grid. Empty list → 6 placeholder slots + TODO (build still passes).
+
+### Store badges
+
+Edit `src/config/stores.ts`:
+
+```ts
+export const storeLinks = {
+  appStoreUrl: "",
+  playStoreUrl: "",
+};
+```
+
+Empty URLs render badges with `href="#"` and keep the `[MUSTERI DOLDURACAK: magaza linkleri]` TODO visible.
+
+### `/connect` TODOs
+
+- Waitlist backend POST (v1 mailto to `info@tulipfleet.com`)
+- Final API docs at launch (sample request/response is labelled “sample design”)
+- Do not invent SAP/Oracle brand names or MQTT API claims on this page
+
 ## TODO
 
 - Brand logo file (header currently uses text “TulipFleet”)
-- Real screenshots in `public/screenshots/`
+- Real screenshots in `public/screenshots/` (mobile set partially filled from dispatcher archive)
 - Early-access form backend endpoint (v1 uses pre-filled `mailto:info@tulipfleet.com`)
 - Fill placeholder locales (`de`, `nl`, `fr`, `es`, `it`, `bg`, `ku`) when activating them in `src/config/i18n.ts`
 - Complete all `[MUSTERI DOLDURACAK]` legal identity fields listed under C-0
 - Confirm mobile map SDK and update subprocessors list if required
+- Fill App Store / Play Store URLs in `src/config/stores.ts`
+- Connect waitlist API endpoint
 
