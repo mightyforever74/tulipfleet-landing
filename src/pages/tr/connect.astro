@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ConnectForm from '../../components/react/ConnectForm';
+import { getDictionary } from '../../i18n';
+
+const locale = 'tr';
+const dict = getDictionary(locale);
+const c = dict.connect;
+---
+
+<BaseLayout path="/connect" title={`${c.pageTitle} · ${dict.meta.siteName}`} description={c.pageIntro}>
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <span class="badge-roadmap">[{c.pageBadge}]</span>
+    <h1 class="mt-4 font-display text-3xl font-bold tracking-tight sm:text-4xl">{c.pageTitle}</h1>
+    <p class="mt-4 text-base leading-relaxed text-slate-muted sm:text-lg">{c.pageIntro}</p>
+    <p class="mt-4 text-base leading-relaxed text-offwhite/90 sm:text-lg">{c.valueProp}</p>
+
+    <div class="glass mt-10 rounded-2xl p-4 sm:p-6">
+      <p class="badge-roadmap !normal-case mb-3">{c.sampleLabel}</p>
+      <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-muted">Request</p>
+      <pre class="overflow-x-auto rounded-xl bg-navy-elevated p-4 text-xs leading-relaxed text-slate-muted">{c.sampleRequest}</pre>
+      <p class="mb-2 mt-4 text-xs font-semibold uppercase tracking-wide text-slate-muted">Response</p>
+      <pre class="overflow-x-auto rounded-xl bg-navy-elevated p-4 text-xs leading-relaxed text-slate-muted">{c.sampleResponse}</pre>
+    </div>
+
+    <ConnectForm client:load copy={c} />
+  </article>
+</BaseLayout>

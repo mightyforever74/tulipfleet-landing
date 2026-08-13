@@ -13,6 +13,7 @@ const { locale, dict, loginHref } = Astro.props;
 const home = localizePath(locale, '/');
 const pricing = localizePath(locale, '/pricing');
 const signup = localizePath(locale, '/signup');
+const connect = localizePath(locale, '/connect');
 const featuresHref = `${home}#features`;
 ---
 
@@ -23,12 +24,19 @@ const featuresHref = `${home}#features`;
       <!-- TODO: replace text logo with brand mark file -->
     </a>
 
-    <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+    <nav class="hidden items-center gap-6 lg:flex" aria-label="Primary">
       <a href={featuresHref} class="text-sm text-slate-muted transition hover:text-offwhite">
         {dict.nav.features}
       </a>
       <a href={pricing} class="text-sm text-slate-muted transition hover:text-offwhite">
         {dict.nav.pricing}
+      </a>
+      <a
+        href={connect}
+        class="text-sm text-slate-muted transition hover:text-offwhite"
+        title={dict.connect.navCta}
+      >
+        {dict.nav.connect}
       </a>
     </nav>
 
