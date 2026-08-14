@@ -188,22 +188,23 @@ Content-Type: application/json
           {
             status: 'live',
             title: 'ZE-Zones',
-            body: 'Amsterdam, Rotterdam and 20 Dutch cities / 21 active zones. Checks and ontheffing handling via official NDW national data. You’re connected to the Netherlands’ current ZE-Zone and road-charge data hub.',
+            body: '20 cities / 21 active zones — checks and ontheffing via official NDW data.',
+            note: "You're connected to the Netherlands' current ZE-Zone and road-charge data hub.",
           },
           {
             status: 'roadmap',
             title: 'Benelux–DE corridor expansion',
-            body: 'BE LEZ + DE Umweltzone area checks (country-modular engine). Cost visibility for separate OBU-based systems (e.g. Viapass, LKW-Maut) is planned on the roadmap — not calculated today.',
+            body: 'BE LEZ + DE Umweltzone area checks are next. Cost visibility only planned for Viapass/LKW-Maut.',
           },
           {
             status: 'roadmap',
             title: 'Green routing & CO₂ footprint',
-            body: 'Carbon visibility today is planned to grow into CSRD-aligned formal reporting — your ESG journey, step by step.',
+            body: 'Carbon visibility today → CSRD-aligned reporting tomorrow. Gradual path to ESG.',
           },
           {
             status: 'roadmap',
             title: 'EV range & charging planning',
-            body: 'Range and charge planning that respects Dutch grid constraints — being brought online.',
+            body: 'Range and charge planning that respects Dutch grid constraints.',
           },
         ],
       },

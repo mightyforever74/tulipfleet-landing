@@ -184,27 +184,28 @@ Content-Type: application/json
           {
             status: 'live',
             title: 'Vrachtwagenheffing Maliyet Motoru',
-            body: 'Temmuz 2026’da yürürlüğe giren NL kamyon yol ücreti; resmi Period-1 tarifeleriyle mesafe + araç sınıfı bazlı hesap.',
+            body: "Temmuz 2026'da başlayan NL kamyon yol ücreti — resmi Period-1 tarifeleriyle mesafe + araç sınıfı bazlı hesap.",
           },
           {
             status: 'live',
             title: 'ZE-Zones',
-            body: 'Amsterdam, Rotterdam dahil 20 Hollanda şehri / 21 aktif bölge; resmi NDW ulusal verisiyle denetim + muafiyet (ontheffing) yönetimi. Hollanda’nın güncel ZE-Zone ve yol ücreti veri merkezine bağlısınız.',
+            body: '20 şehir / 21 aktif bölge — resmi NDW verisiyle denetim ve muafiyet (ontheffing) yönetimi.',
+            note: "Hollanda'nın güncel ZE-Zone ve yol ücreti veri merkezine bağlısınız.",
           },
           {
             status: 'roadmap',
             title: 'Benelüks-DE koridor genişlemesi',
-            body: 'BE LEZ + DE Umweltzone bölge denetimleri (ülke-modüler motor). Ayrı OBU-tabanlı sistemler (ör. Viapass, LKW-Maut) için maliyet görünürlüğü yol haritasında — bugün hesaplanmıyor.',
+            body: 'BE LEZ + DE Umweltzone bölge denetimleri sırada. Viapass/LKW-Maut için yalnız maliyet görünürlüğü planlanıyor.',
           },
           {
             status: 'roadmap',
             title: 'Yeşil rotalama & CO₂ ayak izi',
-            body: 'Bugün karbon görünümü → CSRD-uyumlu resmi raporlamaya kademeli geçiş planlanıyor — ESG yolculuğunuz adım adım.',
+            body: "Bugün karbon görünümü → yarın CSRD-uyumlu raporlama. ESG'ye kademeli geçiş.",
           },
           {
             status: 'roadmap',
             title: 'EV menzil & şarj planlaması',
-            body: 'NL şebeke kısıtlarını dikkate alan menzil ve şarj planlaması devreye alınıyor.',
+            body: 'NL şebeke kısıtlarını dikkate alan menzil ve şarj planlaması.',
           },
         ],
       },

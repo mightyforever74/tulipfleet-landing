@@ -34,11 +34,14 @@ function StatusBadge({
   return <span className="badge-roadmap">[{labels.roadmap}]</span>;
 }
 
+/** Cities that get an inline map label (dots alone for the rest). */
+const MAP_LABEL_IDS = new Set(['amsterdam', 'rotterdam', 'utrecht']);
+
 /** Minimal Netherlands outline with live ZE-Zone city radars. */
 function NetherlandsMap({ ariaLabel }: { ariaLabel: string }) {
   return (
     <div
-      className="relative h-40 overflow-hidden rounded-xl border border-white/10 bg-navy-elevated"
+      className="relative min-h-[220px] flex-1 overflow-hidden rounded-xl border border-white/10 bg-navy-elevated sm:min-h-[260px]"
       role="img"
       aria-label={ariaLabel}
     >
@@ -70,6 +73,17 @@ function NetherlandsMap({ ariaLabel }: { ariaLabel: string }) {
               strokeWidth="0.6"
             />
             <circle cx={city.x} cy={city.y} r="1.4" fill="#10B981" />
+            {MAP_LABEL_IDS.has(city.id) ? (
+              <text
+                x={city.x + 3.2}
+                y={city.y + 1.1}
+                fill="#94a3b8"
+                fontSize="3.2"
+                fontFamily="Manrope, system-ui, sans-serif"
+              >
+                {city.label}
+              </text>
+            ) : null}
           </g>
         ))}
       </svg>
@@ -87,16 +101,6 @@ function NetherlandsMap({ ariaLabel }: { ariaLabel: string }) {
           .map-radar-ring { animation: none; opacity: 0.7; }
         }
       `}</style>
-      <ul className="absolute bottom-2 left-2 right-2 flex flex-wrap gap-1">
-        {LIVE_ZE_CITIES.map((c) => (
-          <li
-            key={c.id}
-            className="rounded bg-navy/70 px-1.5 py-0.5 text-[9px] text-slate-muted"
-          >
-            {c.label}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
@@ -119,22 +123,22 @@ function TabIllustration({
   return (
     <div
       key={panelKey}
-      className="glass fade-in-up relative min-h-[320px] overflow-hidden rounded-2xl p-5"
+      className="glass fade-in-up relative flex min-h-[420px] flex-col overflow-hidden rounded-2xl p-5 lg:min-h-full"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,87,34,0.15),transparent_50%)]" />
-      <div className="relative">
-        <div className="mb-4 flex items-center justify-between">
+      <div className="relative flex min-h-0 flex-1 flex-col">
+        <div className="mb-4 flex shrink-0 items-center justify-between">
           <p className="font-display text-sm font-semibold text-offwhite">{hint}</p>
           <span className="radar-dot" aria-hidden="true" />
         </div>
 
         {activeId === 'compliance' && (
-          <div className="space-y-3">
-            <div className="rounded-xl border border-emerald/30 bg-emerald/10 p-3">
+          <div className="flex min-h-0 flex-1 flex-col gap-3">
+            <div className="shrink-0 rounded-xl border border-emerald/30 bg-emerald/10 p-3">
               <p className="text-xs text-slate-muted">{panel.zoneCheck}</p>
               <p className="font-display text-emerald">Amsterdam · OK</p>
             </div>
-            <div className="heffing-card rounded-xl p-3">
+            <div className="heffing-card shrink-0 rounded-xl p-3">
               <p className="text-xs text-slate-muted">{panel.heffingDistance}</p>
               <p className="font-display">
                 <span className="heffing-amount font-semibold">€12.40</span>
@@ -279,7 +283,13 @@ export default function FeatureTabs({
         <p className="mt-4 text-base text-slate-muted sm:text-lg">{sectionSubtitle}</p>
       </div>
 
-      <div className="tab-scroll mt-8" role="tablist" aria-label="Feature categories" id={tablistId}>
+      <div
+        className="tab-scroll mt-8 pe-12"
+        style={{ scrollPaddingInlineEnd: '3rem' }}
+        role="tablist"
+        aria-label="Feature categories"
+        id={tablistId}
+      >
         {tabs.map((tab, index) => {
           const selected = tab.id === active;
           return (
@@ -313,7 +323,12 @@ export default function FeatureTabs({
                     {item.title}
                   </h3>
                 </div>
-                <p className="text-base leading-relaxed text-slate-muted">{item.body}</p>
+                <p className="text-sm leading-snug text-slate-muted sm:text-base">{item.body}</p>
+                {item.note ? (
+                  <p className="mt-1.5 text-xs italic leading-snug text-slate-muted/80 sm:text-sm">
+                    {item.note}
+                  </p>
+                ) : null}
               </article>
             ))}
             <p className="pt-2 text-xs text-slate-muted">{labels.roadmapNote}</p>

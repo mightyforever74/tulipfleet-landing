@@ -29,6 +29,8 @@ export interface FeatureItem {
   status: FeatureStatus;
   title: string;
   body: string;
+  /** Optional one-line italic micro-note under the body */
+  note?: string;
 }
 
 export interface FeatureTab {

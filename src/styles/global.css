@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 @theme {
   --color-navy: #0a0f24;
@@ -8,7 +8,7 @@
   --color-accent-soft: #ff7043;
   --color-emerald: #10b981;
   --color-offwhite: #f8fafc;
-  /* slate-300 — WCAG AA body contrast on navy */
+  /* slate-300 ÔÇö WCAG AA body contrast on navy */
   --color-slate-muted: #cbd5e1;
   --color-roadmap: #64748b;
   --color-roadmap-badge: #3b82f6;
@@ -19,7 +19,7 @@
   --shadow-glow-accent: 0 0 24px rgba(255, 87, 34, 0.35);
   --shadow-glow-accent-soft: 0 0 16px rgba(255, 87, 34, 0.2);
 
-  --space-section: 5rem; /* 80px — 8px grid */
+  --space-section: 5rem; /* 80px ÔÇö 8px grid */
   --space-section-lg: 6rem; /* 96px */
 }
 
@@ -213,10 +213,12 @@
     gap: 0.5rem;
     overflow-x: auto;
     padding-bottom: 0.5rem;
+    padding-inline-end: 2.75rem;
+    scroll-padding-inline-end: 2.75rem;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    mask-image: linear-gradient(to right, #000 0%, #000 calc(100% - 40px), transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, #000 0%, #000 calc(100% - 40px), transparent 100%);
+    mask-image: linear-gradient(to right, #000 0%, #000 calc(100% - 48px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, #000 0%, #000 calc(100% - 48px), transparent 100%);
   }
 
   .tab-scroll::-webkit-scrollbar {
@@ -409,7 +411,7 @@
   }
 }
 
-/* Hero map vehicle — ~8s loop along dashed route */
+/* Hero map vehicle ÔÇö ~8s loop along dashed route */
 .hero-vehicle-dot {
   offset-path: path('M50 150 C90 110, 120 100, 160 120 S230 90, 260 70');
   offset-rotate: 0deg;
