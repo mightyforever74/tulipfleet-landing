@@ -153,7 +153,7 @@ Content-Type: application/json
   features: {
     sectionTitle: 'Bugün ne var — sırada ne var',
     sectionSubtitle:
-      'Canlı özellikler üretimde. Yol haritası maddeleri planlıdır; bugün varmış gibi anlatılmaz.',
+      'Bugün kullanabileceğiniz canlı özellikler ve filonuza kazandıracağımız yeni kabiliyetler. Şeffaf, net ve abartısız.',
     roadmapNote:
       'Yol haritası özellikleri sözleşme kapsamında önceliklendirilerek devreye alınır.',
     live: 'Canlı',

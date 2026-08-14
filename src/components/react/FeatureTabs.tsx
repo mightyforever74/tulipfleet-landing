@@ -284,8 +284,8 @@ export default function FeatureTabs({
       </div>
 
       <div
-        className="tab-scroll mt-8 pe-12"
-        style={{ scrollPaddingInlineEnd: '3rem' }}
+        className="tab-scroll mt-8 pe-16 sm:pe-20"
+        style={{ scrollPaddingInlineEnd: '5rem' }}
         role="tablist"
         aria-label="Feature categories"
         id={tablistId}

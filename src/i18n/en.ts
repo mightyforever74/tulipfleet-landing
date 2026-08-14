@@ -152,7 +152,7 @@ Content-Type: application/json
   features: {
     sectionTitle: 'What you get today — and what’s next',
     sectionSubtitle:
-      'Live features are in production. Roadmap items are planned; we never pretend they’re shipping today.',
+      "Live features you can use today, and the capabilities we're building next. Transparent, clear, no hype.",
     roadmapNote:
       'Roadmap features are prioritised and rolled out under contract scope.',
     live: 'Live',
