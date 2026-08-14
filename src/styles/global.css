@@ -393,49 +393,52 @@
   animation: ticker-in 0.45s ease-out;
 }
 
-.shot-ticker {
-  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
-  overflow: hidden;
-}
-
-.shot-ticker-track {
-  display: flex;
-  width: max-content;
-  gap: 1.25rem;
-  padding-inline: 1rem;
-  animation: shot-ticker-scroll 55s linear infinite;
-  will-change: transform;
-}
-
-.shot-card {
-  flex: 0 0 auto;
-  width: 11.5rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.shot-frame {
+.showcase-card {
   border-radius: 1rem;
   border: 1px solid rgb(255 255 255 / 0.1);
-  background: rgb(30 41 59 / 0.6);
-  overflow: hidden;
+  background: rgb(15 23 42 / 0.6);
+  padding: 1rem;
+  transition:
+    border-color 300ms ease,
+    box-shadow 300ms ease,
+    transform 300ms ease;
 }
 
-.shot-frame--phone {
+.showcase-card:hover {
+  border-color: rgb(249 115 22 / 0.4);
+  box-shadow: 0 0 30px rgb(249 115 22 / 0.15);
+  transform: translateY(-0.25rem);
+}
+
+.showcase-frame {
+  overflow: hidden;
+  border-radius: 0.85rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background: rgb(30 41 59 / 0.55);
+}
+
+.showcase-frame--panel {
+  aspect-ratio: 4 / 3;
+}
+
+.showcase-frame--phone {
+  aspect-ratio: 9 / 16;
+  max-height: 22rem;
+  margin-inline: auto;
+  width: min(100%, 14rem);
   padding: 0.55rem 0.55rem 0.7rem;
 }
 
-.shot-phone-bezel {
+.showcase-phone-bezel {
   position: relative;
-  aspect-ratio: 9 / 16;
+  height: 100%;
   overflow: hidden;
   border-radius: 0.85rem;
   border: 1px solid rgb(255 255 255 / 0.12);
   background: #0b1220;
 }
 
-.shot-phone-notch {
+.showcase-phone-notch {
   position: absolute;
   top: 0.35rem;
   left: 50%;
@@ -447,38 +450,28 @@
   background: rgb(255 255 255 / 0.14);
 }
 
-.shot-frame--hardware {
-  aspect-ratio: 9 / 16;
+.showcase-frame--hardware {
+  aspect-ratio: 4 / 3;
   position: relative;
 }
 
-.shot-frame--hardware::after {
+.showcase-frame--hardware::after {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 42%, rgb(11 18 32 / 0.72) 100%);
+  background: radial-gradient(ellipse at center, transparent 40%, rgb(11 18 32 / 0.75) 100%);
 }
 
-.shot-caption {
-  margin-top: 0.5rem;
-  height: 2.5rem;
-  overflow: hidden;
-  font-size: 0.75rem;
-  line-height: 1.25rem;
-  color: #cbd5e1;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+.showcase-dialog::backdrop {
+  background: rgb(0 0 0 / 0.72);
 }
 
-@keyframes shot-ticker-scroll {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
+@media (prefers-reduced-motion: reduce) {
+  .showcase-card,
+  .showcase-card:hover {
+    transition: none;
+    transform: none;
   }
 }
 
@@ -553,7 +546,6 @@
   .badge-flash,
   .slider-accent::-webkit-slider-thumb,
   .slider-accent::-moz-range-thumb,
-  .shot-ticker-track,
   .hero-map-scene #vehicle,
   .hero-map-scene #zePoly {
     animation: none !important;
@@ -567,14 +559,5 @@
   .hero-map-scene #zePoly {
     fill: #10b981;
     fill-opacity: 0.22;
-  }
-
-  .shot-ticker-track {
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 72rem;
-    margin-inline: auto;
-    justify-content: center;
-    will-change: auto;
   }
 }

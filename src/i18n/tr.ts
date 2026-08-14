@@ -107,7 +107,21 @@ const tr: Dictionary = {
     title: 'Gerçek ürün ekranları — ofisten cebine',
     subtitle:
       'Ofis panellerinden sürücü cebine — operasyonun her anından alınmış canlı ekranlar.',
-    placeholderTodo: 'TODO: [MUSTERI DOLDURACAK: gorsel+caption]',
+    closeLabel: 'Kapat',
+    scenes: {
+      office: {
+        badge: 'OFİS KOMUTA MERKEZİ',
+        caption: 'Ofisten tek tıkla görev atayın ve canlı izleyin.',
+      },
+      pocket: {
+        badge: 'SÜRÜCÜ CEBİ',
+        caption: 'Sürücünün cebine anında düşsün, onaylansın.',
+      },
+      vehicle: {
+        badge: 'ARAÇ DONANIMI',
+        caption: 'Araçtan canlı telemetri ve konum sinyali aksın.',
+      },
+    },
   },
   connect: {
     navCta: 'Geliştiriciler & ERP Entegrasyonu — TulipFleet Connect',

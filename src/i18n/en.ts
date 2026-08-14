@@ -106,7 +106,21 @@ const en: Dictionary = {
     title: 'Real product screens — from office to pocket',
     subtitle:
       "From office panels to the driver's pocket — live screens from every moment of the operation.",
-    placeholderTodo: 'TODO: [MUSTERI DOLDURACAK: gorsel+caption]',
+    closeLabel: 'Close',
+    scenes: {
+      office: {
+        badge: 'OFFICE COMMAND CENTRE',
+        caption: 'Assign tasks and track live directly from the office.',
+      },
+      pocket: {
+        badge: "DRIVER'S POCKET",
+        caption: "Lands in the driver's pocket, gets accepted.",
+      },
+      vehicle: {
+        badge: 'VEHICLE HARDWARE',
+        caption: 'Live telemetry and location data streaming from the vehicle.',
+      },
+    },
   },
   connect: {
     navCta: 'Developers & ERP — TulipFleet Connect',

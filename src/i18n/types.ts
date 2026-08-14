@@ -116,7 +116,12 @@ export interface Dictionary {
   screenshotStrip: {
     title: string;
     subtitle: string;
-    placeholderTodo: string;
+    closeLabel: string;
+    scenes: {
+      office: { badge: string; caption: string };
+      pocket: { badge: string; caption: string };
+      vehicle: { badge: string; caption: string };
+    };
   };
   connect: {
     navCta: string;
