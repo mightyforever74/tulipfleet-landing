@@ -13,7 +13,10 @@ Moved to `archive/` (not deleted) — marketing / atmosphere / composite frames,
 | `07-pricing.jpg` | Pricing brochure layout — not a product screen |
 | `05-driver-nav-2.jpg` | LinkedIn-style flyer with stock driver photo + UI insets |
 | `08-live-2.jpg` | Duplicate / alternate of live UI; kept primary `08-live.jpg` in ticker |
+| `13-exceptions.jpg` | Stock atmosphere (headset / glass map overlay) — not product UI |
+| `09-gps.jpg` | 3D concept / atmosphere trucks on neon routes — not product UI |
 
-**Suspect / customer decision (none remaining in active ticker):** if a future LinkedIn composite embeds a readable real UI over a stock base, list it here before deleting — leave the keep/drop call to the customer.
+**KURATOR NOTU — müşteri kararı:**
+- `11-heffing.jpg` — ürün UI kartı + resmi Period-1 tarife tablosu (LinkedIn tarzı kompozit olabilir). Gerçek ürün UI okunuyor; ticker’da tutuldu. Salt atmosfer sayılırsa arşive alınabilir.
 
-Active ticker set (`mobile/`): `01-fuel`, `02-esp32box` (hardware), `05-driver-nav`, `08-live`, `09-gps`, `10-carbon`, `11-heffing`, `13-exceptions`, `14-ze-zone`.
+Active ticker set (`mobile/`): `01-fuel`, `02-esp32box` (hardware), `05-driver-nav`, `08-live`, `10-carbon`, `11-heffing`, `14-ze-zone`.

@@ -84,21 +84,6 @@ export const MOBILE_SHOTS: MobileShot[] = [
     },
   },
   {
-    id: '09',
-    src: '/screenshots/mobile/09-gps.jpg',
-    width: 720,
-    height: 1280,
-    kind: 'phone',
-    alt: {
-      en: 'GPS tracking tied to jobs',
-      tr: 'Görevlere bağlı GPS takibi',
-    },
-    caption: {
-      en: 'GPS tracking tied to the vehicle and the job — position you can act on.',
-      tr: 'Araca ve göreve bağlı GPS takibi — üzerine karar verilebilecek konum.',
-    },
-  },
-  {
     id: '11',
     src: '/screenshots/mobile/11-heffing.jpg',
     width: 720,
@@ -111,21 +96,6 @@ export const MOBILE_SHOTS: MobileShot[] = [
     caption: {
       en: 'Vrachtwagenheffing cost — distance + class, official Period-1 tariffs.',
       tr: 'Vrachtwagenheffing maliyeti — mesafe + sınıf, resmi Period-1 tarifeleri.',
-    },
-  },
-  {
-    id: '13',
-    src: '/screenshots/mobile/13-exceptions.jpg',
-    width: 720,
-    height: 1280,
-    kind: 'phone',
-    alt: {
-      en: 'Operational exception monitors',
-      tr: 'Operasyon istisna monitörleri',
-    },
-    caption: {
-      en: 'Exception monitors split comms loss from location mismatch.',
-      tr: 'İstisna monitörleri iletişim kopukluğunu konum sapmasından ayırır.',
     },
   },
   {
