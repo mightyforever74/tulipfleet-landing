@@ -175,6 +175,33 @@ Content-Type: application/json
       apiHonest: 'Sahte API key yok. Canlı sayaç yok.',
       routeRows: ['Rota A · skor 92', 'Rota B · skor 84', 'Rota C · skor 71'],
     },
+    telemetry: {
+      compliance: [
+        { label: 'NDW ZE-Zone verisi — senkron', tone: 'live' },
+        { label: 'Period-1 tarifeleri — yüklü', tone: 'live' },
+        { label: '21 aktif bölge — izleniyor', tone: 'live' },
+      ],
+      routing: [
+        { label: 'Karar desteği — aktif', tone: 'live' },
+        { label: 'Canlı telemetri — akıyor', tone: 'live' },
+      ],
+      benelux: [
+        { label: 'Ağırlık sınıfı eşlemesi — canlı', tone: 'live' },
+        { label: 'Tarihi / köprü limitleri — planlı', tone: 'planned' },
+      ],
+      fleet: [
+        { label: 'Filo & görev yönetimi — canlı', tone: 'live' },
+        { label: 'Sürücü mobil uygulaması — canlı', tone: 'live' },
+      ],
+      analytics: [
+        { label: 'Operasyon panoları — canlı', tone: 'live' },
+        { label: 'Self-servis abonelik — canlı', tone: 'live' },
+      ],
+      b2b: [
+        { label: 'TulipFleet Connect API — planlı', tone: 'planned' },
+        { label: 'ERP / TMS webhook — planlı', tone: 'planned' },
+      ],
+    },
     tabs: [
       {
         id: 'compliance',

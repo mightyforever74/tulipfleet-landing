@@ -23,6 +23,11 @@ export const ALL_LOCALES: Locale[] = [
   'ku',
 ];
 
+export interface TelemetryLine {
+  label: string;
+  tone: 'live' | 'planned';
+}
+
 export type FeatureStatus = 'live' | 'roadmap' | 'roadmap_soon';
 
 export interface FeatureItem {
@@ -161,6 +166,14 @@ export interface Dictionary {
       analyticsSummary: string;
       apiHonest: string;
       routeRows: [string, string, string];
+    };
+    telemetry: {
+      compliance: TelemetryLine[];
+      routing: TelemetryLine[];
+      benelux: TelemetryLine[];
+      fleet: TelemetryLine[];
+      analytics: TelemetryLine[];
+      b2b: TelemetryLine[];
     };
   };
   pricing: {

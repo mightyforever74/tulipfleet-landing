@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
-import type { Dictionary, FeatureTab } from '../../i18n/types';
+import type { Dictionary, FeatureTab, TelemetryLine } from '../../i18n/types';
 import { LIVE_ZE_CITIES } from '../../config/i18n';
 
 interface Labels {
@@ -16,6 +16,7 @@ interface Props {
   sectionSubtitle: string;
   mapAria: string;
   panel: Dictionary['features']['panel'];
+  telemetry: Dictionary['features']['telemetry'];
 }
 
 function StatusBadge({
@@ -34,73 +35,108 @@ function StatusBadge({
   return <span className="badge-roadmap">[{labels.roadmap}]</span>;
 }
 
+function TelemetryStrip({ lines }: { lines: TelemetryLine[] }) {
+  return (
+    <ul className="space-y-1.5 font-mono text-[11px] leading-relaxed sm:text-xs">
+      {lines.map((line) => (
+        <li
+          key={line.label}
+          className={`flex items-start gap-2 ${
+            line.tone === 'live' ? 'text-slate-300' : 'text-slate-muted/70'
+          }`}
+        >
+          <span
+            className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${
+              line.tone === 'live'
+                ? 'bg-emerald shadow-[0_0_6px_rgba(16,185,129,0.7)]'
+                : 'bg-slate-muted/50'
+            }`}
+            aria-hidden="true"
+          />
+          <span>{line.label}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 /** Cities that get an inline map label (dots alone for the rest). */
 const MAP_LABEL_IDS = new Set(['amsterdam', 'rotterdam', 'utrecht']);
 
-/** Minimal Netherlands outline with live ZE-Zone city radars. */
-function NetherlandsMap({ ariaLabel }: { ariaLabel: string }) {
+/** Minimal Netherlands outline with live ZE-Zone city radars + telemetry strip. */
+function NetherlandsMap({
+  ariaLabel,
+  lines,
+}: {
+  ariaLabel: string;
+  lines: TelemetryLine[];
+}) {
   return (
-    <div
-      className="relative min-h-[220px] flex-1 overflow-hidden rounded-xl border border-white/10 bg-navy-elevated sm:min-h-[260px]"
-      role="img"
-      aria-label={ariaLabel}
-    >
+    <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-white/10 bg-navy-elevated">
       <div
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(148,163,184,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.12) 1px, transparent 1px)',
-          backgroundSize: '16px 16px',
-        }}
-      />
-      <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full p-2" aria-hidden="true">
-        {/* Stylised NL contour */}
-        <path
-          d="M38 12 L52 10 L62 14 L68 22 L70 32 L66 40 L72 48 L74 58 L70 68 L66 78 L62 88 L54 92 L46 90 L40 82 L36 72 L32 64 L28 54 L26 44 L28 34 L30 24 L34 16 Z"
-          fill="rgba(255,255,255,0.04)"
-          stroke="rgba(203,213,225,0.35)"
-          strokeWidth="0.8"
+        className="relative min-h-[180px] flex-1 sm:min-h-[220px]"
+        role="img"
+        aria-label={ariaLabel}
+      >
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(148,163,184,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.12) 1px, transparent 1px)',
+            backgroundSize: '16px 16px',
+          }}
         />
-        {LIVE_ZE_CITIES.map((city) => (
-          <g key={city.id}>
-            <circle
-              className="map-radar-ring"
-              cx={city.x}
-              cy={city.y}
-              r="4"
-              fill="rgba(16,185,129,0.12)"
-              stroke="#10B981"
-              strokeWidth="0.6"
-            />
-            <circle cx={city.x} cy={city.y} r="1.4" fill="#10B981" />
-            {MAP_LABEL_IDS.has(city.id) ? (
-              <text
-                x={city.x + 3.2}
-                y={city.y + 1.1}
-                fill="#94a3b8"
-                fontSize="3.2"
-                fontFamily="Manrope, system-ui, sans-serif"
-              >
-                {city.label}
-              </text>
-            ) : null}
-          </g>
-        ))}
-      </svg>
-      <style>{`
-        .map-radar-ring {
-          transform-origin: center;
-          transform-box: fill-box;
-          animation: mapRadar 2.4s ease-out infinite;
-        }
-        @keyframes mapRadar {
-          0%, 100% { opacity: 0.85; }
-          50% { opacity: 0.35; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .map-radar-ring { animation: none; opacity: 0.7; }
-        }
-      `}</style>
+        <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full p-2" aria-hidden="true">
+          <path
+            d="M38 12 L52 10 L62 14 L68 22 L70 32 L66 40 L72 48 L74 58 L70 68 L66 78 L62 88 L54 92 L46 90 L40 82 L36 72 L32 64 L28 54 L26 44 L28 34 L30 24 L34 16 Z"
+            fill="rgba(255,255,255,0.04)"
+            stroke="rgba(203,213,225,0.35)"
+            strokeWidth="0.8"
+          />
+          {LIVE_ZE_CITIES.map((city) => (
+            <g key={city.id}>
+              <circle
+                className="map-radar-ring"
+                cx={city.x}
+                cy={city.y}
+                r="4"
+                fill="rgba(16,185,129,0.12)"
+                stroke="#10B981"
+                strokeWidth="0.6"
+              />
+              <circle cx={city.x} cy={city.y} r="1.4" fill="#10B981" />
+              {MAP_LABEL_IDS.has(city.id) ? (
+                <text
+                  x={city.x + 3.2}
+                  y={city.y + 1.1}
+                  fill="#94a3b8"
+                  fontSize="3.2"
+                  fontFamily="Manrope, system-ui, sans-serif"
+                >
+                  {city.label}
+                </text>
+              ) : null}
+            </g>
+          ))}
+        </svg>
+        <style>{`
+          .map-radar-ring {
+            transform-origin: center;
+            transform-box: fill-box;
+            animation: mapRadar 2.4s ease-out infinite;
+          }
+          @keyframes mapRadar {
+            0%, 100% { opacity: 0.85; }
+            50% { opacity: 0.35; }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .map-radar-ring { animation: none; opacity: 0.7; }
+          }
+        `}</style>
+      </div>
+      <div className="shrink-0 border-t border-white/10 bg-navy/50 px-3 py-2.5">
+        <TelemetryStrip lines={lines} />
+      </div>
     </div>
   );
 }
@@ -112,6 +148,7 @@ function TabIllustration({
   mapAria,
   panelKey,
   roadmapSoonLabel,
+  telemetryLines,
 }: {
   hint: string;
   activeId: string;
@@ -119,6 +156,7 @@ function TabIllustration({
   mapAria: string;
   panelKey: number;
   roadmapSoonLabel: string;
+  telemetryLines: TelemetryLine[];
 }) {
   return (
     <div
@@ -144,26 +182,31 @@ function TabIllustration({
                 <span className="heffing-amount font-semibold">€12.40</span>
               </p>
             </div>
-            <NetherlandsMap ariaLabel={mapAria} />
+            <NetherlandsMap ariaLabel={mapAria} lines={telemetryLines} />
           </div>
         )}
 
         {activeId === 'routing' && (
-          <div className="space-y-3">
-            {panel.routeRows.map((row, i) => (
-              <div
-                key={row}
-                className={`rounded-xl border border-white/10 bg-white/5 p-3 transition ${i === 0 ? 'border-accent/40 bg-accent/10' : ''}`}
-              >
-                <p className="font-display text-sm">{row}</p>
-                <p className="mt-1 text-xs text-slate-muted">{panel.advisorySealed}</p>
-              </div>
-            ))}
+          <div className="flex min-h-0 flex-1 flex-col gap-3">
+            <div className="space-y-3">
+              {panel.routeRows.map((row, i) => (
+                <div
+                  key={row}
+                  className={`rounded-xl border border-white/10 bg-white/5 p-3 transition ${i === 0 ? 'border-accent/40 bg-accent/10' : ''}`}
+                >
+                  <p className="font-display text-sm">{row}</p>
+                  <p className="mt-1 text-xs text-slate-muted">{panel.advisorySealed}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-auto rounded-xl border border-white/10 bg-navy-elevated/80 px-3 py-2.5">
+              <TelemetryStrip lines={telemetryLines} />
+            </div>
           </div>
         )}
 
         {activeId === 'benelux' && (
-          <div className="space-y-3">
+          <div className="flex min-h-0 flex-1 flex-col gap-3">
             <div className="rounded-xl border border-white/10 bg-white/5 p-4">
               <p className="text-xs text-slate-muted">{panel.weightClass}</p>
               <p className="font-display text-2xl font-bold">N3 · 12–18t</p>
@@ -176,11 +219,14 @@ function TabIllustration({
                 {panel.tariffMapped}
               </div>
             </div>
+            <div className="mt-auto rounded-xl border border-white/10 bg-navy-elevated/80 px-3 py-2.5">
+              <TelemetryStrip lines={telemetryLines} />
+            </div>
           </div>
         )}
 
         {activeId === 'fleet' && (
-          <div className="space-y-3">
+          <div className="flex min-h-0 flex-1 flex-col gap-3">
             <div className="grid grid-cols-2 gap-2">
               <div className="rounded-xl border border-white/10 bg-white/5 p-3">
                 <p className="text-xs text-slate-muted">{panel.vehicle}</p>
@@ -195,11 +241,14 @@ function TabIllustration({
               <p className="text-xs text-slate-muted">{panel.iotBox}</p>
               <p className="font-display text-sm text-accent-soft">GPS + accel · TLS-MQTT</p>
             </div>
+            <div className="mt-auto rounded-xl border border-white/10 bg-navy-elevated/80 px-3 py-2.5">
+              <TelemetryStrip lines={telemetryLines} />
+            </div>
           </div>
         )}
 
         {activeId === 'analytics' && (
-          <div className="space-y-3">
+          <div className="flex min-h-0 flex-1 flex-col gap-3">
             <div className="flex h-28 items-end gap-2 rounded-xl border border-white/10 bg-navy-elevated p-3">
               {[40, 65, 45, 80, 55, 90, 70].map((h, i) => (
                 <div
@@ -210,11 +259,14 @@ function TabIllustration({
               ))}
             </div>
             <p className="text-xs text-slate-muted">{panel.analyticsSummary}</p>
+            <div className="mt-auto rounded-xl border border-white/10 bg-navy-elevated/80 px-3 py-2.5">
+              <TelemetryStrip lines={telemetryLines} />
+            </div>
           </div>
         )}
 
         {activeId === 'b2b' && (
-          <div className="space-y-3">
+          <div className="flex min-h-0 flex-1 flex-col gap-3">
             <div className="rounded-xl border border-blue-400/30 bg-blue-500/10 p-4">
               <p className="badge-roadmap mb-2">[{roadmapSoonLabel}]</p>
               <p className="font-display text-sm">REST + Webhooks</p>
@@ -222,6 +274,9 @@ function TabIllustration({
             </div>
             <div className="rounded-xl border border-dashed border-white/15 p-3 text-xs text-slate-muted">
               {panel.apiHonest}
+            </div>
+            <div className="mt-auto rounded-xl border border-white/10 bg-navy-elevated/80 px-3 py-2.5">
+              <TelemetryStrip lines={telemetryLines} />
             </div>
           </div>
         )}
@@ -237,12 +292,15 @@ export default function FeatureTabs({
   sectionSubtitle,
   mapAria,
   panel,
+  telemetry,
 }: Props) {
   const [active, setActive] = useState(tabs[0]?.id ?? 'compliance');
   const [panelKey, setPanelKey] = useState(0);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const tablistId = useId();
   const current = tabs.find((t) => t.id === active) ?? tabs[0];
+  const telemetryLines =
+    telemetry[active as keyof Dictionary['features']['telemetry']] ?? telemetry.compliance;
 
   useEffect(() => {
     setPanelKey((k) => k + 1);
@@ -313,7 +371,7 @@ export default function FeatureTabs({
       </div>
 
       {current && (
-        <div className="mt-8 grid gap-8 lg:grid-cols-2" role="tabpanel">
+        <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-stretch" role="tabpanel">
           <div className="space-y-4">
             {current.items.map((item) => (
               <article key={item.title} className="glass-card rounded-2xl p-4 sm:p-5">
@@ -341,6 +399,7 @@ export default function FeatureTabs({
             mapAria={mapAria}
             panelKey={panelKey}
             roadmapSoonLabel={labels.roadmapSoon}
+            telemetryLines={telemetryLines}
           />
         </div>
       )}

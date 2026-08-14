@@ -174,6 +174,33 @@ Content-Type: application/json
       apiHonest: 'No fake API keys. No live counters.',
       routeRows: ['Route A · score 92', 'Route B · score 84', 'Route C · score 71'],
     },
+    telemetry: {
+      compliance: [
+        { label: 'NDW ZE-Zone feed — synced', tone: 'live' },
+        { label: 'Period-1 tariffs — loaded', tone: 'live' },
+        { label: '21 active zones — monitored', tone: 'live' },
+      ],
+      routing: [
+        { label: 'Advisory support — active', tone: 'live' },
+        { label: 'Live telemetry — flowing', tone: 'live' },
+      ],
+      benelux: [
+        { label: 'Weight-class mapping — live', tone: 'live' },
+        { label: 'Historic / bridge limits — planned', tone: 'planned' },
+      ],
+      fleet: [
+        { label: 'Fleet & job management — live', tone: 'live' },
+        { label: 'Driver mobile app — live', tone: 'live' },
+      ],
+      analytics: [
+        { label: 'Operations boards — live', tone: 'live' },
+        { label: 'Self-service subscription — live', tone: 'live' },
+      ],
+      b2b: [
+        { label: 'TulipFleet Connect API — planned', tone: 'planned' },
+        { label: 'ERP / TMS webhooks — planned', tone: 'planned' },
+      ],
+    },
     tabs: [
       {
         id: 'compliance',
