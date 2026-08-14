@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MOBILE_SHOTS } from '../../config/mobileScreenshots';
+import { MOBILE_SHOTS, type MobileShot } from '../../config/mobileScreenshots';
 import { prefersReducedMotion } from '../../lib/motion';
 
 interface Props {
@@ -7,6 +7,48 @@ interface Props {
   title: string;
   subtitle: string;
   placeholderTodo: string;
+}
+
+function ShotVisual({ shot, lang }: { shot: MobileShot; lang: 'en' | 'tr' }) {
+  if (shot.kind === 'hardware') {
+    return (
+      <div className="shot-frame shot-frame--hardware">
+        <img
+          src={shot.src}
+          alt={shot.alt[lang]}
+          width={shot.width}
+          height={shot.height}
+          loading="lazy"
+          className="h-full w-full object-cover"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="shot-frame shot-frame--phone">
+      <div className="shot-phone-bezel">
+        <span className="shot-phone-notch" aria-hidden="true" />
+        <img
+          src={shot.src}
+          alt={shot.alt[lang]}
+          width={shot.width}
+          height={shot.height}
+          loading="lazy"
+          className="h-full w-full object-cover object-top"
+        />
+      </div>
+    </div>
+  );
+}
+
+function ShotCard({ shot, lang }: { shot: MobileShot; lang: 'en' | 'tr' }) {
+  return (
+    <figure className="shot-card">
+      <ShotVisual shot={shot} lang={lang} />
+      <figcaption className="shot-caption">{shot.caption[lang]}</figcaption>
+    </figure>
+  );
 }
 
 export default function ScreenshotTicker({
@@ -23,7 +65,7 @@ export default function ScreenshotTicker({
     setReduce(prefersReducedMotion());
   }, []);
 
-  const useTicker = shots.length >= 10 && !reduce;
+  const useTicker = shots.length >= 6 && !reduce;
 
   return (
     <section className="section-pad overflow-hidden border-y border-white/5" aria-labelledby="shot-strip-title">
@@ -49,38 +91,14 @@ export default function ScreenshotTicker({
         <div className="shot-ticker mt-10" aria-hidden={false}>
           <div className="shot-ticker-track">
             {[...shots, ...shots].map((shot, i) => (
-              <figure key={`${shot.id}-${i}`} className="shot-card">
-                <img
-                  src={shot.src}
-                  alt={shot.alt[lang]}
-                  width={shot.width}
-                  height={shot.height}
-                  loading="lazy"
-                  className="h-56 w-auto rounded-xl object-cover object-top sm:h-64"
-                />
-                <figcaption className="mt-2 max-w-[180px] text-xs leading-snug text-slate-muted">
-                  {shot.caption[lang]}
-                </figcaption>
-              </figure>
+              <ShotCard key={`${shot.id}-${i}`} shot={shot} lang={lang} />
             ))}
           </div>
         </div>
       ) : (
         <div className="mx-auto mt-10 grid max-w-6xl grid-cols-2 gap-4 px-4 sm:grid-cols-3 lg:grid-cols-4 sm:px-6">
           {shots.map((shot) => (
-            <figure key={shot.id} className="glass overflow-hidden rounded-2xl p-2">
-              <img
-                src={shot.src}
-                alt={shot.alt[lang]}
-                width={shot.width}
-                height={shot.height}
-                loading="lazy"
-                className="aspect-[9/16] w-full rounded-xl object-cover object-top"
-              />
-              <figcaption className="mt-2 px-1 pb-1 text-xs leading-snug text-slate-muted">
-                {shot.caption[lang]}
-              </figcaption>
-            </figure>
+            <ShotCard key={shot.id} shot={shot} lang={lang} />
           ))}
         </div>
       )}

@@ -105,7 +105,8 @@ const tr: Dictionary = {
   },
   screenshotStrip: {
     title: 'Gerçek ürün ekranları — ofisten cebine',
-    subtitle: 'Canlı TulipFleet uygulamalarından. Stok dashboard yok.',
+    subtitle:
+      'Ofis panellerinden sürücü cebine — operasyonun her anından alınmış canlı ekranlar.',
     placeholderTodo: 'TODO: [MUSTERI DOLDURACAK: gorsel+caption]',
   },
   connect: {

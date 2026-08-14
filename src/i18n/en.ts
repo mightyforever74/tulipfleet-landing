@@ -104,7 +104,8 @@ const en: Dictionary = {
   },
   screenshotStrip: {
     title: 'Real product screens — from office to pocket',
-    subtitle: 'Captured from the live TulipFleet apps. No stock dashboards.',
+    subtitle:
+      "From office panels to the driver's pocket — live screens from every moment of the operation.",
     placeholderTodo: 'TODO: [MUSTERI DOLDURACAK: gorsel+caption]',
   },
   connect: {

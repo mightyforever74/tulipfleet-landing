@@ -410,6 +410,67 @@
 
 .shot-card {
   flex: 0 0 auto;
+  width: 11.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.shot-frame {
+  border-radius: 1rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background: rgb(30 41 59 / 0.6);
+  overflow: hidden;
+}
+
+.shot-frame--phone {
+  padding: 0.55rem 0.55rem 0.7rem;
+}
+
+.shot-phone-bezel {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: 0.85rem;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background: #0b1220;
+}
+
+.shot-phone-notch {
+  position: absolute;
+  top: 0.35rem;
+  left: 50%;
+  z-index: 1;
+  height: 0.28rem;
+  width: 2.25rem;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.14);
+}
+
+.shot-frame--hardware {
+  aspect-ratio: 9 / 16;
+  position: relative;
+}
+
+.shot-frame--hardware::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 42%, rgb(11 18 32 / 0.72) 100%);
+}
+
+.shot-caption {
+  margin-top: 0.5rem;
+  height: 2.5rem;
+  overflow: hidden;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  color: #cbd5e1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 
 @keyframes shot-ticker-scroll {
