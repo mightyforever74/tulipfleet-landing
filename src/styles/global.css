@@ -409,6 +409,27 @@
   }
 }
 
+/* Hero map vehicle — ~8s loop along dashed route */
+.hero-vehicle-dot {
+  offset-path: path('M50 150 C90 110, 120 100, 160 120 S230 90, 260 70');
+  offset-rotate: 0deg;
+  offset-anchor: center;
+  animation: hero-drive 8s linear infinite;
+}
+
+.hero-vehicle-glow {
+  filter: drop-shadow(0 0 6px rgba(255, 87, 34, 0.85));
+}
+
+@keyframes hero-drive {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .radar-dot::after,
   .fade-in-up,
@@ -416,8 +437,13 @@
   .badge-flash,
   .slider-accent::-webkit-slider-thumb,
   .slider-accent::-moz-range-thumb,
-  .shot-ticker-track {
+  .shot-ticker-track,
+  .hero-vehicle-dot {
     animation: none !important;
+  }
+
+  .hero-vehicle-dot {
+    offset-distance: 45%;
   }
 
   .shot-ticker-track {

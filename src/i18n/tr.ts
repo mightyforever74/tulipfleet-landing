@@ -26,9 +26,26 @@ const tr: Dictionary = {
     ctaTrial: '14 Gün Ücretsiz Deneme',
     ctaPricing: 'Fiyatları Hesapla',
     mockupTitle: 'TulipFleet Live Dispatch',
-    mockupLive: 'Canlı',
+    mockupLive: 'Canlı demo',
     mockupJobs: 'Görevler',
     mockupDisclaimer: 'Temsili görünüm',
+    mockupZoneTag: 'ZE',
+    jobs: [
+      {
+        id: 'TLP-0142',
+        route: 'Rotterdam → Utrecht',
+        status: 'Yolda',
+        tone: 'live',
+      },
+      {
+        id: 'TLP-0143',
+        route: 'Leiden teslimat',
+        status: 'Atandı',
+        tone: 'idle',
+      },
+    ],
+    phonePushTitle: '🔔 Yeni Görev Atandı',
+    phonePushSub: '● Kabul Edildi → Canlı Takipte',
     scenarios: [
       {
         id: 'a',
@@ -105,6 +122,9 @@ const tr: Dictionary = {
       'Connect, ERP veya TMS’si olan ekipler için uyumluluk ve maliyet sinyallerini kendi iş akışlarının yanına alan B2B API katmanımızdır.',
     valueProp:
       'ERP/TMS sistemleriniz için REST + Webhook API: ZE-Zone uygunluk sorgusu, Vrachtwagenheffing maliyet hesabı, görev/filo verisi.',
+    corridorTitle: 'Hollanda bugün. Benelüks-Almanya koridoru sırada.',
+    corridorBody:
+      "Uyum motorumuz ülke-modüler tasarlandı: Bugün Hollanda'da NDW verili ZE-Zone denetimi ve Vrachtwagenheffing maliyet hesabı CANLI. Aynı motor, Belçika LEZ (Brüksel/Antwerpen/Gent) ve Almanya Umweltzone bölge denetimlerine genişletilmek üzere planlanıyor — rota koordinatınıza göre doğru ülkenin kuralları otomatik devreye girer. Belçika Viapass ve Almanya LKW-Maut (ayrı OBU-tabanlı sistemler) için maliyet görünürlüğü yol haritasında; bugün bu ücretleri hesapladığımızı söylemiyoruz.",
     sampleLabel: 'Örnek tasarım — lansmanda kesinleşecek',
     sampleRequest: `POST /v1/compliance/ze-zone-check
 Authorization: Bearer <token>
@@ -172,6 +192,11 @@ Content-Type: application/json
             status: 'live',
             title: 'ZE-Zones',
             body: 'Amsterdam, Rotterdam dahil 20 Hollanda şehri / 21 aktif bölge; resmi NDW ulusal verisiyle denetim + muafiyet (ontheffing) yönetimi. Hollanda’nın güncel ZE-Zone ve yol ücreti veri merkezine bağlısınız.',
+          },
+          {
+            status: 'roadmap',
+            title: 'Benelüks-DE koridor genişlemesi',
+            body: 'BE LEZ + DE Umweltzone bölge denetimleri (ülke-modüler motor). Ayrı OBU-tabanlı sistemler (ör. Viapass, LKW-Maut) için maliyet görünürlüğü yol haritasında — bugün hesaplanmıyor.',
           },
           {
             status: 'roadmap',

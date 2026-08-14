@@ -76,6 +76,13 @@ export interface Dictionary {
     mockupLive: string;
     mockupJobs: string;
     mockupDisclaimer: string;
+    mockupZoneTag: string;
+    jobs: [
+      { id: string; route: string; status: string; tone: 'live' | 'idle' },
+      { id: string; route: string; status: string; tone: 'live' | 'idle' },
+    ];
+    phonePushTitle: string;
+    phonePushSub: string;
     scenarios: TickerScenario[];
   };
   excelStrip: {
@@ -113,6 +120,8 @@ export interface Dictionary {
     pageBadge: string;
     pageIntro: string;
     valueProp: string;
+    corridorTitle: string;
+    corridorBody: string;
     sampleLabel: string;
     sampleRequest: string;
     sampleResponse: string;

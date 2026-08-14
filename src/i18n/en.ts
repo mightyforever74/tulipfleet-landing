@@ -26,9 +26,26 @@ const en: Dictionary = {
     ctaTrial: '14-day free trial',
     ctaPricing: 'Calculate pricing',
     mockupTitle: 'TulipFleet Live Dispatch',
-    mockupLive: 'Live',
+    mockupLive: 'Live demo',
     mockupJobs: 'Jobs',
     mockupDisclaimer: 'Representative view',
+    mockupZoneTag: 'ZE',
+    jobs: [
+      {
+        id: 'TLP-0142',
+        route: 'Rotterdam → Utrecht',
+        status: 'En route',
+        tone: 'live',
+      },
+      {
+        id: 'TLP-0143',
+        route: 'Leiden delivery',
+        status: 'Assigned',
+        tone: 'idle',
+      },
+    ],
+    phonePushTitle: '🔔 New Task Assigned',
+    phonePushSub: '● Accepted → Live Tracking',
     scenarios: [
       {
         id: 'a',
@@ -104,6 +121,9 @@ const en: Dictionary = {
       'Connect is our B2B API layer for teams that already run an ERP or TMS and need compliance + cost signals next to their own workflows.',
     valueProp:
       'REST + Webhook API for your ERP/TMS: ZE-Zone compliance queries, Vrachtwagenheffing cost calculation, and job/fleet data.',
+    corridorTitle: 'Netherlands today. Benelux–Germany corridor next.',
+    corridorBody:
+      'Our compliance engine is country-modular by design: today in the Netherlands, ZE-Zone checks on NDW data and Vrachtwagenheffing cost calculation are Live. The same engine is planned to expand to Belgium LEZ (Brussels / Antwerp / Ghent) and Germany Umweltzone area checks — so the right country’s rules engage automatically from your route coordinates. Cost visibility for Belgium Viapass and Germany LKW-Maut (separate OBU-based systems) is on the roadmap; we do not claim to calculate those tolls today.',
     sampleLabel: 'Sample design — will be finalised at launch',
     sampleRequest: `POST /v1/compliance/ze-zone-check
 Authorization: Bearer <token>
@@ -171,6 +191,11 @@ Content-Type: application/json
             status: 'live',
             title: 'ZE-Zones',
             body: 'Amsterdam, Rotterdam and 20 Dutch cities / 21 active zones. Checks and ontheffing handling via official NDW national data. You’re connected to the Netherlands’ current ZE-Zone and road-charge data hub.',
+          },
+          {
+            status: 'roadmap',
+            title: 'Benelux–DE corridor expansion',
+            body: 'BE LEZ + DE Umweltzone area checks (country-modular engine). Cost visibility for separate OBU-based systems (e.g. Viapass, LKW-Maut) is planned on the roadmap — not calculated today.',
           },
           {
             status: 'roadmap',
