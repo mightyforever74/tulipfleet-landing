@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 @theme {
   --color-navy: #0a0f24;
@@ -8,7 +8,7 @@
   --color-accent-soft: #ff7043;
   --color-emerald: #10b981;
   --color-offwhite: #f8fafc;
-  /* slate-300 ÔÇö WCAG AA body contrast on navy */
+  /* slate-300 — WCAG AA body contrast on navy */
   --color-slate-muted: #cbd5e1;
   --color-roadmap: #64748b;
   --color-roadmap-badge: #3b82f6;
@@ -19,7 +19,7 @@
   --shadow-glow-accent: 0 0 24px rgba(255, 87, 34, 0.35);
   --shadow-glow-accent-soft: 0 0 16px rgba(255, 87, 34, 0.2);
 
-  --space-section: 5rem; /* 80px ÔÇö 8px grid */
+  --space-section: 5rem; /* 80px — 8px grid */
   --space-section-lg: 6rem; /* 96px */
 }
 
@@ -411,24 +411,67 @@
   }
 }
 
-/* Hero map vehicle ÔÇö ~8s loop along dashed route */
-.hero-vehicle-dot {
-  offset-path: path('M50 150 C90 110, 120 100, 160 120 S230 90, 260 70');
-  offset-rotate: 0deg;
-  offset-anchor: center;
-  animation: hero-drive 8s linear infinite;
+/* C-05d Hero Amsterdam map — #vehicle + #zePoly sync (10s, boundary ~78%) */
+.hero-map-scene {
+  --map-ground: #0d1427;
+  --map-water: #16233f;
+  --map-route: #ff5722;
+  --map-ze: #10b981;
 }
 
-.hero-vehicle-glow {
-  filter: drop-shadow(0 0 6px rgba(255, 87, 34, 0.85));
+.hero-map-scene #vehicle {
+  offset-path: path(
+    'M8,238 C90,232 150,240 214,232 C216,206 210,186 205,164 C202,152 200,142 198,132'
+  );
+  offset-rotate: 0deg;
+  offset-anchor: center;
+  animation: hero-drive 10s linear infinite;
+}
+
+/* Same emerald as Representative view radar-dot */
+.hero-map-scene #vehicle circle:last-child {
+  fill: var(--color-emerald, #10b981);
+  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.95));
+}
+
+.hero-map-scene #vehicle circle:first-child {
+  fill: var(--color-emerald, #10b981);
+}
+
+.hero-map-scene #zePoly {
+  animation: hero-ze-glow 10s linear infinite;
 }
 
 @keyframes hero-drive {
-  from {
+  0% {
     offset-distance: 0%;
   }
-  to {
+  74% {
+    offset-distance: 74%;
+  }
+  78% {
+    offset-distance: 78%;
+  }
+  100% {
     offset-distance: 100%;
+  }
+}
+
+@keyframes hero-ze-glow {
+  0%,
+  74% {
+    fill: #10b981;
+    fill-opacity: 0.1;
+  }
+  78%,
+  88% {
+    fill: #10b981;
+    fill-opacity: 0.22;
+  }
+  94%,
+  100% {
+    fill: #10b981;
+    fill-opacity: 0.1;
   }
 }
 
@@ -440,12 +483,19 @@
   .slider-accent::-webkit-slider-thumb,
   .slider-accent::-moz-range-thumb,
   .shot-ticker-track,
-  .hero-vehicle-dot {
+  .hero-map-scene #vehicle,
+  .hero-map-scene #zePoly {
     animation: none !important;
   }
 
-  .hero-vehicle-dot {
-    offset-distance: 45%;
+  .hero-map-scene #vehicle {
+    /* Freeze at ZE boundary (~78%); keep offset-path so SVG transform isn't double-applied */
+    offset-distance: 78%;
+  }
+
+  .hero-map-scene #zePoly {
+    fill: #10b981;
+    fill-opacity: 0.22;
   }
 
   .shot-ticker-track {
