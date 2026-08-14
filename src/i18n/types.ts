@@ -97,14 +97,14 @@ export interface Dictionary {
   };
   mobileBridge: {
     title: string;
+    subtitle: string;
     body: string;
-    advisory: string;
     liveBadge: string;
     storesTodo: string;
     appStore: string;
     playStore: string;
     cycleLabel: string;
-    steps: [string, string, string, string, string, string];
+    steps: [string, string, string, string, string];
   };
   screenshotStrip: {
     title: string;

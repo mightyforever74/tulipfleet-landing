@@ -29,7 +29,7 @@ const tr: Dictionary = {
     mockupLive: 'Canlı demo',
     mockupJobs: 'Görevler',
     mockupDisclaimer: 'Temsili görünüm',
-    mockupZoneTag: 'ZE',
+    mockupZoneTag: 'Amsterdam ZE',
     jobs: [
       {
         id: 'TLP-0142',
@@ -87,22 +87,20 @@ const tr: Dictionary = {
     tariffs: { label: 'Period-1 Toll Tarifeleri Yüklü' },
   },
   mobileBridge: {
-    title: 'Ofisten Sahaya Canlı Yönetim: Akıllı Komuta Merkezi & Mobil Saha Köprüsü',
-    body: 'B2B filo yönetiminde en güçlü kartınızı cebinizde unutmayın. TulipFleet sadece bir masaüstü yazılımı değil; ofisinizle saha operasyonunuz arasında 7/24 yaşayan mobil bir köprüdür. Mobil admin fonksiyonlarıyla ister masanızda ister yolda olun: tüm araçlarınızı canlı haritada izler, operasyon ikazlarını (istisna bildirimleri) ve görev dağılımını görür, hatta cebinizden tek tıkla yeni görev atarsınız.',
-    advisory:
-      'Dispatcher panelinde görevleri TulipFleet algoritmalarının süzgecinden geçirin. Size sunulan rotaları ve önerileri GEREKÇELERİYLE görüp seçin; seçimlerinizin sonuçlarını anlık izleyin. Son karar her zaman sizde.',
+    title: 'Ofis planlar, saha yaşar',
+    subtitle: 'Komuta merkezi masanızda, operasyon sürücünün cebinde.',
+    body: 'TulipFleet iki uçta birden çalışır: siz panelden görev atarsınız, sürücünün telefonuna anında düşer. Araçlar canlı haritada, ikazlar cebinizde — yoldayken bile tek tıkla görev atayabilirsiniz.',
     liveBadge: "iOS + Android'de yayında",
     storesTodo: 'TODO: [MUSTERI DOLDURACAK: magaza linkleri]',
     appStore: "App Store'dan indir",
     playStore: "Google Play'den edin",
     cycleLabel: 'Canlı operasyon döngüsü',
     steps: [
-      "Dispatcher'dan görev ata",
-      "Sürücünün cebine push düşsün",
-      'Görev kabul edilsin',
-      'Canlı haritada izle',
-      'Teslimat tamamlansın',
-      'Mühürlü görev sonu raporu oluşsun',
+      'Görev ata',
+      'Push düşer, sürücü kabul eder',
+      'Canlı izle',
+      'Teslimat tamamlanır',
+      'Mühürlü rapor oluşsun',
     ],
   },
   screenshotStrip: {

@@ -29,7 +29,7 @@ const en: Dictionary = {
     mockupLive: 'Live demo',
     mockupJobs: 'Jobs',
     mockupDisclaimer: 'Representative view',
-    mockupZoneTag: 'ZE',
+    mockupZoneTag: 'Amsterdam ZE',
     jobs: [
       {
         id: 'TLP-0142',
@@ -86,22 +86,20 @@ const en: Dictionary = {
     tariffs: { label: 'Period-1 toll tariffs loaded' },
   },
   mobileBridge: {
-    title: 'Office to field, live: command centre & mobile field bridge',
-    body: 'In B2B fleet management, don’t leave your strongest card in your pocket. TulipFleet isn’t only a desktop product — it’s a mobile bridge that stays alive between your office and the field, 24/7. With mobile admin functions, at your desk or on the road: watch every vehicle on the live map, see operational alerts (exception notifications) and job distribution, and even assign a new job from your phone in one tap.',
-    advisory:
-      'Run jobs through TulipFleet’s advisory filters in the dispatcher panel. See suggested routes and recommendations with their reasons, pick what fits, and watch the outcome live. The final call stays with you.',
+    title: 'Plan in the office, run it on the road',
+    subtitle: "Command center on your desk, operations in your driver's pocket.",
+    body: 'TulipFleet works on both ends: assign a job from the panel and it lands on your driver\'s phone instantly. Vehicles on the live map, alerts in your pocket — assign jobs with one tap even on the road.',
     liveBadge: 'Live on iOS + Android',
     storesTodo: 'TODO: [MUSTERI DOLDURACAK: magaza linkleri]',
     appStore: 'Download on the App Store',
     playStore: 'Get it on Google Play',
     cycleLabel: 'Live operations loop',
     steps: [
-      'Assign from dispatcher',
-      'Push to the driver’s phone',
-      'Job accepted',
-      'Track on the live map',
-      'Delivery completed',
-      'Sealed end-of-job report',
+      'Assign job',
+      'Push lands, driver accepts',
+      'Track live',
+      'Delivery done',
+      'Sealed report created',
     ],
   },
   screenshotStrip: {
