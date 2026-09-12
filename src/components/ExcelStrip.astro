@@ -9,17 +9,17 @@ const { dict } = Astro.props;
 ---
 
 <section
-  class="mt-4 border-y border-accent/20 bg-gradient-to-r from-navy via-[#1a1230]/60 to-navy"
+  class="border-y border-navy-line bg-gradient-to-r from-navy via-navy-elevated/80 to-navy"
   aria-label="Excel to TulipFleet"
 >
-  <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between">
-    <p class="max-w-xl font-display text-lg font-semibold text-offwhite sm:text-xl">
+  <div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-16 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:py-20">
+    <h2 class="max-w-xl font-display text-2xl font-bold tracking-tight text-offwhite sm:text-3xl">
       {dict.excelStrip.headline}
-    </p>
-    <ul class="flex flex-wrap gap-3 text-sm text-slate-muted">
+    </h2>
+    <ul class="flex flex-wrap gap-3 text-sm font-medium text-navy-fog">
       {
         dict.excelStrip.points.map((point) => (
-          <li class="rounded-full border border-accent/25 bg-accent/10 px-3 py-1.5 text-offwhite/90">
+          <li class="rounded-full border border-accent/25 bg-accent/10 px-4 py-2 text-offwhite">
             {point}
           </li>
         ))
