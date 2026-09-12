@@ -70,10 +70,10 @@ export default function StatsBand({ locale, stats }: Props) {
   return (
     <section
       ref={ref}
-      className="border-b border-white/10 bg-navy-deep/60"
+      className="border-b border-navy-line bg-navy-ink/60"
       aria-label="Proven coverage figures"
     >
-      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-16 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:py-20">
         <Stat
           value={formatLocaleNumber(zones, locale)}
           label={stats.zones.label}
@@ -104,11 +104,11 @@ export default function StatsBand({ locale, stats }: Props) {
 
 function Stat({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4">
-      <p className="font-display text-2xl font-bold text-accent-soft sm:text-3xl">
+    <div className="rounded-2xl border border-navy-line bg-navy-ink/30 px-4 py-5">
+      <p className="font-display text-2xl font-bold tracking-tight text-offwhite sm:text-3xl">
         {value}
       </p>
-      <p className="mt-1 text-sm text-slate-muted">{label}</p>
+      <p className="mt-2 text-sm font-medium text-navy-fog">{label}</p>
     </div>
   );
 }
