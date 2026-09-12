@@ -22,7 +22,7 @@ export default function PhoneCarousel({ locale }: Props) {
   if (shots.length === 0) {
     return (
       <PhoneFrame>
-        <div className="flex h-full items-center justify-center bg-navy-elevated p-6 text-center text-xs text-slate-muted">
+        <div className="flex h-full items-center justify-center bg-navy-elevated p-6 text-center text-xs text-navy-fog">
           TODO: [MUSTERI DOLDURACAK: gorsel+caption]
         </div>
       </PhoneFrame>
@@ -47,7 +47,7 @@ export default function PhoneCarousel({ locale }: Props) {
             }`}
           />
         ))}
-        <p className="absolute bottom-0 left-0 right-0 bg-navy/80 px-3 py-2 text-[10px] leading-snug text-slate-muted backdrop-blur-sm">
+        <p className="absolute bottom-0 left-0 right-0 bg-navy-ink/80 px-3 py-2 text-[10px] leading-snug text-navy-fog backdrop-blur-sm">
           {current.caption[lang]}
         </p>
       </div>
@@ -58,11 +58,11 @@ export default function PhoneCarousel({ locale }: Props) {
 function PhoneFrame({ children }: { children: ReactNode }) {
   return (
     <div className="mx-auto w-[240px] sm:w-[260px]">
-      <div className="rounded-[2rem] border border-white/20 bg-navy-deep p-2 shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
+      <div className="rounded-[2rem] border border-navy-line bg-navy-deep p-2 shadow-hero-window">
         <div className="mb-2 flex justify-center">
-          <span className="h-1.5 w-16 rounded-full bg-white/15" />
+          <span className="h-1.5 w-16 rounded-full bg-navy-fog/25" />
         </div>
-        <div className="aspect-[9/19] overflow-hidden rounded-[1.4rem] border border-white/10">
+        <div className="aspect-[9/19] overflow-hidden rounded-[1.4rem] border border-navy-line">
           {children}
         </div>
       </div>
