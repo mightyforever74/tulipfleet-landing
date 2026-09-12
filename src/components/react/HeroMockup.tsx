@@ -63,7 +63,7 @@ function PhoneMockup({
   sub: string;
 }) {
   return (
-    <div className="w-[120px] rounded-[1.25rem] border border-white/15 bg-navy-deep/95 p-1.5 shadow-[0_12px_40px_rgba(0,0,0,0.55)] backdrop-blur-sm">
+    <div className="w-[120px] rounded-[1.25rem] border border-white/15 bg-navy-deep/95 p-1.5 shadow-nav backdrop-blur-sm">
       <div className="mb-1 flex justify-center">
         <span className="h-1 w-9 rounded-full bg-white/15" />
       </div>
@@ -117,24 +117,14 @@ export default function HeroMockup({
   return (
     <div className="relative overflow-visible pb-6 lg:pb-28 lg:pr-20">
       <div
-        className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] opacity-90"
-        style={{
-          background:
-            'radial-gradient(ellipse at 30% 40%, rgba(249,115,22,0.14), transparent 55%), radial-gradient(ellipse at 80% 70%, rgba(16,185,129,0.1), transparent 50%)',
-          filter: 'blur(28px)',
-        }}
+        className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-[radial-gradient(ellipse_at_30%_40%,var(--color-accent-dim),transparent_55%),radial-gradient(ellipse_at_80%_70%,var(--color-emerald-dim),transparent_50%)] opacity-90 blur-3xl"
         aria-hidden="true"
       />
 
-      <div className="relative overflow-visible rounded-2xl border border-white/10 bg-white/5 shadow-[0_0_50px_rgba(249,115,22,0.12),0_24px_80px_rgba(0,0,0,0.45)]">
+      <div className="relative overflow-visible rounded-2xl border border-white/10 bg-white/5 shadow-hero-window">
         <div className="flex items-center gap-2 overflow-hidden rounded-t-2xl border-b border-white/10 bg-white/5 px-4 py-2.5 backdrop-blur-sm">
-          <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-          <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-          <span className="h-2.5 w-2.5 rounded-full bg-emerald/80" />
-          <span className="ml-3 font-display text-xs text-slate-muted">{title}</span>
-          <span className="ml-auto text-[10px] font-semibold uppercase tracking-wide text-emerald">
-            ● {liveLabel}
-          </span>
+          <span className="font-display text-xs text-slate-muted">{title}</span>
+          <span className="badge-live ml-auto">{liveLabel}</span>
         </div>
 
         <div className="relative grid gap-3 overflow-visible p-4 sm:grid-cols-[1.4fr_1fr]">
@@ -187,7 +177,7 @@ export default function HeroMockup({
                     <span
                       className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${
                         job.tone === 'live'
-                          ? 'bg-emerald shadow-[0_0_6px_#10b981]'
+                          ? 'bg-emerald shadow-[0_0_6px_var(--color-emerald)]'
                           : 'bg-slate-muted/60'
                       }`}
                       aria-hidden="true"
