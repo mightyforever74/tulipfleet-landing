@@ -72,6 +72,7 @@ export interface Dictionary {
     logoTodo: string;
     langLabel: string;
     langSoon: string;
+    menu: string;
   };
   hero: {
     badge: string;

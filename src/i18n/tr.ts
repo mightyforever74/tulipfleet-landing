@@ -17,6 +17,7 @@ const tr: Dictionary = {
     logoTodo: 'TODO: metin logo yerine marka dosyası eklenecek',
     langLabel: 'Dil',
     langSoon: 'Yakında',
+    menu: 'Menü',
   },
   hero: {
     badge: '🇪🇺 NL & EU Zero-Emission Compliance Ready',

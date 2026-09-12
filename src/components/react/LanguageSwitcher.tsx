@@ -93,7 +93,7 @@ export default function LanguageSwitcher({
     <div className="relative" ref={rootRef}>
       <button
         type="button"
-        className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-2.5 py-2 text-sm text-slate-muted transition hover:border-accent/40 hover:text-offwhite"
+        className="flex h-10 items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-2.5 text-sm text-slate-muted transition hover:border-accent/40 hover:text-offwhite active:scale-[0.98]"
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listId}

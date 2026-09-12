@@ -15,32 +15,100 @@ const pricing = localizePath(locale, '/pricing');
 const signup = localizePath(locale, '/signup');
 const connect = localizePath(locale, '/connect');
 const featuresHref = `${home}#features`;
+
+const current = Astro.url.pathname.replace(/\/$/, '');
+const pricingCurrent = current === pricing.replace(/\/$/, '');
+const connectCurrent = current === connect.replace(/\/$/, '');
+const signupCurrent = current === signup.replace(/\/$/, '');
+
+const navLink = 'text-sm font-medium text-slate-muted transition hover:text-offwhite';
+const navLinkActive = 'text-sm font-medium text-offwhite';
 ---
 
-<header class="sticky top-0 z-50 border-b border-white/10 bg-navy/80 backdrop-blur-md">
-  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-    <a href={home} class="font-display text-xl font-bold tracking-tight text-offwhite" title={dict.nav.logoTodo}>
-      TulipFleet
-      <!-- TODO: replace text logo with brand mark file -->
-    </a>
+<header class="glass sticky top-0 z-50 h-16 border-b border-white/10 bg-navy/80 shadow-nav">
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
+    <div class="flex min-w-0 items-center gap-1.5 sm:gap-2">
+      <details class="relative lg:hidden">
+        <summary
+          class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-xl text-offwhite transition hover:bg-white/5 [&::-webkit-details-marker]:hidden"
+          aria-label={dict.nav.menu}
+        >
+          <span class="sr-only">{dict.nav.menu}</span>
+          <span class="flex flex-col gap-1" aria-hidden="true">
+            <span class="h-0.5 w-4 rounded-full bg-offwhite"></span>
+            <span class="h-0.5 w-4 rounded-full bg-offwhite"></span>
+            <span class="h-0.5 w-3 rounded-full bg-offwhite"></span>
+          </span>
+        </summary>
+        <nav
+          class="glass absolute left-0 top-[calc(100%+0.5rem)] z-50 min-w-[13rem] rounded-xl p-2 shadow-nav"
+          aria-label={dict.nav.menu}
+        >
+          <a href={featuresHref} class="block rounded-lg px-3 py-2 text-sm font-medium text-slate-muted hover:bg-white/5 hover:text-offwhite">
+            {dict.nav.features}
+          </a>
+          <a
+            href={pricing}
+            class:list={[
+              'block rounded-lg px-3 py-2 text-sm font-medium hover:bg-white/5',
+              pricingCurrent ? 'text-offwhite' : 'text-slate-muted hover:text-offwhite',
+            ]}
+            aria-current={pricingCurrent ? 'page' : undefined}
+          >
+            {dict.nav.pricing}
+          </a>
+          <a
+            href={connect}
+            class:list={[
+              'block rounded-lg px-3 py-2 text-sm font-medium hover:bg-white/5',
+              connectCurrent ? 'text-offwhite' : 'text-slate-muted hover:text-offwhite',
+            ]}
+            aria-current={connectCurrent ? 'page' : undefined}
+            title={dict.connect.navCta}
+          >
+            {dict.nav.connect}
+          </a>
+          <a
+            href={loginHref}
+            class="mt-1 block rounded-lg px-3 py-2 text-sm font-medium text-slate-muted hover:bg-white/5 hover:text-offwhite sm:hidden"
+          >
+            {dict.nav.login}
+          </a>
+        </nav>
+      </details>
+
+      <a
+        href={home}
+        class="font-display truncate text-xl font-bold tracking-tight text-offwhite"
+        title={dict.nav.logoTodo}
+      >
+        TulipFleet
+        <!-- TODO: replace text logo with brand mark file -->
+      </a>
+    </div>
 
     <nav class="hidden items-center gap-6 lg:flex" aria-label="Primary">
-      <a href={featuresHref} class="text-sm text-slate-muted transition hover:text-offwhite">
+      <a href={featuresHref} class={navLink}>
         {dict.nav.features}
       </a>
-      <a href={pricing} class="text-sm text-slate-muted transition hover:text-offwhite">
+      <a
+        href={pricing}
+        class={pricingCurrent ? navLinkActive : navLink}
+        aria-current={pricingCurrent ? 'page' : undefined}
+      >
         {dict.nav.pricing}
       </a>
       <a
         href={connect}
-        class="text-sm text-slate-muted transition hover:text-offwhite"
+        class={connectCurrent ? navLinkActive : navLink}
+        aria-current={connectCurrent ? 'page' : undefined}
         title={dict.connect.navCta}
       >
         {dict.nav.connect}
       </a>
     </nav>
 
-    <div class="flex items-center gap-2 sm:gap-3">
+    <div class="flex items-center gap-1.5 sm:gap-3">
       <LanguageSwitcher
         client:load
         currentLocale={locale}
@@ -49,11 +117,15 @@ const featuresHref = `${home}#features`;
       />
       <a
         href={loginHref}
-        class="rounded-xl px-3 py-2 text-sm font-medium text-slate-muted transition hover:text-offwhite"
+        class="hidden rounded-xl px-3 py-2 text-sm font-medium text-slate-muted transition hover:text-offwhite active:translate-y-px sm:inline-flex"
       >
         {dict.nav.login}
       </a>
-      <a href={signup} class="btn-primary !px-3 !py-2 text-sm sm:!px-4">
+      <a
+        href={signup}
+        class:list={['btn-primary h-10 whitespace-nowrap !px-3.5 text-sm sm:!px-4', signupCurrent && 'ring-1 ring-accent-soft']}
+        aria-current={signupCurrent ? 'page' : undefined}
+      >
         {dict.nav.tryFree}
       </a>
     </div>

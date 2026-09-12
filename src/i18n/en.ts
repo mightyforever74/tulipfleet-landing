@@ -17,6 +17,7 @@ const en: Dictionary = {
     logoTodo: 'TODO: replace text logo with brand mark file',
     langLabel: 'Language',
     langSoon: 'Soon',
+    menu: 'Menu',
   },
   hero: {
     badge: '🇪🇺 NL & EU Zero-Emission Compliance Ready',
