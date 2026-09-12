@@ -40,14 +40,14 @@ function highlightAmount(line: string, amount?: string) {
  */
 function LiveMapPlane({ disclaimer }: { disclaimer: string }) {
   return (
-    <div className="hero-map-scene relative min-h-[200px] overflow-hidden rounded-xl border border-white/10 sm:min-h-[240px]">
+    <div className="hero-map-scene relative min-h-[200px] overflow-hidden rounded-xl border border-navy-line sm:min-h-[240px]">
       <div
         className="absolute inset-0 [&>svg]:h-full [&>svg]:w-full [&>svg]:object-contain"
         dangerouslySetInnerHTML={{ __html: amsterdamMapScene }}
         aria-hidden="true"
       />
 
-      <p className="absolute bottom-2 left-2 z-10 flex items-center gap-2 text-[10px] text-slate-muted">
+      <p className="absolute bottom-2 left-2 z-10 flex items-center gap-2 text-[10px] text-navy-fog">
         <span className="radar-dot" aria-hidden="true" />
         {disclaimer}
       </p>
@@ -63,7 +63,7 @@ function PhoneMockup({
   sub: string;
 }) {
   return (
-    <div className="w-[120px] rounded-[1.25rem] border border-white/15 bg-navy-deep/95 p-1.5 shadow-nav backdrop-blur-sm">
+    <div className="w-[120px] rounded-[1.25rem] border border-navy-line bg-navy-deep/95 p-1.5 shadow-nav backdrop-blur-sm">
       <div className="mb-1 flex justify-center">
         <span className="h-1 w-9 rounded-full bg-white/15" />
       </div>
@@ -121,9 +121,9 @@ export default function HeroMockup({
         aria-hidden="true"
       />
 
-      <div className="relative overflow-visible rounded-2xl border border-white/10 bg-white/5 shadow-hero-window">
-        <div className="flex items-center gap-2 overflow-hidden rounded-t-2xl border-b border-white/10 bg-white/5 px-4 py-2.5 backdrop-blur-sm">
-          <span className="font-display text-xs text-slate-muted">{title}</span>
+      <div className="relative overflow-visible rounded-2xl border border-navy-line bg-navy-elevated/40 shadow-hero-window">
+        <div className="flex items-center gap-2 overflow-hidden rounded-t-2xl border-b border-navy-line bg-navy-ink/40 px-4 py-2.5 backdrop-blur-sm">
+          <span className="font-display text-xs text-navy-fog">{title}</span>
           <span className="badge-live ml-auto">{liveLabel}</span>
         </div>
 
@@ -141,10 +141,10 @@ export default function HeroMockup({
               className={`ticker-enter rounded-xl border p-3 backdrop-blur-sm ${
                 scenario.zoneTone === 'alert'
                   ? 'border-red-400/35 bg-red-500/10'
-                  : 'border-white/10 bg-white/[0.04]'
+                  : 'border-navy-line bg-navy-ink/30'
               }`}
             >
-              <p className="text-[10px] uppercase tracking-wider text-slate-muted">
+              <p className="text-[10px] uppercase tracking-wider text-navy-fog">
                 {scenario.zoneLabel}
               </p>
               <p className={`mt-1 font-display text-sm font-semibold ${zoneClass}`}>
@@ -156,7 +156,7 @@ export default function HeroMockup({
             </div>
 
             <div className="ticker-enter heffing-card rounded-xl p-3 backdrop-blur-sm">
-              <p className="text-[10px] uppercase tracking-wider text-slate-muted">
+              <p className="text-[10px] uppercase tracking-wider text-navy-fog">
                 {scenario.heffingLabel}
               </p>
               <p className="mt-1 font-display text-sm text-offwhite">
@@ -165,10 +165,10 @@ export default function HeroMockup({
             </div>
 
             <div
-              className="rounded-xl border border-white/10 bg-white/[0.04] p-3 backdrop-blur-sm"
+              className="rounded-xl border border-navy-line bg-navy-ink/30 p-3 backdrop-blur-sm"
               data-jobs-card
             >
-              <p className="text-[10px] uppercase tracking-wider text-slate-muted">
+              <p className="text-[10px] uppercase tracking-wider text-navy-fog">
                 {jobsLabel}
               </p>
               <ul className="mt-2 space-y-2">
@@ -178,7 +178,7 @@ export default function HeroMockup({
                       className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${
                         job.tone === 'live'
                           ? 'bg-emerald shadow-[0_0_6px_var(--color-emerald)]'
-                          : 'bg-slate-muted/60'
+                          : 'bg-navy-fog/60'
                       }`}
                       aria-hidden="true"
                     />
@@ -186,7 +186,7 @@ export default function HeroMockup({
                       <span className="block font-display font-semibold text-offwhite">
                         {job.id} · {job.route}
                       </span>
-                      <span className="text-slate-muted">{job.status}</span>
+                      <span className="text-navy-fog">{job.status}</span>
                     </span>
                   </li>
                 ))}

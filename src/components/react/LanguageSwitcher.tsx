@@ -93,7 +93,7 @@ export default function LanguageSwitcher({
     <div className="relative" ref={rootRef}>
       <button
         type="button"
-        className="flex h-10 items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-2.5 text-sm text-slate-muted transition hover:border-accent/40 hover:text-offwhite active:scale-[0.98]"
+        className="flex h-10 items-center gap-1.5 rounded-xl border border-navy-line bg-navy-ink/40 px-2.5 text-sm text-navy-fog transition hover:border-accent/40 hover:text-offwhite active:scale-[0.98]"
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listId}
@@ -114,7 +114,7 @@ export default function LanguageSwitcher({
           aria-label={label}
           tabIndex={-1}
           onKeyDown={onListKey}
-          className="absolute right-0 z-50 mt-2 max-h-72 w-52 overflow-auto rounded-xl border border-white/10 bg-navy-deep/95 p-1 shadow-xl backdrop-blur-md"
+          className="absolute right-0 z-50 mt-2 max-h-72 w-52 overflow-auto rounded-xl border border-navy-line bg-navy-ink/95 p-1 shadow-nav backdrop-blur-md"
         >
           {LOCALES.map((locale) => {
             const selected = locale.code === currentLocale;
@@ -128,10 +128,10 @@ export default function LanguageSwitcher({
                   onClick={() => choose(locale.code, locale.status)}
                   className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition ${
                     disabled
-                      ? 'cursor-not-allowed text-slate-muted/50'
+                      ? 'cursor-not-allowed text-navy-fog/50'
                       : selected
                         ? 'bg-accent/15 text-offwhite'
-                        : 'text-slate-muted hover:bg-white/5 hover:text-offwhite'
+                        : 'text-navy-fog hover:bg-white/5 hover:text-offwhite'
                   }`}
                 >
                   <span aria-hidden="true">{locale.flag}</span>

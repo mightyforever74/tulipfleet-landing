@@ -12,27 +12,27 @@ const { dict, locale } = Astro.props;
 const signup = localizePath(locale, '/signup');
 ---
 
-<section class="relative overflow-hidden pb-10 pt-12 sm:pb-12 sm:pt-16 lg:pb-14 lg:pt-20">
+<section class="relative overflow-hidden py-24 lg:py-32">
   <div
     class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--color-accent-dim),transparent_55%),radial-gradient(ellipse_at_bottom_left,var(--color-emerald-dim),transparent_50%)]"
   />
 
-  <div class="relative mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14">
+  <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16">
     <div class="fade-in-up">
-      <div class="capsule-glow mb-5 w-fit">
+      <div class="capsule-glow mb-8 w-fit">
         <span aria-hidden="true">🇪🇺</span>
         <span>{dict.hero.badge.replace('🇪🇺 ', '')}</span>
       </div>
 
-      <h1 class="font-display text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.25rem]">
-        <span class="text-gradient">{dict.hero.title}</span>
+      <h1 class="font-display text-4xl font-bold leading-[1.1] tracking-tight text-offwhite text-balance sm:text-5xl lg:text-6xl">
+        {dict.hero.title}
       </h1>
 
-      <p class="mt-5 max-w-[65ch] text-base leading-relaxed text-slate-muted sm:text-lg">
+      <p class="mt-8 max-w-[65ch] text-lg font-medium leading-relaxed text-navy-fog lg:text-xl">
         {dict.hero.subtitle}
       </p>
 
-      <div class="mt-7 flex flex-wrap gap-3">
+      <div class="mt-10 flex flex-wrap gap-3">
         <a href={signup} class="btn-primary whitespace-nowrap">{dict.hero.ctaTrial}</a>
         <a href="#pricing" class="btn-outline whitespace-nowrap">{dict.hero.ctaPricing}</a>
       </div>

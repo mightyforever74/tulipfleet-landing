@@ -21,11 +21,11 @@ const pricingCurrent = current === pricing.replace(/\/$/, '');
 const connectCurrent = current === connect.replace(/\/$/, '');
 const signupCurrent = current === signup.replace(/\/$/, '');
 
-const navLink = 'text-sm font-medium text-slate-muted transition hover:text-offwhite';
+const navLink = 'text-sm font-medium text-navy-fog transition hover:text-offwhite';
 const navLinkActive = 'text-sm font-medium text-offwhite';
 ---
 
-<header class="glass sticky top-0 z-50 h-16 border-b border-white/10 bg-navy/80 shadow-nav">
+<header class="site-header glass sticky top-0 z-50 h-16">
   <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
     <div class="flex min-w-0 items-center gap-1.5 sm:gap-2">
       <details class="relative lg:hidden">
@@ -44,14 +44,14 @@ const navLinkActive = 'text-sm font-medium text-offwhite';
           class="glass absolute left-0 top-[calc(100%+0.5rem)] z-50 min-w-[13rem] rounded-xl p-2 shadow-nav"
           aria-label={dict.nav.menu}
         >
-          <a href={featuresHref} class="block rounded-lg px-3 py-2 text-sm font-medium text-slate-muted hover:bg-white/5 hover:text-offwhite">
+          <a href={featuresHref} class="block rounded-lg px-3 py-2 text-sm font-medium text-navy-fog hover:bg-white/5 hover:text-offwhite">
             {dict.nav.features}
           </a>
           <a
             href={pricing}
             class:list={[
               'block rounded-lg px-3 py-2 text-sm font-medium hover:bg-white/5',
-              pricingCurrent ? 'text-offwhite' : 'text-slate-muted hover:text-offwhite',
+              pricingCurrent ? 'text-offwhite' : 'text-navy-fog hover:text-offwhite',
             ]}
             aria-current={pricingCurrent ? 'page' : undefined}
           >
@@ -61,7 +61,7 @@ const navLinkActive = 'text-sm font-medium text-offwhite';
             href={connect}
             class:list={[
               'block rounded-lg px-3 py-2 text-sm font-medium hover:bg-white/5',
-              connectCurrent ? 'text-offwhite' : 'text-slate-muted hover:text-offwhite',
+              connectCurrent ? 'text-offwhite' : 'text-navy-fog hover:text-offwhite',
             ]}
             aria-current={connectCurrent ? 'page' : undefined}
             title={dict.connect.navCta}
@@ -70,7 +70,7 @@ const navLinkActive = 'text-sm font-medium text-offwhite';
           </a>
           <a
             href={loginHref}
-            class="mt-1 block rounded-lg px-3 py-2 text-sm font-medium text-slate-muted hover:bg-white/5 hover:text-offwhite sm:hidden"
+            class="mt-1 block rounded-lg px-3 py-2 text-sm font-medium text-navy-fog hover:bg-white/5 hover:text-offwhite sm:hidden"
           >
             {dict.nav.login}
           </a>
@@ -117,7 +117,7 @@ const navLinkActive = 'text-sm font-medium text-offwhite';
       />
       <a
         href={loginHref}
-        class="hidden rounded-xl px-3 py-2 text-sm font-medium text-slate-muted transition hover:text-offwhite active:translate-y-px sm:inline-flex"
+        class="hidden rounded-xl px-3 py-2 text-sm font-medium text-navy-fog transition hover:text-offwhite active:translate-y-px sm:inline-flex"
       >
         {dict.nav.login}
       </a>
