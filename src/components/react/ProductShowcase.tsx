@@ -97,12 +97,12 @@ export default function ProductShowcase({
   }
 
   return (
-    <section className="section-pad border-y border-white/5" aria-labelledby={titleId}>
+    <section className="border-y border-navy-line py-24 lg:py-32" aria-labelledby={titleId}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 id={titleId} className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 id={titleId} className="font-display text-3xl font-bold tracking-tight text-offwhite sm:text-4xl lg:text-5xl">
           {title}
         </h2>
-        <p className="mt-3 max-w-2xl text-base text-slate-muted sm:text-lg">{subtitle}</p>
+        <p className="mt-6 max-w-[65ch] text-lg font-medium leading-relaxed text-navy-fog lg:text-xl">{subtitle}</p>
 
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
           {PRODUCT_SHOWCASE.map((scene) => {
@@ -119,7 +119,7 @@ export default function ProductShowcase({
                 <p className="mt-4 text-[10px] font-semibold uppercase tracking-wide text-accent-soft">
                   [{text.badge}]
                 </p>
-                <p className="mt-2 text-sm leading-snug text-slate-300 sm:text-base">
+                <p className="mt-2 text-sm font-medium leading-snug text-navy-fog sm:text-base">
                   {text.caption}
                 </p>
               </button>
@@ -130,7 +130,7 @@ export default function ProductShowcase({
 
       <dialog
         ref={dialogRef}
-        className="showcase-dialog m-auto max-h-[90vh] w-[min(92vw,52rem)] rounded-2xl border border-white/15 bg-navy-deep p-3 text-offwhite shadow-2xl backdrop:bg-black/70 open:flex open:flex-col"
+        className="showcase-dialog m-auto max-h-[90vh] w-[min(92vw,52rem)] rounded-2xl border border-navy-line bg-navy-ink p-3 text-offwhite shadow-hero-window backdrop:bg-navy-ink/80 open:flex open:flex-col"
         onClose={closeScene}
         onClick={(e) => {
           if (e.target === dialogRef.current) closeScene();
@@ -144,13 +144,13 @@ export default function ProductShowcase({
               </p>
               <button
                 type="button"
-                className="rounded-lg border border-white/15 px-3 py-1.5 text-xs text-slate-muted transition hover:border-white/30 hover:text-offwhite"
+                className="rounded-lg border border-navy-line px-3 py-1.5 text-xs text-navy-fog transition hover:text-offwhite"
                 onClick={closeScene}
               >
                 {closeLabel}
               </button>
             </div>
-            <div className="overflow-hidden rounded-xl border border-white/10 bg-navy">
+            <div className="overflow-hidden rounded-xl border border-navy-line bg-navy">
               <img
                 src={active.src}
                 alt={active.alt[lang]}
@@ -159,7 +159,7 @@ export default function ProductShowcase({
                 className="max-h-[75vh] w-full object-contain"
               />
             </div>
-            <p className="mt-3 px-1 text-sm text-slate-300">{copy[active.id].caption}</p>
+            <p className="mt-3 px-1 text-sm font-medium text-navy-fog">{copy[active.id].caption}</p>
           </>
         ) : null}
       </dialog>
