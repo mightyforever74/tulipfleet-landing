@@ -11,10 +11,12 @@
   --color-accent-soft: #ff7043;
   --color-emerald: #10b981;
   --color-offwhite: #f8fafc;
-  /* slate-300 — WCAG AA body contrast on navy */
+  /* Kept: SignupForm still uses text-slate-muted (out of scope). */
   --color-slate-muted: #cbd5e1;
   --color-roadmap: #64748b;
   --color-roadmap-badge: #3b82f6;
+  --color-roadmap-soft: #93c5fd;
+  --color-warn: #f87171;
 
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
@@ -22,6 +24,7 @@
   --shadow-glow-accent: 0 0 24px rgba(255, 87, 34, 0.35);
   --shadow-glow-accent-soft: 0 0 16px rgba(255, 87, 34, 0.2);
   --shadow-nav: 0 8px 32px rgb(7 11 24 / 0.45);
+  --shadow-consent: 0 -8px 40px rgb(7 11 24 / 0.45);
   --shadow-hero-window:
     0 0 36px rgb(255 87 34 / 0.1),
     0 18px 48px rgb(7 11 24 / 0.48),
@@ -42,17 +45,17 @@
   body {
     @apply bg-navy text-offwhite font-body antialiased;
     background-image:
-      radial-gradient(ellipse 90% 55% at 12% -8%, rgba(255, 87, 34, 0.14), transparent 55%),
-      radial-gradient(ellipse 70% 45% at 88% 8%, rgba(59, 130, 246, 0.1), transparent 50%),
-      radial-gradient(ellipse 50% 30% at 70% 40%, rgba(16, 185, 129, 0.04), transparent 60%),
-      linear-gradient(180deg, #0a0f24 0%, #0d1427 40%, #0a0f24 100%);
+      radial-gradient(ellipse 90% 55% at 12% -8%, var(--color-accent-dim), transparent 55%),
+      radial-gradient(ellipse 70% 45% at 88% 8%, color-mix(in srgb, var(--color-roadmap-badge) 10%, transparent), transparent 50%),
+      radial-gradient(ellipse 50% 30% at 70% 40%, color-mix(in srgb, var(--color-emerald) 4%, transparent), transparent 60%),
+      linear-gradient(180deg, var(--color-navy) 0%, var(--color-navy-deep) 40%, var(--color-navy) 100%);
     background-attachment: fixed;
     min-height: 100vh;
   }
 
   ::selection {
-    background: rgba(255, 87, 34, 0.35);
-    color: #f8fafc;
+    background: color-mix(in srgb, var(--color-accent) 35%, transparent);
+    color: var(--color-offwhite);
   }
 
   :focus-visible {
@@ -211,13 +214,13 @@
     align-items: center;
     gap: 0.375rem;
     border-radius: 9999px;
-    background-color: rgb(59 130 246 / 0.15);
+    background-color: color-mix(in srgb, var(--color-roadmap-badge) 15%, transparent);
     padding: 0.125rem 0.625rem;
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.025em;
-    color: #93c5fd;
+    color: var(--color-roadmap-soft);
   }
 
   .text-gradient {
@@ -402,7 +405,7 @@
   }
 
   .zone-alert {
-    color: #f87171;
+    color: var(--color-warn);
   }
 }
 
@@ -553,10 +556,10 @@
 
 /* C-05d Hero Amsterdam map — #vehicle + #zePoly sync (10s, boundary ~78%) */
 .hero-map-scene {
-  --map-ground: #0d1427;
-  --map-water: #16233f;
-  --map-route: #ff5722;
-  --map-ze: #10b981;
+  --map-ground: var(--color-navy-deep);
+  --map-water: #16233f; /* matches amsterdam-map-scene.svg water — scene-coupled */
+  --map-route: var(--color-accent);
+  --map-ze: var(--color-emerald);
 }
 
 .hero-map-scene #vehicle {
@@ -570,12 +573,12 @@
 
 /* Same emerald as Representative view radar-dot */
 .hero-map-scene #vehicle circle:last-child {
-  fill: var(--color-emerald, #10b981);
-  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.95));
+  fill: var(--color-emerald);
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--color-emerald) 95%, transparent));
 }
 
 .hero-map-scene #vehicle circle:first-child {
-  fill: var(--color-emerald, #10b981);
+  fill: var(--color-emerald);
 }
 
 .hero-map-scene #zePoly {
@@ -600,17 +603,17 @@
 @keyframes hero-ze-glow {
   0%,
   74% {
-    fill: #10b981;
+    fill: var(--color-emerald);
     fill-opacity: 0.1;
   }
   78%,
   88% {
-    fill: #10b981;
+    fill: var(--color-emerald);
     fill-opacity: 0.22;
   }
   94%,
   100% {
-    fill: #10b981;
+    fill: var(--color-emerald);
     fill-opacity: 0.1;
   }
 }
@@ -633,7 +636,7 @@
   }
 
   .hero-map-scene #zePoly {
-    fill: #10b981;
+    fill: var(--color-emerald);
     fill-opacity: 0.22;
   }
 }

@@ -63,24 +63,24 @@ export default function CookieConsent({ copy }: Props) {
       aria-label={copy.preferences}
       className="fixed inset-x-0 bottom-0 z-[100] p-4 sm:p-6"
     >
-      <div className="glass mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl border border-white/15 p-5 shadow-[0_-8px_40px_rgba(0,0,0,0.45)] sm:flex-row sm:items-end sm:gap-6">
+      <div className="glass mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl border border-navy-line p-5 shadow-consent sm:flex-row sm:items-end sm:gap-6">
         <div className="flex-1">
           <p className="text-sm leading-relaxed text-offwhite sm:text-base">
             {copy.message}
           </p>
-          <p className="mt-2 text-xs text-slate-muted">{copy.functionalNote}</p>
+          <p className="mt-2 text-xs font-medium text-navy-fog">{copy.functionalNote}</p>
         </div>
         <div className="flex shrink-0 flex-col gap-2 sm:min-w-[12rem] sm:flex-row">
           <button
             type="button"
-            className="inline-flex flex-1 items-center justify-center rounded-xl border border-white/25 bg-white/5 px-4 py-2.5 text-sm font-display font-semibold text-offwhite transition hover:bg-white/10"
+            className="inline-flex flex-1 items-center justify-center rounded-xl border border-navy-line bg-navy-ink/40 px-4 py-2.5 text-sm font-display font-semibold text-offwhite transition hover:bg-navy-elevated"
             onClick={() => choose('denied')}
           >
             {copy.reject}
           </button>
           <button
             type="button"
-            className="inline-flex flex-1 items-center justify-center rounded-xl border border-white/25 bg-white/5 px-4 py-2.5 text-sm font-display font-semibold text-offwhite transition hover:bg-white/10"
+            className="inline-flex flex-1 items-center justify-center rounded-xl border border-navy-line bg-navy-ink/40 px-4 py-2.5 text-sm font-display font-semibold text-offwhite transition hover:bg-navy-elevated"
             onClick={() => choose('granted')}
           >
             {copy.accept}
@@ -89,7 +89,7 @@ export default function CookieConsent({ copy }: Props) {
         {consent !== 'unset' && (
           <button
             type="button"
-            className="text-xs text-slate-muted hover:text-offwhite sm:self-start"
+            className="text-xs font-medium text-navy-fog transition hover:text-offwhite sm:self-start"
             onClick={() => setVisible(false)}
           >
             {copy.close}

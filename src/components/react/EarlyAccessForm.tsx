@@ -49,10 +49,10 @@ export default function EarlyAccessForm({ locale, copy }: Props) {
 
   return (
     <div className="mx-auto max-w-xl px-4 py-16 sm:px-6">
-      <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+      <h1 className="font-display text-3xl font-bold tracking-tight text-offwhite sm:text-4xl">
         {copy.title}
       </h1>
-      <p className="mt-4 text-slate-muted">{copy.body}</p>
+      <p className="mt-4 font-medium leading-relaxed text-navy-fog">{copy.body}</p>
 
       <form onSubmit={onSubmit} className="glass mt-8 rounded-3xl p-6 sm:p-8">
         <div className="space-y-4">
@@ -85,7 +85,7 @@ export default function EarlyAccessForm({ locale, copy }: Props) {
             <textarea
               id="ea_message"
               rows={4}
-              className="w-full rounded-xl border border-white/12 bg-white/4 px-3.5 py-3 text-offwhite outline-none focus:border-accent/50"
+              className="w-full rounded-xl border border-navy-line bg-navy-ink/40 px-3.5 py-3 text-offwhite outline-none focus:border-accent/50"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
@@ -96,15 +96,15 @@ export default function EarlyAccessForm({ locale, copy }: Props) {
           {copy.submit}
         </button>
 
-        <p className="mt-4 text-center text-sm text-slate-muted">
+        <p className="mt-4 text-center text-sm font-medium text-navy-fog">
           {copy.orEmail}
         </p>
 
         {/* TODO marker for future backend */}
-        <p className="mt-3 text-[10px] text-slate-muted/60">{copy.todoBackend}</p>
+        <p className="mt-3 text-[10px] font-medium text-navy-fog/60">{copy.todoBackend}</p>
       </form>
 
-      <p className="mt-10 text-center text-sm text-slate-muted">
+      <p className="mt-10 text-center text-sm font-medium text-navy-fog">
         {copy.trialCta}{' '}
         <a
           href={`/${locale}/signup`}
@@ -143,7 +143,7 @@ function Input({
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl border border-white/12 bg-white/[0.04] px-3.5 py-3 text-offwhite outline-none focus:border-accent/50"
+        className="w-full rounded-xl border border-navy-line bg-navy-ink/40 px-3.5 py-3 text-offwhite outline-none focus:border-accent/50"
       />
     </div>
   );

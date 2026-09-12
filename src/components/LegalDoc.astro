@@ -9,10 +9,10 @@ const { doc } = Astro.props;
 ---
 
 <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-  <h1 class="font-display text-3xl font-bold tracking-tight sm:text-4xl">{doc.title}</h1>
+  <h1 class="font-display text-3xl font-bold tracking-tight text-offwhite sm:text-4xl">{doc.title}</h1>
   {
     doc.intro ? (
-      <p class="mt-5 text-base leading-relaxed text-slate-muted sm:text-lg">{doc.intro}</p>
+      <p class="mt-5 text-base leading-relaxed text-navy-fog sm:text-lg">{doc.intro}</p>
     ) : null
   }
 
@@ -21,7 +21,7 @@ const { doc } = Astro.props;
       doc.sections.map((section) => (
         <section>
           <h2 class="font-display text-xl font-semibold text-offwhite">{section.heading}</h2>
-          <div class="mt-3 space-y-3 text-base leading-relaxed text-slate-muted">
+          <div class="mt-3 space-y-3 text-base leading-relaxed text-navy-fog">
             {section.paragraphs.map((p) => (
               <p>{p}</p>
             ))}

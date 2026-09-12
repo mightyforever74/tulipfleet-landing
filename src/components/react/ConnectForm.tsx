@@ -42,8 +42,8 @@ export default function ConnectForm({ copy }: Props) {
 
   return (
     <form onSubmit={onSubmit} className="glass mt-8 rounded-3xl p-6 sm:p-8">
-      <h2 className="font-display text-xl font-bold sm:text-2xl">{copy.formTitle}</h2>
-      <p className="mt-2 text-sm text-slate-muted">{copy.formBody}</p>
+      <h2 className="font-display text-xl font-bold text-offwhite sm:text-2xl">{copy.formTitle}</h2>
+      <p className="mt-2 text-sm font-medium text-navy-fog">{copy.formBody}</p>
 
       <div className="mt-6 space-y-4">
         <Field label={copy.name} id="c_name" value={name} onChange={setName} required />
@@ -59,7 +59,7 @@ export default function ConnectForm({ copy }: Props) {
             required
             value={scenario}
             onChange={(e) => setScenario(e.target.value)}
-            className="w-full rounded-xl border border-white/12 bg-white/[0.04] px-3.5 py-3 text-offwhite outline-none focus:border-accent/50"
+            className="w-full rounded-xl border border-navy-line bg-navy-ink/40 px-3.5 py-3 text-offwhite outline-none focus:border-accent/50"
           />
         </div>
       </div>
@@ -67,8 +67,8 @@ export default function ConnectForm({ copy }: Props) {
       <button type="submit" className="btn-primary mt-6 w-full">
         {copy.submit}
       </button>
-      <p className="mt-4 text-center text-sm text-slate-muted">{copy.orEmail}</p>
-      <p className="mt-3 text-[10px] text-slate-muted/60">{copy.todoBackend}</p>
+      <p className="mt-4 text-center text-sm font-medium text-navy-fog">{copy.orEmail}</p>
+      <p className="mt-3 text-[10px] font-medium text-navy-fog/60">{copy.todoBackend}</p>
     </form>
   );
 }
@@ -99,7 +99,7 @@ function Field({
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl border border-white/12 bg-white/[0.04] px-3.5 py-3 text-offwhite outline-none focus:border-accent/50"
+        className="w-full rounded-xl border border-navy-line bg-navy-ink/40 px-3.5 py-3 text-offwhite outline-none focus:border-accent/50"
       />
     </div>
   );
