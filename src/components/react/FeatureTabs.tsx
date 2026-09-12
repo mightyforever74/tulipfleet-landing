@@ -42,14 +42,14 @@ function TelemetryStrip({ lines }: { lines: TelemetryLine[] }) {
         <li
           key={line.label}
           className={`flex items-start gap-2 ${
-            line.tone === 'live' ? 'text-slate-300' : 'text-slate-muted/70'
+            line.tone === 'live' ? 'text-offwhite' : 'text-navy-fog/70'
           }`}
         >
           <span
             className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${
               line.tone === 'live'
-                ? 'bg-emerald shadow-[0_0_6px_rgba(16,185,129,0.7)]'
-                : 'bg-slate-muted/50'
+                ? 'bg-emerald shadow-[0_0_6px_var(--color-emerald)]'
+                : 'bg-navy-fog/50'
             }`}
             aria-hidden="true"
           />
@@ -72,7 +72,7 @@ function NetherlandsMap({
   lines: TelemetryLine[];
 }) {
   return (
-    <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-white/10 bg-navy-elevated">
+    <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-navy-line bg-navy-elevated">
       <div
         className="relative min-h-[180px] flex-1 sm:min-h-[220px]"
         role="img"
@@ -82,15 +82,15 @@ function NetherlandsMap({
           className="absolute inset-0 opacity-30"
           style={{
             backgroundImage:
-              'linear-gradient(rgba(148,163,184,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.12) 1px, transparent 1px)',
+              'linear-gradient(var(--color-navy-line) 1px, transparent 1px), linear-gradient(90deg, var(--color-navy-line) 1px, transparent 1px)',
             backgroundSize: '16px 16px',
           }}
         />
         <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full p-2" aria-hidden="true">
           <path
             d="M38 12 L52 10 L62 14 L68 22 L70 32 L66 40 L72 48 L74 58 L70 68 L66 78 L62 88 L54 92 L46 90 L40 82 L36 72 L32 64 L28 54 L26 44 L28 34 L30 24 L34 16 Z"
-            fill="rgba(255,255,255,0.04)"
-            stroke="rgba(203,213,225,0.35)"
+            fill="color-mix(in srgb, var(--color-offwhite) 4%, transparent)"
+            stroke="color-mix(in srgb, var(--color-navy-fog) 35%, transparent)"
             strokeWidth="0.8"
           />
           {LIVE_ZE_CITIES.map((city) => (
@@ -100,16 +100,16 @@ function NetherlandsMap({
                 cx={city.x}
                 cy={city.y}
                 r="4"
-                fill="rgba(16,185,129,0.12)"
-                stroke="#10B981"
+                fill="var(--color-emerald-dim)"
+                stroke="var(--color-emerald)"
                 strokeWidth="0.6"
               />
-              <circle cx={city.x} cy={city.y} r="1.4" fill="#10B981" />
+              <circle cx={city.x} cy={city.y} r="1.4" fill="var(--color-emerald)" />
               {MAP_LABEL_IDS.has(city.id) ? (
                 <text
                   x={city.x + 3.2}
                   y={city.y + 1.1}
-                  fill="#94a3b8"
+                  fill="var(--color-navy-fog)"
                   fontSize="3.2"
                   fontFamily="Manrope, system-ui, sans-serif"
                 >
@@ -134,7 +134,7 @@ function NetherlandsMap({
           }
         `}</style>
       </div>
-      <div className="shrink-0 border-t border-white/10 bg-navy/50 px-3 py-2.5">
+      <div className="shrink-0 border-t border-navy-line bg-navy/50 px-3 py-2.5">
         <TelemetryStrip lines={lines} />
       </div>
     </div>
@@ -163,7 +163,7 @@ function TabIllustration({
       key={panelKey}
       className="glass fade-in-up relative flex min-h-[420px] flex-col overflow-hidden rounded-2xl p-5 lg:min-h-full"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,87,34,0.15),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,var(--color-accent-dim),transparent_50%)]" />
       <div className="relative flex min-h-0 flex-1 flex-col">
         <div className="mb-4 flex shrink-0 items-center justify-between">
           <p className="font-display text-sm font-semibold text-offwhite">{hint}</p>
@@ -173,11 +173,11 @@ function TabIllustration({
         {activeId === 'compliance' && (
           <div className="flex min-h-0 flex-1 flex-col gap-3">
             <div className="shrink-0 rounded-xl border border-emerald/30 bg-emerald/10 p-3">
-              <p className="text-xs text-slate-muted">{panel.zoneCheck}</p>
+              <p className="text-xs text-navy-fog">{panel.zoneCheck}</p>
               <p className="font-display text-emerald">Amsterdam · OK</p>
             </div>
             <div className="heffing-card shrink-0 rounded-xl p-3">
-              <p className="text-xs text-slate-muted">{panel.heffingDistance}</p>
+              <p className="text-xs text-navy-fog">{panel.heffingDistance}</p>
               <p className="font-display">
                 <span className="heffing-amount font-semibold">€12.40</span>
               </p>
@@ -192,14 +192,14 @@ function TabIllustration({
               {panel.routeRows.map((row, i) => (
                 <div
                   key={row}
-                  className={`rounded-xl border border-white/10 bg-white/5 p-3 transition ${i === 0 ? 'border-accent/40 bg-accent/10' : ''}`}
+                  className={`rounded-xl border border-navy-line bg-navy-ink/30 p-3 transition ${i === 0 ? 'border-accent/40 bg-accent/10' : ''}`}
                 >
                   <p className="font-display text-sm">{row}</p>
-                  <p className="mt-1 text-xs text-slate-muted">{panel.advisorySealed}</p>
+                  <p className="mt-1 text-xs text-navy-fog">{panel.advisorySealed}</p>
                 </div>
               ))}
             </div>
-            <div className="mt-auto rounded-xl border border-white/10 bg-navy-elevated/80 px-3 py-2.5">
+            <div className="mt-auto rounded-xl border border-navy-line bg-navy-elevated/80 px-3 py-2.5">
               <TelemetryStrip lines={telemetryLines} />
             </div>
           </div>
@@ -207,19 +207,19 @@ function TabIllustration({
 
         {activeId === 'benelux' && (
           <div className="flex min-h-0 flex-1 flex-col gap-3">
-            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-              <p className="text-xs text-slate-muted">{panel.weightClass}</p>
+            <div className="rounded-xl border border-navy-line bg-navy-ink/30 p-4">
+              <p className="text-xs text-navy-fog">{panel.weightClass}</p>
               <p className="font-display text-2xl font-bold">N3 · 12–18t</p>
             </div>
             <div className="grid grid-cols-2 gap-2">
-              <div className="rounded-xl border border-white/10 p-3 text-xs text-slate-muted">
+              <div className="rounded-xl border border-navy-line p-3 text-xs text-navy-fog">
                 {panel.bridgeAware}
               </div>
-              <div className="rounded-xl border border-white/10 p-3 text-xs text-slate-muted">
+              <div className="rounded-xl border border-navy-line p-3 text-xs text-navy-fog">
                 {panel.tariffMapped}
               </div>
             </div>
-            <div className="mt-auto rounded-xl border border-white/10 bg-navy-elevated/80 px-3 py-2.5">
+            <div className="mt-auto rounded-xl border border-navy-line bg-navy-elevated/80 px-3 py-2.5">
               <TelemetryStrip lines={telemetryLines} />
             </div>
           </div>
@@ -228,20 +228,20 @@ function TabIllustration({
         {activeId === 'fleet' && (
           <div className="flex min-h-0 flex-1 flex-col gap-3">
             <div className="grid grid-cols-2 gap-2">
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3">
-                <p className="text-xs text-slate-muted">{panel.vehicle}</p>
+              <div className="rounded-xl border border-navy-line bg-navy-ink/30 p-3">
+                <p className="text-xs text-navy-fog">{panel.vehicle}</p>
                 <p className="font-display text-sm">NL-42-TF</p>
               </div>
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3">
-                <p className="text-xs text-slate-muted">{panel.driver}</p>
+              <div className="rounded-xl border border-navy-line bg-navy-ink/30 p-3">
+                <p className="text-xs text-navy-fog">{panel.driver}</p>
                 <p className="font-display text-sm">{panel.driverStatus}</p>
               </div>
             </div>
             <div className="heffing-card rounded-xl p-3">
-              <p className="text-xs text-slate-muted">{panel.iotBox}</p>
+              <p className="text-xs text-navy-fog">{panel.iotBox}</p>
               <p className="font-display text-sm text-accent-soft">GPS + accel · TLS-MQTT</p>
             </div>
-            <div className="mt-auto rounded-xl border border-white/10 bg-navy-elevated/80 px-3 py-2.5">
+            <div className="mt-auto rounded-xl border border-navy-line bg-navy-elevated/80 px-3 py-2.5">
               <TelemetryStrip lines={telemetryLines} />
             </div>
           </div>
@@ -249,7 +249,7 @@ function TabIllustration({
 
         {activeId === 'analytics' && (
           <div className="flex min-h-0 flex-1 flex-col gap-3">
-            <div className="flex h-28 items-end gap-2 rounded-xl border border-white/10 bg-navy-elevated p-3">
+            <div className="flex h-28 items-end gap-2 rounded-xl border border-navy-line bg-navy-elevated p-3">
               {[40, 65, 45, 80, 55, 90, 70].map((h, i) => (
                 <div
                   key={i}
@@ -258,8 +258,8 @@ function TabIllustration({
                 />
               ))}
             </div>
-            <p className="text-xs text-slate-muted">{panel.analyticsSummary}</p>
-            <div className="mt-auto rounded-xl border border-white/10 bg-navy-elevated/80 px-3 py-2.5">
+            <p className="text-xs text-navy-fog">{panel.analyticsSummary}</p>
+            <div className="mt-auto rounded-xl border border-navy-line bg-navy-elevated/80 px-3 py-2.5">
               <TelemetryStrip lines={telemetryLines} />
             </div>
           </div>
@@ -267,15 +267,15 @@ function TabIllustration({
 
         {activeId === 'b2b' && (
           <div className="flex min-h-0 flex-1 flex-col gap-3">
-            <div className="rounded-xl border border-blue-400/30 bg-blue-500/10 p-4">
+            <div className="rounded-xl border border-navy-line bg-navy-ink/40 p-4">
               <p className="badge-roadmap mb-2">[{roadmapSoonLabel}]</p>
               <p className="font-display text-sm">REST + Webhooks</p>
-              <p className="mt-1 text-xs text-slate-muted">ERP / TMS</p>
+              <p className="mt-1 text-xs text-navy-fog">ERP / TMS</p>
             </div>
-            <div className="rounded-xl border border-dashed border-white/15 p-3 text-xs text-slate-muted">
+            <div className="rounded-xl border border-dashed border-navy-line p-3 text-xs text-navy-fog">
               {panel.apiHonest}
             </div>
-            <div className="mt-auto rounded-xl border border-white/10 bg-navy-elevated/80 px-3 py-2.5">
+            <div className="mt-auto rounded-xl border border-navy-line bg-navy-elevated/80 px-3 py-2.5">
               <TelemetryStrip lines={telemetryLines} />
             </div>
           </div>
@@ -333,16 +333,16 @@ export default function FeatureTabs({
   }
 
   return (
-    <section id="features" className="section-pad mx-auto max-w-6xl px-4 sm:px-6">
+    <section id="features" className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:py-32">
       <div className="max-w-2xl">
-        <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 className="font-display text-3xl font-bold tracking-tight text-offwhite sm:text-4xl lg:text-5xl">
           {sectionTitle}
         </h2>
-        <p className="mt-4 text-base text-slate-muted sm:text-lg">{sectionSubtitle}</p>
+        <p className="mt-6 text-lg font-medium leading-relaxed text-navy-fog lg:text-xl">{sectionSubtitle}</p>
       </div>
 
       <div
-        className="tab-scroll mt-8 pe-16 sm:pe-20"
+        className="tab-scroll mt-10 pe-16 sm:pe-20"
         style={{ scrollPaddingInlineEnd: '5rem' }}
         role="tablist"
         aria-label="Feature categories"
@@ -371,25 +371,25 @@ export default function FeatureTabs({
       </div>
 
       {current && (
-        <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-stretch" role="tabpanel">
-          <div className="space-y-4">
+        <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:items-stretch" role="tabpanel">
+          <div className="space-y-5">
             {current.items.map((item) => (
-              <article key={item.title} className="glass-card rounded-2xl p-4 sm:p-5">
-                <div className="mb-2 flex flex-wrap items-center gap-2">
+              <article key={item.title} className="glass-card rounded-2xl p-5 sm:p-6">
+                <div className="mb-3 flex flex-wrap items-center gap-2">
                   <StatusBadge status={item.status} labels={labels} />
-                  <h3 className="font-display text-base font-semibold sm:text-lg">
+                  <h3 className="font-display text-base font-semibold text-offwhite sm:text-lg">
                     {item.title}
                   </h3>
                 </div>
-                <p className="text-sm leading-snug text-slate-muted sm:text-base">{item.body}</p>
+                <p className="text-sm leading-snug text-navy-fog sm:text-base">{item.body}</p>
                 {item.note ? (
-                  <p className="mt-1.5 text-xs italic leading-snug text-slate-muted/80 sm:text-sm">
+                  <p className="mt-1.5 text-xs italic leading-snug text-navy-fog/80 sm:text-sm">
                     {item.note}
                   </p>
                 ) : null}
               </article>
             ))}
-            <p className="pt-2 text-xs text-slate-muted">{labels.roadmapNote}</p>
+            <p className="pt-2 text-xs text-navy-fog">{labels.roadmapNote}</p>
           </div>
 
           <TabIllustration

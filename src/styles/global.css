@@ -114,9 +114,9 @@
   }
 
   .glass-card {
-    background-color: rgb(255 255 255 / 0.05);
+    background-color: color-mix(in srgb, var(--color-navy-elevated) 55%, transparent);
     backdrop-filter: blur(12px);
-    border: 1px solid rgb(255 255 255 / 0.1);
+    border: 1px solid var(--color-navy-line);
     border-radius: 1rem;
     transition: transform 300ms, box-shadow 300ms;
   }
@@ -311,23 +311,23 @@
     font-family: var(--font-display);
     font-size: 0.875rem;
     font-weight: 600;
-    border: 1px solid rgb(255 255 255 / 0.1);
-    background: rgb(255 255 255 / 0.05);
-    color: var(--color-slate-muted);
+    border: 1px solid var(--color-navy-line);
+    background: color-mix(in srgb, var(--color-navy-elevated) 45%, transparent);
+    color: var(--color-navy-fog);
     transition: color 200ms, box-shadow 200ms, border-color 200ms, background 200ms;
   }
 
   .tab-btn:hover {
     color: var(--color-offwhite);
-    box-shadow: 0 0 16px rgba(255, 87, 34, 0.2);
-    border-color: rgb(255 87 34 / 0.35);
+    box-shadow: var(--shadow-glow-accent-soft);
+    border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
   }
 
   .tab-btn[aria-selected="true"] {
-    background: rgb(255 87 34 / 0.15);
+    background: var(--color-accent-dim);
     color: var(--color-offwhite);
-    border-color: rgb(255 87 34 / 0.5);
-    box-shadow: 0 0 20px rgba(255, 87, 34, 0.25);
+    border-color: color-mix(in srgb, var(--color-accent) 50%, transparent);
+    box-shadow: var(--shadow-glow-accent-soft);
   }
 
   .tab-btn[aria-selected="true"]::after {
@@ -385,8 +385,8 @@
   }
 
   .heffing-card {
-    border: 1px solid rgb(255 255 255 / 0.12);
-    background: rgb(255 255 255 / 0.04);
+    border: 1px solid var(--color-navy-line);
+    background: color-mix(in srgb, var(--color-navy-ink) 40%, transparent);
   }
 
   .heffing-amount {
