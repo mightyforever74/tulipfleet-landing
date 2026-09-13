@@ -28,7 +28,7 @@ const nl: Dictionary = {
     ctaPricing: 'Bereken prijs',
     mockupTitle: 'TulipFleet Live Dispatch',
     mockupLive: 'Live demo',
-    mockupJobs: 'Opdrachten',
+    mockupJobs: 'Taken',
     mockupDisclaimer: 'Representatieve weergave',
     mockupZoneTag: 'Amsterdam ZE',
     jobs: [
@@ -45,7 +45,7 @@ const nl: Dictionary = {
         tone: 'idle',
       },
     ],
-    phonePushTitle: '🔔 Nieuwe opdracht',
+    phonePushTitle: '🔔 Nieuwe taak',
     phonePushSub: '● Geaccepteerd → live volgen',
     scenarios: [
       {
@@ -89,14 +89,14 @@ const nl: Dictionary = {
   mobileBridge: {
     title: 'Plan op kantoor, voer uit op de weg',
     subtitle: 'Aansturing op uw bureau, uitvoering in de broekzak van uw chauffeur.',
-    body: "TulipFleet werkt aan twee kanten: wijs een opdracht toe vanuit het panel en die landt direct op de telefoon van uw chauffeur. Voertuigen op de live kaart, meldingen op zak. Wijs onderweg met één tik een opdracht toe.",
+    body: "TulipFleet werkt aan twee kanten: wijs een taak toe vanuit het paneel en die landt direct op de telefoon van uw chauffeur. Voertuigen op de live kaart, meldingen op zak. Wijs onderweg met één tik een taak toe.",
     liveBadge: 'Live op iOS + Android',
     storesTodo: 'TODO: [MUSTERI DOLDURACAK: magaza linkleri]',
     appStore: 'Download in de App Store',
     playStore: 'Ontdek het op Google Play',
     cycleLabel: 'Live operatiecyclus',
     steps: [
-      'Opdracht toewijzen',
+      'Taak toewijzen',
       'Push binnen, chauffeur accepteert',
       'Live volgen',
       'Afgeleverd',
@@ -111,7 +111,7 @@ const nl: Dictionary = {
     scenes: {
       office: {
         badge: 'KANTOOR, COMMANDOCENTRUM',
-        caption: 'Wijs opdrachten toe en volg live, vanaf kantoor.',
+        caption: 'Wijs taken toe en volg live, vanaf kantoor.',
       },
       pocket: {
         badge: 'BROEKZAK CHAUFFEUR',
@@ -127,14 +127,14 @@ const nl: Dictionary = {
     navCta: 'Developers en ERP: TulipFleet Connect',
     sectionTitle: 'TulipFleet Connect voor ERP- en TMS-teams',
     sectionBody:
-      'REST + webhooks voor zero-emissiezonechecks, Vrachtwagenheffing-kosten en opdracht- en wagenparkdata. Op de roadmap, onder contract binnenkort live.',
+      'REST + webhooks voor zero-emissiezonechecks, Vrachtwagenheffing-kosten en taak- en wagenparkdata. Op de roadmap, onder contract binnenkort live.',
     sectionLink: 'Bekijk Connect',
     pageTitle: 'TulipFleet Connect',
     pageBadge: 'Roadmap, binnenkort',
     pageIntro:
       'Connect is onze B2B-API-laag voor teams die al een ERP of TMS draaien en naleving plus kostensignalen naast hun eigen workflows nodig hebben.',
     valueProp:
-      'REST + webhook-API voor uw ERP/TMS: zero-emissiezonevragen, Vrachtwagenheffing-kostenberekening, en opdracht- en wagenparkdata.',
+      'REST + webhook-API voor uw ERP/TMS: zero-emissiezonevragen, Vrachtwagenheffing-kostenberekening, en taak- en wagenparkdata.',
     corridorTitle: 'Nederland nu. Daarna de corridor Benelux-Duitsland.',
     corridorBody:
       'Onze compliance-engine is per land modulair: in Nederland zijn zero-emissiezonechecks op NDW-data en de Vrachtwagenheffing-kostenberekening Live. Dezelfde engine moet uitbreiden naar Belgische LEZ (Brussel / Antwerpen / Gent) en Duitse Umweltzone-gebiedschecks, zodat de regels van het juiste land automatisch ingrijpen vanaf uw routecoördinaten. Kostenzicht op Belgische Viapass en Duitse LKW-Maut (aparte OBU-systemen) staat op de roadmap. We beweren niet die tol nu te berekenen.',
@@ -184,9 +184,9 @@ Content-Type: application/json
       tariffMapped: 'Tarief gekoppeld',
       vehicle: 'Voertuig',
       driver: 'Chauffeur',
-      driverStatus: 'Op rit',
+      driverStatus: 'Onderweg',
       iotBox: 'ESP32 IoT-box',
-      analyticsSummary: 'Opdrachten, brandstof, CO₂',
+      analyticsSummary: 'Taken, brandstof, CO₂',
       apiHonest: 'Geen nepsleutels. Geen live tellers.',
       routeRows: ['Route A, score 92', 'Route B, score 84', 'Route C, score 71'],
     },
@@ -205,7 +205,7 @@ Content-Type: application/json
         { label: 'Historische / bruglimieten: gepland', tone: 'planned' },
       ],
       fleet: [
-        { label: 'Wagenpark- en opdrachtbeheer: live', tone: 'live' },
+        { label: 'Wagenpark- en taakbeheer: live', tone: 'live' },
         { label: 'Chauffeursapp: live', tone: 'live' },
       ],
       analytics: [
@@ -242,7 +242,7 @@ Content-Type: application/json
           {
             status: 'roadmap',
             title: 'Groene routing en CO₂-voetafdruk',
-            body: 'CO₂-inzicht nu, CSRD-rapportage later. Stapsgewijs naar ESG.',
+            body: 'CO₂-inzicht nu, CSRD-naleving later. Stapsgewijs naar ESG.',
           },
           {
             status: 'roadmap',
@@ -264,7 +264,7 @@ Content-Type: application/json
           {
             status: 'live',
             title: 'Live wagenpark volgen',
-            body: 'Realtime positie en opdrachtstatus via MQTT/IoT-telemetrie.',
+            body: 'Realtime positie en taakstatus via MQTT/IoT-telemetrie.',
           },
           {
             status: 'roadmap',
@@ -307,18 +307,18 @@ Content-Type: application/json
         items: [
           {
             status: 'live',
-            title: 'Wagenpark- en opdrachtbeheer',
+            title: 'Wagenpark- en taakbeheer',
             body: 'Toewijzen → accepteren → afronden, met voertuig- en chauffeurkaarten.',
           },
           {
             status: 'live',
             title: 'Chauffeursapp',
-            body: 'Live op iOS en Android. Opdrachtflow met pushmeldingen.',
+            body: 'Live op iOS en Android. Taakflow met pushmeldingen.',
           },
           {
             status: 'live',
             title: 'Brandstof- en kostenregistratie',
-            body: 'Houd brandstof en kosten bij naast de opdrachten die ze veroorzaakten.',
+            body: 'Houd brandstof en kosten bij naast de taken die ze veroorzaakten.',
           },
           {
             status: 'live',
@@ -350,7 +350,7 @@ Content-Type: application/json
           {
             status: 'live',
             title: 'Operatieboards',
-            body: 'Wagenparkcijfers plus grafieken voor opdrachten, brandstof en CO₂.',
+            body: 'Wagenparkcijfers plus grafieken voor taken, brandstof en CO₂.',
           },
           {
             status: 'live',
@@ -400,7 +400,7 @@ Content-Type: application/json
       starter: {
         name: 'Starter',
         blurb: '1-5 voertuigen · basis volgen',
-        features: ['Basis live volgen', 'Chauffeursapp', 'Opdracht toewijzen → afronden'],
+        features: ['Basis live volgen', 'Chauffeursapp', 'Taak toewijzen → afronden'],
       },
       professional: {
         name: 'Professional',
@@ -431,7 +431,7 @@ Content-Type: application/json
   },
   trialCta: {
     title: 'Veertien dagen. Uw wagenpark. Zonder creditcard.',
-    body: 'Open een proef, koppel een paar voertuigen en zie zero-emissiezone- en heffingcijfers naast de opdrachten. Voordat u tekent.',
+    body: 'Open een proef, koppel een paar voertuigen en zie zero-emissiezone- en heffingcijfers naast de taken. Voordat u tekent.',
     button: 'Start gratis proef',
   },
   signup: {
@@ -461,8 +461,8 @@ Content-Type: application/json
     privacyAfter: '.',
   },
   earlyAccess: {
-    title: 'Het webpanel is in vroege toegang. We doen een live demo voor u.',
-    body: 'Het dispatcher-webpanel draait bij geselecteerde klanten. Openbare toegang is dichtbij. Reserveer uw plek, of plan een doorloop met ons.',
+    title: 'Het webpaneel is in vroege toegang. We doen een live demo voor u.',
+    body: 'Het dispatcher-webpaneel draait bij geselecteerde klanten. Openbare toegang is dichtbij. Reserveer uw plek, of plan een doorloop met ons.',
     name: 'Uw naam',
     email: 'E-mail',
     company: 'Bedrijf',
