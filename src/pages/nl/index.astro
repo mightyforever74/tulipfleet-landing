@@ -1,5 +1,49 @@
 ﻿---
-import LocalePlaceholder from '../../components/LocalePlaceholder.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import ExcelStrip from '../../components/ExcelStrip.astro';
+import MobileBridge from '../../components/MobileBridge.astro';
+import TrialCTA from '../../components/TrialCTA.astro';
+import ConnectCTA from '../../components/ConnectCTA.astro';
+import FeatureTabs from '../../components/react/FeatureTabs';
+import PricingCalculator from '../../components/react/PricingCalculator';
+import StatsBand from '../../components/react/StatsBand';
+import ProductShowcase from '../../components/react/ProductShowcase';
+import { getDictionary } from '../../i18n';
+
 const locale = 'nl';
+const dict = getDictionary(locale);
 ---
-<LocalePlaceholder locale={locale} />
+
+<BaseLayout path="/">
+  <Hero dict={dict} locale={locale} />
+  <ExcelStrip dict={dict} />
+  <MobileBridge dict={dict} locale={locale} />
+  <StatsBand client:visible locale={locale} stats={dict.stats} />
+  <FeatureTabs
+    client:load
+    tabs={dict.features.tabs}
+    labels={{
+      live: dict.features.live,
+      roadmap: dict.features.roadmap,
+      roadmapSoon: dict.features.roadmapSoon,
+      roadmapNote: dict.features.roadmapNote,
+    }}
+    sectionTitle={dict.features.sectionTitle}
+    sectionSubtitle={dict.features.sectionSubtitle}
+    mapAria={dict.features.mapAria}
+    panel={dict.features.panel}
+    telemetry={dict.features.telemetry}
+  />
+  <ProductShowcase
+    client:visible
+    locale={locale}
+    title={dict.screenshotStrip.title}
+    subtitle={dict.screenshotStrip.subtitle}
+    closeLabel={dict.screenshotStrip.closeLabel}
+    scenes={dict.screenshotStrip.scenes}
+  />
+  <PricingCalculator client:load locale={locale} copy={dict.pricing} />
+  <ConnectCTA dict={dict} locale={locale} />
+  <TrialCTA dict={dict} locale={locale} />
+</BaseLayout>

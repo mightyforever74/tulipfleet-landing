@@ -28,7 +28,7 @@ export const LOCALES: LocaleOption[] = [
   { code: 'en', name: 'English', nativeName: 'English', flag: '🇬🇧', status: 'active' },
   { code: 'tr', name: 'Turkish', nativeName: 'Türkçe', flag: '🇹🇷', status: 'active' },
   { code: 'de', name: 'German', nativeName: 'Deutsch', flag: '🇩🇪', status: 'coming_soon' },
-  { code: 'nl', name: 'Dutch', nativeName: 'Nederlands', flag: '🇳🇱', status: 'coming_soon' },
+  { code: 'nl', name: 'Dutch', nativeName: 'Nederlands', flag: '🇳🇱', status: 'active' },
   { code: 'fr', name: 'French', nativeName: 'Français', flag: '🇫🇷', status: 'coming_soon' },
   { code: 'es', name: 'Spanish', nativeName: 'Español', flag: '🇪🇸', status: 'coming_soon' },
   { code: 'it', name: 'Italian', nativeName: 'Italiano', flag: '🇮🇹', status: 'coming_soon' },

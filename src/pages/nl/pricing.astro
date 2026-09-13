@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PricingCalculator from '../../components/react/PricingCalculator';
+import { getDictionary } from '../../i18n';
+
+const locale = 'nl';
+const dict = getDictionary(locale);
+---
+
+<BaseLayout path="/pricing" title={`${dict.nav.pricing} · ${dict.meta.siteName}`}>
+  <PricingCalculator
+    client:load
+    locale={locale}
+    copy={dict.pricing}
+    showCompare={true}
+    compareTitle={dict.pricing.compareTitle}
+  />
+</BaseLayout>

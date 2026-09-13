@@ -10,9 +10,9 @@ const SITE = 'https://tulipfleet.com';
 const INDEXABLE_LOCALES = new Set(ACTIVE_LOCALES);
 
 /**
- * Keep /en/ + /tr/ pages only.
+ * Keep /en/ + /tr/ + /nl/ pages only.
  * Drop the root Astro.redirect('/en/') HTML page (already noindex)
- * and coming-soon placeholder locales (de, nl, fr, …).
+ * and coming-soon placeholder locales (de, fr, …).
  * @param {string} page
  */
 function includeInSitemap(page) {
@@ -45,6 +45,7 @@ export default defineConfig({
         locales: {
           en: 'en-US',
           tr: 'tr-TR',
+          nl: 'nl-NL',
         },
       },
     }),
