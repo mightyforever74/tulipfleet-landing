@@ -9,8 +9,8 @@ export type Locale =
   | 'bg'
   | 'ku';
 
-export const ACTIVE_LOCALES = ['en', 'tr'] as const;
-export const PLACEHOLDER_LOCALES = ['de', 'nl', 'fr', 'es', 'it', 'bg', 'ku'] as const;
+export const ACTIVE_LOCALES = ['en', 'tr', 'nl'] as const;
+export const PLACEHOLDER_LOCALES = ['de', 'fr', 'es', 'it', 'bg', 'ku'] as const;
 export const ALL_LOCALES: Locale[] = [
   'en',
   'tr',

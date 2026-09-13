@@ -40,7 +40,8 @@ export function formatLocaleNumber(
   locale: string,
   decimals = 0,
 ): string {
-  return new Intl.NumberFormat(locale === 'tr' ? 'tr-TR' : 'en-US', {
+  const tag = locale === 'tr' ? 'tr-TR' : locale === 'nl' ? 'nl-NL' : 'en-US';
+  return new Intl.NumberFormat(tag, {
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals,
   }).format(value);

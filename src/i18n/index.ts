@@ -10,7 +10,7 @@ export function getDictionary(locale: string): Dictionary {
   return dictionaries[locale] ?? en;
 }
 
-export function isActiveLocale(locale: string): locale is 'en' | 'tr' {
+export function isActiveLocale(locale: string): locale is (typeof ACTIVE_LOCALES)[number] {
   return (ACTIVE_LOCALES as readonly string[]).includes(locale);
 }
 
