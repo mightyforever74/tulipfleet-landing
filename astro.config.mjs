@@ -45,6 +45,7 @@ export default defineConfig({
         locales: {
           en: 'en-US',
           tr: 'tr-TR',
+          nl: 'nl-NL',
         },
       },
     }),
