@@ -1,9 +1,10 @@
 import en from './en';
+import nl from './nl';
 import tr from './tr';
 import type { Dictionary, Locale } from './types';
 import { ACTIVE_LOCALES } from './types';
 
-const dictionaries: Record<string, Dictionary> = { en, tr };
+const dictionaries: Record<string, Dictionary> = { en, tr, nl };
 
 export function getDictionary(locale: string): Dictionary {
   return dictionaries[locale] ?? en;
