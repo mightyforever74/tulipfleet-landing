@@ -17,7 +17,7 @@ function swapLocaleInPath(pathname: string, next: LocaleCode): string {
   if (parts.length > 1 && LOCALES.some((l) => l.code === parts[1])) {
     parts[1] = next;
     const joined = parts.join('/');
-    return joined.endsWith('/') || parts.length > 3 ? joined : `${joined}/`;
+    return joined.endsWith('/') ? joined : `${joined}/`;
   }
   return `/${next}/`;
 }

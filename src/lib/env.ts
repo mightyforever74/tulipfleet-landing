@@ -15,5 +15,6 @@ export function getApiUrl(): string {
 export function localizePath(locale: string, path: string): string {
   const clean = path.startsWith('/') ? path : `/${path}`;
   if (clean === '/') return `/${locale}/`;
-  return `/${locale}${clean}`;
+  const withSlash = clean.endsWith('/') ? clean : `${clean}/`;
+  return `/${locale}${withSlash}`;
 }

@@ -26,6 +26,7 @@ function includeInSitemap(page) {
 export default defineConfig({
   output: 'static',
   site: SITE,
+  trailingSlash: 'always',
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'tr', 'de', 'nl', 'fr', 'es', 'it', 'bg', 'ku'],

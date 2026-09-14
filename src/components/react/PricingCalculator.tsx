@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { PLANS, monthlyTotal, recommendPlan, type PlanId } from '../../lib/pricing';
 import { animateCount, prefersReducedMotion } from '../../lib/motion';
+import { localizePath } from '../../lib/env';
 
 interface PlanCopy {
   name: string;
@@ -212,7 +213,7 @@ export default function PricingCalculator({
             </p>
           </div>
           <a
-            href={`/${locale}/signup?vehicles=${vehicles}`}
+            href={`${localizePath(locale, '/signup')}?vehicles=${vehicles}`}
             className="btn-primary"
           >
             {copy.cta}

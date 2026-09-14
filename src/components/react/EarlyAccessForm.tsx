@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { localizePath } from '../../lib/env';
 
 interface Copy {
   title: string;
@@ -107,7 +108,7 @@ export default function EarlyAccessForm({ locale, copy }: Props) {
       <p className="mt-10 text-center text-sm font-medium text-navy-fog">
         {copy.trialCta}{' '}
         <a
-          href={`/${locale}/signup`}
+          href={localizePath(locale, '/signup')}
           className="font-semibold text-accent-soft hover:text-accent"
         >
           {copy.trialLink}

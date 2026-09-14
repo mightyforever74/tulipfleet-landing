@@ -1,4 +1,6 @@
 ---
+import { localizePath } from '../lib/env';
+
 interface Props {
   title: string;
   description: string;
@@ -11,9 +13,7 @@ interface Props {
 const { title, description, locale, path, siteName, ogLocale } = Astro.props;
 const site = Astro.site ?? new URL('https://tulipfleet.com');
 const canonicalPath = path.startsWith('/') ? path : `/${path}`;
-const localizedPath =
-  canonicalPath === '/' ? `/${locale}/` : `/${locale}${canonicalPath}`;
-const canonical = new URL(localizedPath, site).href;
+const canonical = new URL(localizePath(locale, canonicalPath), site).href;
 const ogImage = new URL('/og-default.svg', site).href;
 
 const jsonLd = {
