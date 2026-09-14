@@ -8,6 +8,24 @@ import { ACTIVE_LOCALES } from './src/i18n/types.ts';
 const SITE = 'https://tulipfleet.com';
 /** @type {Set<string>} */
 const INDEXABLE_LOCALES = new Set(ACTIVE_LOCALES);
+/** @type {Set<string>} */
+const NL_LEGAL_SLUGS = new Set([
+  'privacy',
+  'terms',
+  'imprint',
+  'dpa',
+  'subprocessors',
+]);
+
+/**
+ * NL legal pages stay live (footer links) but are English fallbacks.
+ * NL legal çevirisi gelince geri aç
+ * @param {string} pathname
+ */
+function isNlLegalPath(pathname) {
+  const parts = pathname.split('/').filter(Boolean);
+  return parts[0] === 'nl' && parts.length === 2 && NL_LEGAL_SLUGS.has(parts[1]);
+}
 
 /**
  * Keep /en/ + /tr/ + /nl/ pages only.
@@ -19,7 +37,24 @@ function includeInSitemap(page) {
   const { pathname } = new URL(page);
   if (pathname === '/') return false;
   const locale = pathname.split('/').filter(Boolean)[0];
-  return INDEXABLE_LOCALES.has(locale);
+  if (!INDEXABLE_LOCALES.has(locale)) return false;
+  // NL legal çevirisi gelince geri aç
+  if (isNlLegalPath(pathname)) return false;
+  return true;
+}
+
+/**
+ * Strip leftover nl-NL hreflang pointers to untranslated legal pages.
+ * Filter already drops those URLs from the urlset; this keeps clusters clean
+ * if a legal loc is reintroduced without updating i18n.
+ * NL legal çevirisi gelince geri aç
+ * @param {import('@astrojs/sitemap').SitemapItem} item
+ */
+function serializeSitemapItem(item) {
+  if (!item.links?.length) return item;
+  const links = item.links.filter((link) => !isNlLegalPath(new URL(link.url).pathname));
+  if (links.length <= 1) return { ...item, links: undefined };
+  return { ...item, links };
 }
 
 // https://astro.build/config
@@ -41,6 +76,7 @@ export default defineConfig({
     react(),
     sitemap({
       filter: includeInSitemap,
+      serialize: serializeSitemapItem,
       i18n: {
         defaultLocale: 'en',
         locales: {

@@ -7,8 +7,14 @@ import { getLegal } from '../../i18n/legal';
 const locale = 'nl';
 const dict = getDictionary(locale);
 const doc = getLegal(locale).dpa;
+// NL legal çevirisi gelince geri aç
 ---
 
-<BaseLayout path="/dpa" title={`${doc.title} · ${dict.meta.siteName}`} description={doc.description}>
+<BaseLayout
+  path="/dpa"
+  title={`${doc.title} · ${dict.meta.siteName}`}
+  description={doc.description}
+  noindex={true}
+>
   <LegalDoc doc={doc} />
 </BaseLayout>

@@ -12,12 +12,17 @@ interface Props {
   title?: string;
   description?: string;
   path?: string;
+  noindex?: boolean;
 }
 
 const locale = Astro.currentLocale ?? 'en';
 const dict = getDictionary(locale);
-const { title = dict.meta.title, description = dict.meta.description, path = '/' } =
-  Astro.props;
+const {
+  title = dict.meta.title,
+  description = dict.meta.description,
+  path = '/',
+  noindex = false,
+} = Astro.props;
 const appUrl = getAppUrl();
 const loginHref =
   appUrl.startsWith('http') ? appUrl : localizePath(locale, appUrl);
@@ -31,7 +36,11 @@ const active = isActiveLocale(locale);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    {active ? null : <meta name="robots" content="noindex, nofollow" />}
+    {!active ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : noindex ? (
+      <meta name="robots" content="noindex" />
+    ) : null}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
