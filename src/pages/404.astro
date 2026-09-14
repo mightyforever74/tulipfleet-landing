@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  path="/404"
+  title="Page not found"
+  description="This page does not exist on TulipFleet."
+  noindex={true}
+>
+  <section class="mx-auto flex min-h-[60vh] max-w-xl flex-col items-center justify-center px-4 py-24 text-center">
+    <h1 class="font-display text-3xl font-bold tracking-tight text-offwhite">Page not found</h1>
+    <p class="mt-4 font-medium text-navy-fog">This page does not exist on TulipFleet.</p>
+    <nav class="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm font-medium" aria-label="Language homes">
+      <a class="text-accent-soft transition hover:text-accent" href="/en/">English</a>
+      <a class="text-accent-soft transition hover:text-accent" href="/tr/">Türkçe</a>
+      <a class="text-accent-soft transition hover:text-accent" href="/nl/">Nederlands</a>
+    </nav>
+  </section>
+</BaseLayout>
