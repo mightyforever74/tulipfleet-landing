@@ -1,0 +1,55 @@
+# TulipFleet
+
+TulipFleet is fleet software for Dutch and EU logistics managers who need ZE-Zone risk, 2026 truck toll costs, and driver status on one screen.
+
+## Who it is for
+
+Dutch and Benelux logistics SMEs, typically 5-300 vehicles. The product is built for operators who still run dispatch from Excel and need compliance numbers next to the job list.
+
+## What ships today
+
+- Office panel plus driver phone: assign a job, it lands as a push, the driver accepts, live tracking, then a sealed report.
+- Own ESP32 GPS vehicle box (GPS + accelerometer telemetry over TLS-MQTT), not software alone.
+- Driver app on iOS and Android. Public site: English, Turkish and Dutch live; six further locale routes prepared (de, fr, es, it, bg, ku). Nine language routes in total.
+- 14-day self-service trial: create a company account on /signup/ without a sales call.
+
+## Compliance data (Netherlands)
+
+1. 21 active ZE zones (about 20 cities). Checks and ontheffing use official NDW DATEX II data.
+2. Vrachtwagenheffing cost engine with Period-1 toll tariffs loaded.
+3. Carbon visibility today, CSRD-aligned reporting on the path ahead. Zone, toll and carbon figures are driven from live telemetry and official feeds, not spreadsheet estimates.
+
+Belgium LEZ / Germany Umweltzone checks and Viapass / LKW-Maut cost sit on the roadmap. TulipFleet does not calculate those foreign tolls today.
+
+## Pricing (EUR per vehicle per month)
+
+- Starter: €15 (1-5 vehicles)
+- Professional: €25 (6-20 vehicles)
+- Enterprise: €29-35 by volume (20+ vehicles)
+
+10% off on yearly billing. Trial CTA: fourteen days, no credit-card theatre.
+
+## Key URLs
+
+Home:
+- https://tulipfleet.com/en/
+- https://tulipfleet.com/tr/
+- https://tulipfleet.com/nl/
+
+Pricing:
+- https://tulipfleet.com/en/pricing/
+- https://tulipfleet.com/tr/pricing/
+- https://tulipfleet.com/nl/pricing/
+
+Signup (14-day trial):
+- https://tulipfleet.com/en/signup/
+- https://tulipfleet.com/tr/signup/
+- https://tulipfleet.com/nl/signup/
+
+iOS: https://apps.apple.com/nl/app/tulipfleet/id6757311314
+Google Play: coming soon. No public listing yet.
+
+## Company
+
+TulipFleet. Email: info@tulipfleet.com / privacy@tulipfleet.com.
+Founder: Cem Sahinkaya.
