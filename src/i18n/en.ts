@@ -18,6 +18,7 @@ const en: Dictionary = {
     langLabel: 'Language',
     langSoon: 'Soon',
     menu: 'Menu',
+    primaryAria: 'Primary',
   },
   hero: {
     badge: '🇪🇺 NL & EU Zero-Emission Compliance Ready',
@@ -79,8 +80,10 @@ const en: Dictionary = {
   excelStrip: {
     headline: 'Don’t bin your Excel files — bring your existing process into TulipFleet.',
     points: ['Easy migration', 'We move the data with you', 'Fast adaptation'],
+    ariaLabel: 'Excel to TulipFleet',
   },
   stats: {
+    ariaLabel: 'Proven coverage figures',
     zones: { value: 21, label: 'Active ZE-Zones' },
     coverage: { value: 148.8, decimals: 1, label: 'Coverage', suffix: 'km²' },
     cities: { value: 6, label: 'Cities live integrated' },
@@ -139,6 +142,8 @@ const en: Dictionary = {
     corridorBody:
       'Our compliance engine is country-modular by design: today in the Netherlands, ZE-Zone checks on NDW data and Vrachtwagenheffing cost calculation are Live. The same engine is planned to expand to Belgium LEZ (Brussels / Antwerp / Ghent) and Germany Umweltzone area checks — so the right country’s rules engage automatically from your route coordinates. Cost visibility for Belgium Viapass and Germany LKW-Maut (separate OBU-based systems) is on the roadmap; we do not claim to calculate those tolls today.',
     sampleLabel: 'Sample design — will be finalised at launch',
+    sampleRequestLabel: 'Request',
+    sampleResponseLabel: 'Response',
     sampleRequest: `POST /v1/compliance/ze-zone-check
 Authorization: Bearer <token>
 Content-Type: application/json
@@ -175,6 +180,7 @@ Content-Type: application/json
     roadmap: 'Roadmap',
     roadmapSoon: 'Roadmap — soon',
     mapAria: 'Netherlands map with live ZE-Zone cities',
+    tabsAria: 'Feature categories',
     panel: {
       zoneCheck: 'ZE-Zone check',
       heffingDistance: 'Heffing (distance + class)',
@@ -397,6 +403,9 @@ Content-Type: application/json
     monthlyEstimate: 'Estimated monthly',
     compareTitle: 'Compare plans',
     offerUnitText: 'per vehicle per month',
+    comparePriceLabel: 'EUR / vehicle / month',
+    compareVehiclesLabel: 'Vehicles',
+    compareFocusLabel: 'Focus',
     plans: {
       starter: {
         name: 'Starter',

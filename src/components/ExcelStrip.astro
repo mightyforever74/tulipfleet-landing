@@ -10,7 +10,7 @@ const { dict } = Astro.props;
 
 <section
   class="border-y border-navy-line bg-gradient-to-r from-navy via-navy-elevated/80 to-navy"
-  aria-label="Excel to TulipFleet"
+  aria-label={dict.excelStrip.ariaLabel}
 >
   <div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-16 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:py-20">
     <h2 class="max-w-xl font-display text-2xl font-bold tracking-tight text-offwhite sm:text-3xl">

@@ -6,6 +6,7 @@ import {
 } from '../../lib/motion';
 
 interface StatCopy {
+  ariaLabel: string;
   zones: { value: number; label: string };
   coverage: { value: number; decimals: number; label: string; suffix: string };
   cities: { value: number; label: string };
@@ -71,7 +72,7 @@ export default function StatsBand({ locale, stats }: Props) {
     <section
       ref={ref}
       className="border-b border-navy-line bg-navy-ink/60"
-      aria-label="Proven coverage figures"
+      aria-label={stats.ariaLabel}
     >
       <div className="mx-auto grid max-w-6xl gap-6 px-4 py-16 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:py-20">
         <Stat

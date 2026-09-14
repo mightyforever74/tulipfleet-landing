@@ -7,6 +7,7 @@ interface Labels {
   roadmap: string;
   roadmapSoon: string;
   roadmapNote: string;
+  tabsAria: string;
 }
 
 interface Props {
@@ -345,7 +346,7 @@ export default function FeatureTabs({
         className="tab-scroll mt-10 pe-16 sm:pe-20"
         style={{ scrollPaddingInlineEnd: '5rem' }}
         role="tablist"
-        aria-label="Feature categories"
+        aria-label={labels.tabsAria}
         id={tablistId}
       >
         {tabs.map((tab, index) => {

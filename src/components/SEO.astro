@@ -1,7 +1,7 @@
 ---
 import { localizePath } from '../lib/env';
 import { buildJsonLd, jsonLdKind } from '../lib/jsonld';
-import { hreflangCluster, shouldEmitHreflang } from '../lib/seo';
+import { hreflangCluster, ogLocaleAlternates, shouldEmitHreflang } from '../lib/seo';
 
 interface Props {
   title: string;
@@ -42,6 +42,7 @@ const jsonLdBlocks = buildJsonLd({
   locale,
   unitText: offerUnitText,
 });
+const ogAlternates = ogLocaleAlternates(ogLocale);
 ---
 
 <title>{title}</title>
@@ -60,6 +61,11 @@ const jsonLdBlocks = buildJsonLd({
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:locale" content={ogLocale} />
+{
+  ogAlternates.map((tag) => (
+    <meta property="og:locale:alternate" content={tag} />
+  ))
+}
 <meta property="og:image" content={ogImage} />
 
 <meta name="twitter:card" content="summary_large_image" />

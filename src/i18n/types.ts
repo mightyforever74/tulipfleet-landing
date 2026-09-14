@@ -73,6 +73,7 @@ export interface Dictionary {
     langLabel: string;
     langSoon: string;
     menu: string;
+    primaryAria: string;
   };
   hero: {
     badge: string;
@@ -96,8 +97,10 @@ export interface Dictionary {
   excelStrip: {
     headline: string;
     points: [string, string, string];
+    ariaLabel: string;
   };
   stats: {
+    ariaLabel: string;
     zones: { value: number; label: string };
     coverage: { value: number; decimals: number; label: string; suffix: string };
     cities: { value: number; label: string };
@@ -136,6 +139,8 @@ export interface Dictionary {
     corridorTitle: string;
     corridorBody: string;
     sampleLabel: string;
+    sampleRequestLabel: string;
+    sampleResponseLabel: string;
     sampleRequest: string;
     sampleResponse: string;
     formTitle: string;
@@ -158,6 +163,7 @@ export interface Dictionary {
     roadmapSoon: string;
     tabs: FeatureTab[];
     mapAria: string;
+    tabsAria: string;
     panel: {
       zoneCheck: string;
       heffingDistance: string;
@@ -196,6 +202,9 @@ export interface Dictionary {
     monthlyEstimate: string;
     compareTitle: string;
     offerUnitText: string;
+    comparePriceLabel: string;
+    compareVehiclesLabel: string;
+    compareFocusLabel: string;
     plans: {
       starter: { name: string; blurb: string; features: string[] };
       professional: { name: string; blurb: string; features: string[] };

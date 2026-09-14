@@ -7,6 +7,12 @@ export const HREFLANG_BY_LOCALE = {
   nl: 'nl-NL',
 } as const;
 
+export const OG_LOCALE_BY_LOCALE = {
+  en: 'en_US',
+  tr: 'tr_TR',
+  nl: 'nl_NL',
+} as const;
+
 export const DEFAULT_HREFLANG_LOCALE = 'en' as const;
 
 /** NL legal çevirisi gelince geri aç */
@@ -64,4 +70,8 @@ export function hreflangCluster(opts: {
   });
 
   return links;
+}
+
+export function ogLocaleAlternates(currentOgLocale: string): string[] {
+  return Object.values(OG_LOCALE_BY_LOCALE).filter((tag) => tag !== currentOgLocale);
 }

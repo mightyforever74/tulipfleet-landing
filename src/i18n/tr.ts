@@ -18,6 +18,7 @@ const tr: Dictionary = {
     langLabel: 'Dil',
     langSoon: 'Yakında',
     menu: 'Menü',
+    primaryAria: 'Birincil',
   },
   hero: {
     badge: '🇪🇺 NL & EU Zero-Emission Compliance Ready',
@@ -80,8 +81,10 @@ const tr: Dictionary = {
     headline:
       'Excel dosyalarınızı çöpe atmayın — mevcut süreçlerinizi TulipFleet’e taşıyın.',
     points: ['Kolay geçiş', 'Verilerinizi birlikte taşıyoruz', 'Hızlı adaptasyon'],
+    ariaLabel: "Excel'den TulipFleet'e",
   },
   stats: {
+    ariaLabel: 'Kanıtlanmış kapsam rakamları',
     zones: { value: 21, label: 'Aktif ZE-Zone' },
     coverage: { value: 148.8, decimals: 1, label: 'Kapsama', suffix: 'km²' },
     cities: { value: 6, label: 'Şehir canlı entegrasyon' },
@@ -140,6 +143,8 @@ const tr: Dictionary = {
     corridorBody:
       "Uyum motorumuz ülke-modüler tasarlandı: Bugün Hollanda'da NDW verili ZE-Zone denetimi ve Vrachtwagenheffing maliyet hesabı CANLI. Aynı motor, Belçika LEZ (Brüksel/Antwerpen/Gent) ve Almanya Umweltzone bölge denetimlerine genişletilmek üzere planlanıyor — rota koordinatınıza göre doğru ülkenin kuralları otomatik devreye girer. Belçika Viapass ve Almanya LKW-Maut (ayrı OBU-tabanlı sistemler) için maliyet görünürlüğü yol haritasında; bugün bu ücretleri hesapladığımızı söylemiyoruz.",
     sampleLabel: 'Örnek tasarım — lansmanda kesinleşecek',
+    sampleRequestLabel: 'İstek',
+    sampleResponseLabel: 'Yanıt',
     sampleRequest: `POST /v1/compliance/ze-zone-check
 Authorization: Bearer <token>
 Content-Type: application/json
@@ -176,6 +181,7 @@ Content-Type: application/json
     roadmap: 'Yol Haritası',
     roadmapSoon: 'Yol Haritası — Yakında',
     mapAria: 'Canlı ZE-Zone şehirleriyle Hollanda haritası',
+    tabsAria: 'Özellik kategorileri',
     panel: {
       zoneCheck: 'ZE-Zone denetimi',
       heffingDistance: 'Heffing (mesafe + sınıf)',
@@ -398,6 +404,9 @@ Content-Type: application/json
     monthlyEstimate: 'Tahmini aylık',
     compareTitle: 'Paket karşılaştırması',
     offerUnitText: 'araç başına aylık',
+    comparePriceLabel: 'EUR / araç / ay',
+    compareVehiclesLabel: 'Araçlar',
+    compareFocusLabel: 'Odak',
     plans: {
       starter: {
         name: 'Starter',

@@ -23,6 +23,9 @@ interface Props {
     volumeNote: string;
     cta: string;
     monthlyEstimate: string;
+    comparePriceLabel: string;
+    compareVehiclesLabel: string;
+    compareFocusLabel: string;
     plans: {
       starter: PlanCopy;
       professional: PlanCopy;
@@ -237,19 +240,19 @@ export default function PricingCalculator({
             </thead>
             <tbody>
               <tr className="border-b border-navy-line">
-                <td className="py-3 pr-4 text-navy-fog">EUR / vehicle / month</td>
+                <td className="py-3 pr-4 text-navy-fog">{copy.comparePriceLabel}</td>
                 <td className="py-3 pr-4 text-offwhite">€15</td>
                 <td className="py-3 pr-4 text-offwhite">€25</td>
                 <td className="py-3 pr-4 text-offwhite">€29–35</td>
               </tr>
               <tr className="border-b border-navy-line">
-                <td className="py-3 pr-4 text-navy-fog">Vehicles</td>
+                <td className="py-3 pr-4 text-navy-fog">{copy.compareVehiclesLabel}</td>
                 <td className="py-3 pr-4 text-offwhite">1–5</td>
                 <td className="py-3 pr-4 text-offwhite">6–20</td>
                 <td className="py-3 pr-4 text-offwhite">20+</td>
               </tr>
               <tr className="border-b border-navy-line">
-                <td className="py-3 pr-4 text-navy-fog">Focus</td>
+                <td className="py-3 pr-4 text-navy-fog">{copy.compareFocusLabel}</td>
                 <td className="py-3 pr-4 text-offwhite">{copy.plans.starter.blurb}</td>
                 <td className="py-3 pr-4 text-offwhite">{copy.plans.professional.blurb}</td>
                 <td className="py-3 pr-4 text-offwhite">{copy.plans.enterprise.blurb}</td>

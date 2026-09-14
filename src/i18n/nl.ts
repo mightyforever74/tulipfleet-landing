@@ -18,6 +18,7 @@ const nl: Dictionary = {
     langLabel: 'Taal',
     langSoon: 'Binnenkort',
     menu: 'Menu',
+    primaryAria: 'Hoofdnavigatie',
   },
   hero: {
     badge: '🇪🇺 Klaar voor zero-emissie in NL en de EU',
@@ -79,8 +80,10 @@ const nl: Dictionary = {
   excelStrip: {
     headline: 'Gooi uw Excel niet weg. Neem uw bestaande werkwijze mee naar TulipFleet.',
     points: ['Eenvoudige migratie', 'Wij verhuizen de data met u mee', 'Snel ingewerkt'],
+    ariaLabel: 'Van Excel naar TulipFleet',
   },
   stats: {
+    ariaLabel: 'Bewezen dekkingscijfers',
     zones: { value: 21, label: 'Actieve zero-emissiezones' },
     coverage: { value: 148.8, decimals: 1, label: 'Dekking', suffix: 'km²' },
     cities: { value: 6, label: 'Steden live gekoppeld' },
@@ -139,6 +142,8 @@ const nl: Dictionary = {
     corridorBody:
       'Onze compliance-engine is per land modulair: in Nederland zijn zero-emissiezonechecks op NDW-data en de Vrachtwagenheffing-kostenberekening Live. Dezelfde engine moet uitbreiden naar Belgische LEZ (Brussel / Antwerpen / Gent) en Duitse Umweltzone-gebiedschecks, zodat de regels van het juiste land automatisch ingrijpen vanaf uw routecoördinaten. Kostenzicht op Belgische Viapass en Duitse LKW-Maut (aparte OBU-systemen) staat op de roadmap. We beweren niet die tol nu te berekenen.',
     sampleLabel: 'Voorbeelddesign, wordt bij lancering vastgelegd',
+    sampleRequestLabel: 'Verzoek',
+    sampleResponseLabel: 'Antwoord',
     sampleRequest: `POST /v1/compliance/ze-zone-check
 Authorization: Bearer <token>
 Content-Type: application/json
@@ -175,6 +180,7 @@ Content-Type: application/json
     roadmap: 'Roadmap',
     roadmapSoon: 'Roadmap, binnenkort',
     mapAria: 'Kaart van Nederland met live zero-emissiezonesteden',
+    tabsAria: 'Functiecategorieën',
     panel: {
       zoneCheck: 'ZE-zonecheck',
       heffingDistance: 'Heffing (afstand + klasse)',
@@ -397,6 +403,9 @@ Content-Type: application/json
     monthlyEstimate: 'Geschatte maandprijs',
     compareTitle: 'Vergelijk pakketten',
     offerUnitText: 'per voertuig per maand',
+    comparePriceLabel: 'EUR / voertuig / maand',
+    compareVehiclesLabel: 'Voertuigen',
+    compareFocusLabel: 'Focus',
     plans: {
       starter: {
         name: 'Starter',
