@@ -54,6 +54,8 @@ const active = isActiveLocale(locale);
       path={path}
       siteName={dict.meta.siteName}
       ogLocale={dict.meta.ogLocale}
+      noindex={noindex || !active}
+      active={active}
     />
   </head>
   <body class="min-h-screen flex flex-col">

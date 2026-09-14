@@ -1,5 +1,6 @@
 ---
 import { localizePath } from '../lib/env';
+import { hreflangCluster, shouldEmitHreflang } from '../lib/seo';
 
 interface Props {
   title: string;
@@ -8,13 +9,27 @@ interface Props {
   path: string;
   siteName: string;
   ogLocale: string;
+  noindex?: boolean;
+  active?: boolean;
 }
 
-const { title, description, locale, path, siteName, ogLocale } = Astro.props;
+const {
+  title,
+  description,
+  locale,
+  path,
+  siteName,
+  ogLocale,
+  noindex = false,
+  active = true,
+} = Astro.props;
 const site = Astro.site ?? new URL('https://tulipfleet.com');
 const canonicalPath = path.startsWith('/') ? path : `/${path}`;
 const canonical = new URL(localizePath(locale, canonicalPath), site).href;
 const ogImage = new URL('/og-default.svg', site).href;
+const alternates = shouldEmitHreflang({ locale, path: canonicalPath, noindex, active })
+  ? hreflangCluster({ path: canonicalPath, site })
+  : [];
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -42,6 +57,11 @@ const jsonLd = {
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
+{
+  alternates.map((alt) => (
+    <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+  ))
+}
 <meta name="generator" content={Astro.generator} />
 
 <meta property="og:type" content="website" />

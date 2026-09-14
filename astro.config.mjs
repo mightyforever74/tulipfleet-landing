@@ -4,28 +4,11 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import { ACTIVE_LOCALES } from './src/i18n/types.ts';
+import { isNlLegalPath } from './src/lib/seo.ts';
 
 const SITE = 'https://tulipfleet.com';
 /** @type {Set<string>} */
 const INDEXABLE_LOCALES = new Set(ACTIVE_LOCALES);
-/** @type {Set<string>} */
-const NL_LEGAL_SLUGS = new Set([
-  'privacy',
-  'terms',
-  'imprint',
-  'dpa',
-  'subprocessors',
-]);
-
-/**
- * NL legal pages stay live (footer links) but are English fallbacks.
- * NL legal çevirisi gelince geri aç
- * @param {string} pathname
- */
-function isNlLegalPath(pathname) {
-  const parts = pathname.split('/').filter(Boolean);
-  return parts[0] === 'nl' && parts.length === 2 && NL_LEGAL_SLUGS.has(parts[1]);
-}
 
 /**
  * Keep /en/ + /tr/ + /nl/ pages only.
