@@ -508,7 +508,7 @@ Content-Type: application/json
   },
   placeholder: {
     title: 'This language is coming soon',
-    body: 'We’re preparing this locale. English and Turkish are available today.',
+    body: 'We’re preparing this locale. English, Turkish and Dutch are available today.',
     back: 'Back to English',
   },
   common: {
