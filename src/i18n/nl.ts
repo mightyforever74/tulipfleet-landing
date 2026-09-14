@@ -91,9 +91,9 @@ const nl: Dictionary = {
     subtitle: 'Aansturing op uw bureau, uitvoering in de broekzak van uw chauffeur.',
     body: "TulipFleet werkt aan twee kanten: wijs een taak toe vanuit het paneel en die landt direct op de telefoon van uw chauffeur. Voertuigen op de live kaart, meldingen op zak. Wijs onderweg met één tik een taak toe.",
     liveBadge: 'Live op iOS + Android',
-    storesTodo: 'TODO: [MUSTERI DOLDURACAK: magaza linkleri]',
     appStore: 'Download in de App Store',
     playStore: 'Ontdek het op Google Play',
+    playStoreSoon: 'Binnenkort in Google Play',
     cycleLabel: 'Live operatiecyclus',
     steps: [
       'Taak toewijzen',

@@ -1,6 +1,6 @@
 ---
 import type { Dictionary } from '../i18n';
-import { resolveStoreHref, storeLinks } from '../config/stores';
+import { storeLinks } from '../config/stores';
 import PhoneCarousel from './react/PhoneCarousel';
 
 interface Props {
@@ -10,8 +10,6 @@ interface Props {
 
 const { dict, locale } = Astro.props;
 const m = dict.mobileBridge;
-const appHref = resolveStoreHref(storeLinks.appStoreUrl);
-const playHref = resolveStoreHref(storeLinks.playStoreUrl);
 ---
 
 <section id="mobile" class="relative overflow-hidden py-24 lg:py-32">
@@ -59,10 +57,12 @@ const playHref = resolveStoreHref(storeLinks.playStoreUrl);
 
       <div class="mt-10 flex flex-wrap items-center gap-3">
         <a
-          href={appHref}
+          href={storeLinks.appStoreUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           class="inline-flex h-11 items-center rounded-xl border border-navy-line bg-navy-ink px-3 transition hover:border-accent/40"
           aria-label={m.appStore}
-          title={appHref === '#' ? m.storesTodo : m.appStore}
+          title={m.appStore}
         >
           <svg width="120" height="40" viewBox="0 0 120 40" aria-hidden="true">
             <rect width="120" height="40" rx="8" fill="currentColor" class="text-navy-ink"></rect>
@@ -71,11 +71,11 @@ const playHref = resolveStoreHref(storeLinks.playStoreUrl);
             <text x="42" y="28" fill="currentColor" class="text-offwhite" font-size="12" font-weight="600" font-family="system-ui,sans-serif">App Store</text>
           </svg>
         </a>
-        <a
-          href={playHref}
-          class="inline-flex h-11 items-center rounded-xl border border-navy-line bg-navy-ink px-3 transition hover:border-accent/40"
-          aria-label={m.playStore}
-          title={playHref === '#' ? m.storesTodo : m.playStore}
+        <span
+          class="inline-flex h-11 cursor-default items-center rounded-xl border border-navy-line bg-navy-ink px-3 opacity-60"
+          role="img"
+          aria-label={m.playStoreSoon}
+          title={m.playStoreSoon}
         >
           <svg width="135" height="40" viewBox="0 0 135 40" aria-hidden="true">
             <rect width="135" height="40" rx="8" fill="currentColor" class="text-navy-ink"></rect>
@@ -86,8 +86,7 @@ const playHref = resolveStoreHref(storeLinks.playStoreUrl);
             <text x="36" y="15" fill="currentColor" class="text-offwhite" font-size="7" font-family="system-ui,sans-serif">GET IT ON</text>
             <text x="36" y="28" fill="currentColor" class="text-offwhite" font-size="12" font-weight="600" font-family="system-ui,sans-serif">Google Play</text>
           </svg>
-        </a>
-        <p class="basis-full text-[10px] font-medium text-navy-fog/80">{m.storesTodo}</p>
+        </span>
       </div>
     </div>
   </div>

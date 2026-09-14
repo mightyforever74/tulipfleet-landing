@@ -108,9 +108,9 @@ export interface Dictionary {
     subtitle: string;
     body: string;
     liveBadge: string;
-    storesTodo: string;
     appStore: string;
     playStore: string;
+    playStoreSoon: string;
     cycleLabel: string;
     steps: [string, string, string, string, string];
   };

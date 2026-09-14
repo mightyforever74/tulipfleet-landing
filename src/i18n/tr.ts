@@ -92,9 +92,9 @@ const tr: Dictionary = {
     subtitle: 'Komuta merkezi masanızda, operasyon sürücünün cebinde.',
     body: 'TulipFleet iki uçta birden çalışır: siz panelden görev atarsınız, sürücünün telefonuna anında düşer. Araçlar canlı haritada, ikazlar cebinizde — yoldayken bile tek tıkla görev atayabilirsiniz.',
     liveBadge: "iOS + Android'de yayında",
-    storesTodo: 'TODO: [MUSTERI DOLDURACAK: magaza linkleri]',
     appStore: "App Store'dan indir",
     playStore: "Google Play'den edin",
+    playStoreSoon: "Google Play'de yakında",
     cycleLabel: 'Canlı operasyon döngüsü',
     steps: [
       'Görev ata',

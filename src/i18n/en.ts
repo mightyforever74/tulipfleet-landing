@@ -91,9 +91,9 @@ const en: Dictionary = {
     subtitle: "Command center on your desk, operations in your driver's pocket.",
     body: 'TulipFleet works on both ends: assign a job from the panel and it lands on your driver\'s phone instantly. Vehicles on the live map, alerts in your pocket — assign jobs with one tap even on the road.',
     liveBadge: 'Live on iOS + Android',
-    storesTodo: 'TODO: [MUSTERI DOLDURACAK: magaza linkleri]',
     appStore: 'Download on the App Store',
     playStore: 'Get it on Google Play',
+    playStoreSoon: 'Coming soon to Google Play',
     cycleLabel: 'Live operations loop',
     steps: [
       'Assign job',
