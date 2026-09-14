@@ -396,6 +396,7 @@ Content-Type: application/json
     cta: 'Start 14 dagen proef',
     monthlyEstimate: 'Geschatte maandprijs',
     compareTitle: 'Vergelijk pakketten',
+    offerUnitText: 'per voertuig per maand',
     plans: {
       starter: {
         name: 'Starter',

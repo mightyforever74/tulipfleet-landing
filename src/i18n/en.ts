@@ -396,6 +396,7 @@ Content-Type: application/json
     cta: 'Start 14-day free trial',
     monthlyEstimate: 'Estimated monthly',
     compareTitle: 'Compare plans',
+    offerUnitText: 'per vehicle per month',
     plans: {
       starter: {
         name: 'Starter',

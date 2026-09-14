@@ -1,5 +1,6 @@
 ---
 import { localizePath } from '../lib/env';
+import { buildJsonLd, jsonLdKind } from '../lib/jsonld';
 import { hreflangCluster, shouldEmitHreflang } from '../lib/seo';
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
   ogLocale: string;
   noindex?: boolean;
   active?: boolean;
+  offerUnitText?: string;
 }
 
 const {
@@ -22,6 +24,7 @@ const {
   ogLocale,
   noindex = false,
   active = true,
+  offerUnitText = 'per vehicle per month',
 } = Astro.props;
 const site = Astro.site ?? new URL('https://tulipfleet.com');
 const canonicalPath = path.startsWith('/') ? path : `/${path}`;
@@ -30,28 +33,15 @@ const ogImage = new URL('/og-default.svg', site).href;
 const alternates = shouldEmitHreflang({ locale, path: canonicalPath, noindex, active })
   ? hreflangCluster({ path: canonicalPath, site })
   : [];
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: 'TulipFleet',
-  applicationCategory: 'BusinessApplication',
-  operatingSystem: 'Web, iOS, Android',
+const jsonLdBlocks = buildJsonLd({
+  kind: jsonLdKind(canonicalPath, { active, noindex }),
+  site,
+  canonical,
+  title,
   description,
-  url: canonical,
-  offers: {
-    '@type': 'Offer',
-    priceCurrency: 'EUR',
-    price: '15.00',
-    description: 'From EUR 15 per vehicle per month',
-  },
-  provider: {
-    '@type': 'Organization',
-    name: 'TulipFleet',
-    url: site.href,
-    email: 'info@tulipfleet.com',
-  },
-};
+  locale,
+  unitText: offerUnitText,
+});
 ---
 
 <title>{title}</title>
@@ -77,4 +67,8 @@ const jsonLd = {
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
 
-<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+{
+  jsonLdBlocks.map((block) => (
+    <script type="application/ld+json" set:html={JSON.stringify(block)} />
+  ))
+}

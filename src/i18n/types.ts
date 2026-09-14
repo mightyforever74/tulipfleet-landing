@@ -195,6 +195,7 @@ export interface Dictionary {
     cta: string;
     monthlyEstimate: string;
     compareTitle: string;
+    offerUnitText: string;
     plans: {
       starter: { name: string; blurb: string; features: string[] };
       professional: { name: string; blurb: string; features: string[] };

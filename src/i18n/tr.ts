@@ -397,6 +397,7 @@ Content-Type: application/json
     cta: '14 Gün Ücretsiz Deneme Başlat',
     monthlyEstimate: 'Tahmini aylık',
     compareTitle: 'Paket karşılaştırması',
+    offerUnitText: 'araç başına aylık',
     plans: {
       starter: {
         name: 'Starter',
