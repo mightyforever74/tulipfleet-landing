@@ -158,6 +158,69 @@ const tr: LegalBundle = {
       },
     ],
   },
+  deleteAccount: {
+    title: 'Hesap ve veri silme',
+    description: 'TulipFleet hesabınızı ve hesabınıza bağlı kişisel verileri nasıl sildirebileceğiniz.',
+    intro:
+      'Bu sayfa, TulipFleet mobil uygulaması kullanıcılarının (sürücüler ve filo yöneticileri) hesaplarını ve bağlı kişisel verilerini nasıl sildirebileceğini, nelerin silindiğini, nelerin saklanmak zorunda olduğunu ve sürecin ne kadar sürdüğünü açıklar.',
+    sections: [
+      {
+        heading: '1. Kimler için geçerli',
+        paragraphs: [
+          'TulipFleet kurumsal (B2B) bir filo yönetim hizmetidir. Sürücü ve yönetici hesapları, ilgili şirketin yönettiği bir çalışma alanı altında açılır. Silme talebini kendiniz yapabilir ya da şirket yöneticiniz sizin adınıza iletebilir.',
+        ],
+      },
+      {
+        heading: '2. Silme talebi nasıl yapılır',
+        paragraphs: [
+          'Hesabınıza kayıtlı e-posta adresinden, konu satırı “Hesap silme” olacak şekilde e-posta gönderin:',
+        ],
+        list: [
+          'info@tulipfleet.com (birincil) veya privacy@tulipfleet.com',
+          'Ekleyin: hesap e-postanız, şirket adınız ve hesabın tamamının mı yoksa yalnızca belirli verilerin mi silineceği (bkz. 4. bölüm).',
+          'Talebi 5 iş günü içinde teyit ederiz; talebin hesap sahibinden geldiğinden emin olmak için bir doğrulama adımı isteyebiliriz.',
+        ],
+      },
+      {
+        heading: '3. Neler silinir',
+        paragraphs: ['Hesap silindiğinde şunları kaldırır veya geri döndürülemez biçimde anonimleştiririz:'],
+        list: [
+          'Profiliniz (ad, e-posta, telefon, dil ve uygulama ayarları)',
+          'Giriş bilgileri ve oturum anahtarları',
+          'Girişinize bağlı bildirim (push) anahtarları ve cihaz tanımlayıcıları',
+          'Araç konum geçmişi, görevler, yakıt kayıtları ve ikazlarla olan bağınız — bu kayıtlar sizinle ilişkilendirilemeyecek şekilde anonimleştirilir',
+        ],
+        callout: 'Araç konum (GPS) verileri, talepten bağımsız olarak zaten 7 gün sonra otomatik silinir.',
+      },
+      {
+        heading: '4. Neler saklanır ve neden',
+        paragraphs: [
+          'Bazı kayıtlar, çalışma alanının sahibi şirket adına veya yasal zorunluluk gereği anonim ya da toplu biçimde saklanmak zorundadır:',
+        ],
+        list: [
+          'Şirkete ait operasyonel filo kayıtları (sefer özetleri, görev geçmişi, yakıt toplamları) — kişisel tanımlayıcı olmadan',
+          'Faturalama ve muhasebe kayıtları — Hollanda vergi mevzuatı gereği 7 yıla kadar',
+          'Kötüye kullanım incelemesi için gerekli güvenlik günlükleri — 90 güne kadar',
+        ],
+      },
+      {
+        heading: '5. Süre',
+        paragraphs: [
+          'Doğrulanmış talepten itibaren 30 gün içinde silme tamamlanır. Veriyi hâlâ içeren yedekler sonraki 30 gün içinde üzerine yazılarak yok edilir. Silme tamamlandığında e-posta ile bilgilendirilirsiniz.',
+        ],
+      },
+      {
+        heading: '6. Hesabı kapatmadan veri silme',
+        paragraphs: [
+          'Hesabınızı korumak ama belirli verileri (örneğin yakıt kayıtları veya telefon numaranız) sildirmek istiyorsanız bunu talebinizde belirtin. KVKK/GDPR 15–21. maddelerdeki haklarınız (erişim, düzeltme, silme, kısıtlama, taşınabilirlik, itiraz) tam olarak geçerlidir — bkz. Gizlilik Politikası.',
+        ],
+      },
+      {
+        heading: '7. İletişim',
+        paragraphs: ['info@tulipfleet.com', 'privacy@tulipfleet.com'],
+      },
+    ],
+  },
 };
 
 export default tr;

@@ -19,6 +19,7 @@ export interface LegalBundle {
   imprint: LegalPageContent;
   dpa: LegalPageContent;
   subprocessors: LegalPageContent;
+  deleteAccount: LegalPageContent;
 }
 
 export interface ConsentCopy {

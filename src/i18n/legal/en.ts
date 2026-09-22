@@ -158,6 +158,70 @@ const en: LegalBundle = {
       },
     ],
   },
+  deleteAccount: {
+    title: 'Account and data deletion',
+    description: 'How to delete your TulipFleet account and the personal data linked to it.',
+    intro:
+      'This page explains how users of the TulipFleet mobile app (drivers and fleet managers) can request deletion of their account and associated personal data, what is deleted, what we must keep, and how long it takes.',
+    sections: [
+      {
+        heading: '1. Who this applies to',
+        paragraphs: [
+          'TulipFleet is a business (B2B) fleet-management service. Driver and manager accounts are created under a company workspace administered by that company. You can request deletion yourself, or your company administrator can request it on your behalf.',
+        ],
+      },
+      {
+        heading: '2. How to request deletion',
+        paragraphs: [
+          'Send an email from the address registered to your account with the subject line “Account deletion”:',
+        ],
+        list: [
+          'info@tulipfleet.com (primary) or privacy@tulipfleet.com',
+          'Include: your account email, your company name, and whether you want the whole account deleted or only specific data (see section 4).',
+          'We confirm receipt within 5 business days and may ask for a verification step to make sure the request comes from the account holder.',
+        ],
+      },
+      {
+        heading: '3. What is deleted',
+        paragraphs: ['When an account is deleted we remove or irreversibly anonymise:'],
+        list: [
+          'Your profile (name, email, phone, language and app settings)',
+          'Login credentials and session tokens',
+          'Push-notification tokens and device identifiers linked to your login',
+          'Your association with vehicle location history, tasks, fuel entries and alerts — those records are anonymised so they can no longer be linked to you',
+        ],
+        callout:
+          'Vehicle location (GPS) data is already deleted automatically after 7 days, independent of any request.',
+      },
+      {
+        heading: '4. What we keep, and why',
+        paragraphs: [
+          'Some records must be retained for the company that owns the workspace or by law, in anonymised or aggregated form:',
+        ],
+        list: [
+          'Operational fleet records that belong to the company (trip summaries, task history, fuel totals) — kept without any personal identifier',
+          'Invoicing and accounting records — up to 7 years under Dutch tax law',
+          'Security logs required to investigate abuse — up to 90 days',
+        ],
+      },
+      {
+        heading: '5. Timeline',
+        paragraphs: [
+          'Full deletion is completed within 30 days of a verified request. Backups that still contain the data are overwritten within a further 30 days. You receive a confirmation email when deletion is complete.',
+        ],
+      },
+      {
+        heading: '6. Deleting data without deleting the account',
+        paragraphs: [
+          'If you want to keep your account but remove specific data (for example fuel entries or your phone number), state this in your request. Your rights under GDPR articles 15–21 (access, rectification, erasure, restriction, portability, objection) apply in full — see our Privacy Policy.',
+        ],
+      },
+      {
+        heading: '7. Contact',
+        paragraphs: ['info@tulipfleet.com', 'privacy@tulipfleet.com'],
+      },
+    ],
+  },
 };
 
 export default en;
